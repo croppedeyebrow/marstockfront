@@ -20,7 +20,6 @@ const FormPage = () => {
    // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
    return (
       <>
-         <GlobalStyle />
          <Header />
          <InlineContainer color="orange"
          contents ={
