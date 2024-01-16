@@ -2,6 +2,18 @@ import GlobalStyle from "../utils/style/GlobalStyle";
 import Header from "../utils/style/Header";
 import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";
+import styled from "styled-components";
+
+const Container =styled.div`
+   width: 100%;
+   height: 100%;
+   padding: 5rem;
+`
+const TEST = styled.div`
+   width: 100px;
+   height: 100px;
+   background-color: blue;
+`;
 
 const FormPage = () => {
    
@@ -10,8 +22,12 @@ const FormPage = () => {
       <>
          <GlobalStyle />
          <Header />
-         <InlineContainer color=""> 
-
+         <InlineContainer color="orange"
+         contents ={
+            <Container>
+            <TEST/>
+            </Container>
+         }> 
          </InlineContainer>
          <Footer />
       </>

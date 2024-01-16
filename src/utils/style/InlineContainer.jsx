@@ -17,12 +17,14 @@ const InlineCon = styled.div`
 
 `;
 
-const InlineContainer = ({color}) => {
+const InlineContainer = ({color, contents}) => {
 
    return (
       <>
        <Container>
-         <InlineCon color={color}/>
+         <InlineCon color={color}>
+            {contents}
+         </InlineCon>
        </Container>
       </>
    )
