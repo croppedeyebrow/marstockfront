@@ -2,9 +2,9 @@ import axios from "axios";
 import { DOMAIN } from "./common";
 
 const CommonAxios = {
-  testAxios: async (controller, path, variable) => {
+  testAxios: async (controller, path, variable, data) => {
     return await axios.get(
-      DOMAIN + `/${controller}/${path}/variable=${variable}`
+      DOMAIN + `/${controller}/${path}/${variable}=${data}`
     );
   },
 };
