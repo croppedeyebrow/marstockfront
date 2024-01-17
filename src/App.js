@@ -3,8 +3,8 @@ import './App.css';
 import GlobalStyle from './utils/style/GlobalStyle';
 import MainPage from './main/MainPage';
 import FormPage from './form/FormPage';
-import SigninPage from './Sign/SigninPage';
-import SignupPage from './Sign/SignupPage';
+import SigninPage from './sign/SigninPage';
+import SignupPage from './sign/SignupPage';
 
 function App() {
   return (
