@@ -10,6 +10,8 @@ const GlobalStyle = createGlobalStyle`
    padding: 0px;
    font-family: 'Noto Sans KR', sans-serif;
    background-color: var(--mainblack);
+   display: flex;
+   justify-content: center;
   }
 
   html {
@@ -25,8 +27,8 @@ const GlobalStyle = createGlobalStyle`
    --upred: #ff5c5c; // 상승 빨강
    --mainorange: #ff6600; // 메인 주황색
    --mainlightorange: #ff954f; // 메인 연주황색
-   --gradientorange: linear-gradient(to top, rgba(17, 17, 17, 0.5) 15%, rgba(255, 102, 0, 0.5) 100% ); // background: var(--gradient); 형식으로 배경색 지정 가능
-   --gradientpurple: linear-gradient(to top, rgba(17, 17, 17, 0.5) 15%, rgba(102, 51, 204, 0.5) 100% ); // background: var(--gradient); 형식으로 배경색 지정 가능
+   --gradientorange: linear-gradient(to top, rgba(17, 17, 17, 0.5) 15%, rgba(255, 102, 0, 0.5) 100% ); 
+   --gradientpurple: linear-gradient(to top, rgba(17, 17, 17, 0.5) 15%, rgba(102, 51, 204, 0.5) 100% ); 
   }
 `;
 

@@ -1,9 +1,18 @@
 import styled from "styled-components";
 
-const Container = styled.div`
-   margin-top: 15rem;
+const Category = styled.div`
+   position: relative;
+   top: 9rem;
+   width: 120rem;
+   height: 5rem;
    display: flex;
-   justify-content: center;
+   padding: 0 7rem;
+   justify-content: flex-start;
+   color: rgba(255, 255, 255, 0.7);
+   gap: 5rem;
+   font-size: 3rem;
+   font-weight: 200;
+   cursor: pointer;
 `;
 
 const InlineCon = styled.div`
@@ -13,19 +22,21 @@ const InlineCon = styled.div`
    max-height: 150rem;
    background: ${props => props.color === 'orange' ? 'var(--gradientorange)' : 'var(--gradientpurple)'};
    border-radius: 5rem;
+   margin-top: 10rem;
 
 
 `;
 
-const InlineContainer = ({color, contents}) => {
+const InlineContainer = ({color, contents, category}) => {
 
    return (
       <>
-       <Container>
+         <Category>
+            {category}
+         </Category>
          <InlineCon color={color}>
             {contents}
          </InlineCon>
-       </Container>
       </>
    )
 };
