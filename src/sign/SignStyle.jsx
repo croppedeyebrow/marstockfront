@@ -5,6 +5,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 export const Link = styled(RouterLink)`
   text-decoration: none;
+   color: unset;
 `;
 
 export const Background = styled.div`
@@ -29,14 +30,14 @@ export const Logo =styled.img`
       0% {
          filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.7));
       }
-      75% {
+      50% {
          filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
       }
       100% {
          filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.7));
       }
    }
-      animation: pulse 3s ease-in-out infinite;
+      animation: pulse 2s ease infinite;
       /* transition: all 0.5s ease-in-out; */
    }
 `;
@@ -77,6 +78,27 @@ export const InputContainer = styled.div`
       color: white;
       background-color: var(--mainpurple);
       font-size: 2rem;
+      font-weight: 200;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1.5rem;
+      cursor: pointer;
+      &:hover{
+         background-color: var(--mainlightpurple);
+         transform: scale(1.02);
+         transition: all 0.05s ease-in-out;
+      }
+      &:active{
+         background-color: var(--mainpurple);
+      }
+   }
+   #codebutton {
+      width: 12rem;
+      height: 4rem;
+      color: white;
+      background-color: var(--mainpurple);
+      font-size: 1.5rem;
       font-weight: 200;
       display: flex;
       justify-content: center;

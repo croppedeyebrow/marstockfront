@@ -7,26 +7,26 @@ import { useState } from "react";
 import { Background, InputContainer, Logo, InputBox, Link } from "./SignStyle";
 import headlogo from "../images/LogoSymbolHorizonWhite.svg";
 
-const SigninPage = () => {
+const FindPwPage = () => {
    
    return (
       <>
          <Background>
             <Link to="/"><Logo src={headlogo} alt="logo"/></Link>
-            <InputContainer>
-               <div id="title">Login</div>
+            <InputContainer style={{gap:"2rem"}}>
+               <div id="title">Find Pw</div>
                <InputBox id="inputid" placeholder="E-Mail"></InputBox>
-               <InputBox id="inputpw" placeholder="Password"></InputBox>
+               <div id="codebutton">인증번호 전송</div>
+               <InputBox id="inputpw" placeholder="Code"></InputBox>
+               <div id="codebutton">인증번호 확인</div>
                <div id="linktext">
-               <Link to="/findid"><span id="forgetid">이메일이 기억나지 않아요</span></Link>
-               <Link to="/findpw"><span id="forgetpw">비밀번호가 기억나지 않아요</span></Link>
+                  <Link to={"/findid"} style={{textAlign:"center", marginTop:"2rem"}}><span id="forgetpw">이메일이 기억나지 않아요</span></Link>
                </div>
-               <div id="signbutton">Sign in</div>
-               <div id="linktext" style={{textAlign:"center"}}>아직 계정이 없으신가요?</div>
+               <Link to={"/signup"}><div id="linktext" style={{textAlign:"center"}}>아직 계정이 없으신가요?</div></Link>
             </InputContainer>
          </Background>
       </>
    )
 }
 
-export default SigninPage;
+export default FindPwPage;
