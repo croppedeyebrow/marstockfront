@@ -1,5 +1,10 @@
 import styled from "styled-components"
 import headlogo from "../../images/LogoSymbolHorizonWhite.svg"
+import { Link as RouterLink } from "react-router-dom";
+
+const Link = styled(RouterLink)`
+  text-decoration: none;
+`;
 
 const Container = styled.div`
    display: flex;
@@ -40,12 +45,12 @@ const Header = () => {
       <>
       <Container>
          <MidBox>
-            <img src={headlogo} alt="logo" />
+         <Link to="/"><img src={headlogo} alt="logo" /></Link>
             <div className="link">
-               <div id="stock">주식</div>
-               <div id="news">뉴스</div>
-               <div id="log">로그인</div>
-               <div id="sign">회원가입</div>
+               <Link to="/"><div id="stock">주식</div></Link>
+               <Link to="/"><div id="news">뉴스</div></Link>
+               <Link to="/signin"><div id="log">로그인</div></Link>
+               <Link to="/signup"><div id="sign">회원가입</div></Link>
             </div>
          </MidBox>
       </Container>

@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import backgroundimg from "../images/SignBackground.png";
 import mailimg from "../images/Email.svg";
+import { Link as RouterLink } from "react-router-dom";
+
+export const Link = styled(RouterLink)`
+  text-decoration: none;
+`;
 
 export const Background = styled.div`
    width: 100vw;
-   height: 100vh;
+   height: 120vh;
    background-image: url(${backgroundimg});
    background-size: cover;
    display: flex;
@@ -16,6 +21,23 @@ export const Logo =styled.img`
    margin-top: 10rem;
    height: 4.4rem;
    cursor: pointer;
+   transition: hover 0.5s ease-in-out;
+   &:hover{
+      /* filter: drop-shadow(0 0 30px white); */
+      @keyframes pulse {
+      0% {
+         filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.7));
+      }
+      75% {
+         filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+      }
+      100% {
+         filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.7));
+      }
+   }
+      animation: pulse 3s ease-in-out infinite;
+      /* transition: all 0.5s ease-in-out; */
+   }
 `;
 
 export const InputContainer = styled.div` 

@@ -4,7 +4,7 @@ import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";
 import styled from "styled-components";
 import { useState } from "react";
-import { Background, InputContainer, Logo, InputBox } from "./SignStyle";
+import { Background, InputContainer, Logo, InputBox, Link } from "./SignStyle";
 import headlogo from "../images/LogoSymbolHorizonWhite.svg";
 
 const SigninPage = () => {
@@ -12,7 +12,7 @@ const SigninPage = () => {
    return (
       <>
          <Background>
-            <Logo src={headlogo} alt="logo"/>
+            <Link to="/"><Logo src={headlogo} alt="logo"/></Link>
             <InputContainer>
                <div id="title">Login</div>
                <InputBox id="inputid" placeholder="E-Mail"></InputBox>
