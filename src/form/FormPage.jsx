@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Container, Example } from "./FormStyle";
 
+
+
 const FormPage = () => {
    const [ selectedCategory, setSelectedCategory ] = useState("카테고리1");
 

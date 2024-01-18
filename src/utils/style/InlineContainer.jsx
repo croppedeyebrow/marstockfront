@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+const Space = styled.div`
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+`;
+
 const Category = styled.div`
    position: relative;
    top: 9rem;
@@ -31,12 +38,14 @@ const InlineContainer = ({color, contents, category}) => {
 
    return (
       <>
+         <Space>
          <Category>
             {category}
          </Category>
          <InlineCon color={color}>
             {contents}
          </InlineCon>
+         </Space>
       </>
    )
 };

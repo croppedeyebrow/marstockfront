@@ -8,17 +8,18 @@ export const Link = styled(RouterLink)`
 `;
 
 export const Background = styled.div`
-   width: 100vw;
+   width: 100%;
    height: 120vh;
    background-image: url(${backgroundimg});
    background-size: cover;
    display: flex;
    align-items: center;
    flex-direction: column;
+   padding-top: 10rem;
 `
 
 export const Logo =styled.img`
-   margin-top: 10rem;
+   /* margin-top: 10rem; */
    height: 4.4rem;
    cursor: pointer;
    transition: hover 0.5s ease-in-out;

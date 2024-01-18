@@ -10,8 +10,6 @@ const GlobalStyle = createGlobalStyle`
    padding: 0px;
    font-family: 'Noto Sans KR', sans-serif;
    background-color: var(--mainblack);
-   display: flex;
-   justify-content: center;
   }
 
   html {
