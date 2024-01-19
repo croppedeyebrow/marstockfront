@@ -14,7 +14,8 @@ function App() {
       <GlobalStyle />
        <Router>
           <Routes>
-            <Route path="/" element={<FormPage />} />
+            <Route path="/" element={<MainPage />} />
+            <Route path="/form" element={<FormPage />} />
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/findid" element={<FindIdPage />} />
