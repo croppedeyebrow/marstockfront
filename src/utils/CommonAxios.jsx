@@ -2,9 +2,13 @@ import axios from "axios";
 import { MASTOCK_DOMAIN } from "./Common";
 
 const CommonAxios = {
-  testAxios: async (controller, path, variable, data) => {
+  getAxios: async (controller, path, variable, data) => {
     return await axios.get(
-      DOMAIN + `/${controller}/${path}/${variable}=${data}`
+      MASTOCK_DOMAIN + `/${controller}/${path}/${variable}=${data}`
     );
+  },
+
+  postAxios: async (controller, path, object) => {
+    return await axios.post(MASTOCK_DOMAIN + `/${controller}/${path}`, object);
   },
 };
