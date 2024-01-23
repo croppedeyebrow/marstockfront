@@ -31,11 +31,11 @@ export const Common = {
     };
     try {
       const refreshToken = await axios.get(
-        `${CHORD8_DOMAIN}/member/getRefresh?accessToken=${accessToken}`
+        `${MARSTOCK_DOMAIN}/member/getRefresh?accessToken=${accessToken}`
       );
 
       const res = await axios.post(
-        `${CHORD8_DOMAIN}/member/refresh`,
+        `${MARSTOCK_DOMAIN}/member/refresh`,
         refreshToken,
         config
       );
@@ -57,7 +57,7 @@ export const Common = {
 
 //인터 셉터
 export const Interceptor = axios.create({
-  baseURL: CHORD8_DOMAIN,
+  baseURL: MARSTOCK_DOMAIN,
 });
 
 Interceptor.interceptors.response.use(
