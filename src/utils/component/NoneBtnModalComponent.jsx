@@ -107,6 +107,7 @@ ex// const [isModalOpen, setIsModalOpen] = useState(false);
       content="공연 등록이 완료되었습니다." // 모달창에 표시할 내용을 content에 넣습니다.
       close={false}}  // 기존의 setter 입력에서 단순하게 false 입력으로 변경
       closeText="확인, 닫기 등등" // 기존의 방식에서 props 추가
+      closeModalHandler={isOpen을 컨트롤하는 함수}
       customButton="확인" // 모달창에 표시할 버튼 텍스트를 customButton에 넣습니다. 안 써도 됩니다.
       closeButtonStyle={{ b: "blue", textColor: "wgColorhite" }} // 모달창을 닫을 때 버튼의 배경색과 글자색을 설정합니다. 따로 사용하지 않으면
       기본 스타일이 적용됩니다. 배경과 글자색만 쓸 수 있습니다.
@@ -118,16 +119,11 @@ export const NoneBtnModalComponent = ({
   isOpen,
   content,
   customButton,
-  close,
   closeText,
   closeButtonStyle,
+  closeModalHandler,
 }) => {
   // 모달 닫기 제어
-  const [isClose, setIsClose] = useState(true);
-  // 모달 닫기 함수
-  const closeModalHandler = () => {
-    setIsClose(close);
-  };
   const customButtonHandler = () => {
     if (customButton && customButton.func) {
       customButton.func();
@@ -136,7 +132,7 @@ export const NoneBtnModalComponent = ({
 
   return (
     <>
-      {isOpen && isClose ? (
+      {isOpen ? (
         <ModalContainer>
           <ModalBackground onClick={closeModalHandler}>
             <ModalView onClick={(e) => e.stopPropagation()}>

@@ -25,6 +25,16 @@ const SignupPage = () => {
   const [email, setEmail] = useState();
   const [EPW, setEPW] = useState();
   const [nickName, setNickName] = useState();
+  const [tel, setTel] = useState();
+  const [cnum, setCnum] = useState();
+
+  const isEmailModal = () => {
+    setOpenEmailModal(true);
+  };
+
+  const closeEmailModal = () => {
+    setOpenEmailModal(false);
+  };
 
   const handleAllAgree = (e) => {
     setAllAgree(e.target.checked);
@@ -45,6 +55,8 @@ const SignupPage = () => {
       console.log("isClose", isClose);
       // 인증함수 실행
       authEmail();
+      // 모달 오픈
+      isEmailModal();
     } else alert("이메일을 확인하세요");
     setIsClose(true);
   };
@@ -118,21 +130,31 @@ const SignupPage = () => {
   };
 
   // 휴대전화 번호
-  const [tel, setTel] = useState("");
+
   const onChangeTel = (e) => {
     setTel(e.target.value);
     // console.log("tel:", tel);
   };
 
+  // 인증 번호
+  const onChangeCnum = (event) => {
+    setCnum(event.target.value);
+  };
+
+  // Sms 모달 오픈
   const onBlurSms = () => {
     console.log("tel", tel);
     setSms(true);
   };
 
+  const CloseSms = () => {
+    setSms(false);
+  };
+
   // SMS를 보내는 함수
   const handleSendMessage = async () => {
     try {
-      const res = await CommonAxios.get(tel);
+      const res = await CommonAxios.get("sms", "send-mms", "tel", tel);
       console.log("휴대전화 번호", tel);
       console.log(res.data);
       if (res.data.statusCode === "2000") {
@@ -150,7 +172,7 @@ const SignupPage = () => {
   // 인증 번호를 보내는 함수
   const handleSendCnum = async () => {
     try {
-      const res = await CommonAxios.getAxios();
+      const res = await CommonAxios.getAxios("sms", "check", "cnum", cnum);
       if (res.data === true) {
         alert("인증 성공");
       } else {
@@ -172,9 +194,9 @@ const SignupPage = () => {
           <div id="title">Sign up</div>
           <InputBox placeholder="E-Mail" onBlur={checkEmail}></InputBox>
           <NoneBtnModalComponent
+            closeModalHandler={closeEmailModal}
             isOpen={openEmailModal}
             customButton={false}
-            close={false}
             closeText="확인"
             content={
               <>
@@ -182,7 +204,7 @@ const SignupPage = () => {
                 <InputBox
                   backgroundColor="white"
                   color="black"
-                  placeholder="E-mail"
+                  placeholder="인증번호"
                   onChange={onChangeEpw}
                 ></InputBox>
                 <button onClick={checkEPW}>확인</button>
@@ -197,19 +219,18 @@ const SignupPage = () => {
             onBlur={onBlurSms}
           ></InputBox>
           <NoneBtnModalComponent
-            isOpen={openEmailModal}
+            isOpen={sms}
             customButton={false}
-            close={false}
+            closeModalHandler={CloseSms}
             closeText="확인"
             content={
               <>
                 <SmsApi
-                  open={sms}
-                  //  close={closeSms}
-                  tel={tel}
                   send={handleSendMessage}
+                  tel={tel}
                   cn={handleSendCnum}
-                  //  onChangeCnum={onChangeCnum}
+                  cnum={cnum}
+                  onChangeCnum={onChangeCnum}
                 />
               </>
             }

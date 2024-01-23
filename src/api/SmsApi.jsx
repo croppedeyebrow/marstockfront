@@ -9,12 +9,13 @@ const STYLE = styled.div`
 
 const Content = styled.div`
   width: 100%;
+  height: 8rem;
 `;
 
 const Button = styled.button`
   position: absolute;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   right: 10px;
   top: 10px;
 `;
@@ -30,16 +31,17 @@ const P = styled.p`
 `;
 
 const Input = styled.input`
+  padding: 5px;
   border: 1px solid gray;
-  border-radius: 10px;
-  width: 60%;
-  height: 40%;
+  border-radius: 50px;
+  width: 70%;
+  height: 60%;
 `;
 
 const SendButton = styled.button`
   border: none;
-  border-radius: 10px;
-  height: 40%;
+  border-radius: 50px;
+  height: 60%;
   margin-left: 3%;
   cursor: pointer;
 `;
@@ -47,7 +49,7 @@ const SendButton = styled.button`
 // SMS를 보내는 기능을 담당하는 함수형 컴포넌트
 const SmsApi = (props) => {
   // 속성
-  const { close, tel, send, cn, cnum, onChangeCnum } = props;
+  const { close, send, cn, cnum, onChangeCnum } = props;
 
   return (
     <STYLE>
@@ -60,7 +62,7 @@ const SmsApi = (props) => {
       </Content>
       {/* 수신자 전화번호 입력란 */}
       <Content>
-        <Input type="text" value={tel} />
+        <Input type="text" placeholder="전화 번호를 입력하세요" />
         {/* SMS 전송 버튼 */}
         <SendButton onClick={send}>인증번호</SendButton>
       </Content>
