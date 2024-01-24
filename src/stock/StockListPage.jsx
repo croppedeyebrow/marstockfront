@@ -6,6 +6,7 @@ import styled from "styled-components";
 import React, { useState } from "react";
 
 import {
+  StockListPageContainer,
   StockListContainer,
   StockHeadTitle,
   StockHeadTitle01,
@@ -83,59 +84,65 @@ const StockListPage = () => {
   return (
     <>
       <Header />
-      <StockHeadTitle>
-        <StockHeadTitle01 onClick={handleHeadTitleClick}>주식</StockHeadTitle01>
-        <StockHeadTitle02 onClick={handleHeadTitleClick}>
-          종목토론
-        </StockHeadTitle02>
-        <StockHeadTitle03 onClick={handleHeadTitleClick}>
-          시장지표
-        </StockHeadTitle03>
-      </StockHeadTitle>
+      <StockListPageContainer>
+        <StockHeadTitle>
+          <StockHeadTitle01 onClick={handleHeadTitleClick}>
+            주식
+          </StockHeadTitle01>
+          <StockHeadTitle02 onClick={handleHeadTitleClick}>
+            종목토론
+          </StockHeadTitle02>
+          <StockHeadTitle03 onClick={handleHeadTitleClick}>
+            시장지표
+          </StockHeadTitle03>
+        </StockHeadTitle>
 
-      <InlineContainer
-        color=""
-        contents={
-          <StockListContainer>
-            <StockCategory>
-              <Category01 onClick={handleCategoryClick}>상승</Category01>
-              <Category02 onClick={handleCategoryClick}>외국인매매</Category02>
-              <Category03 onClick={handleCategoryClick}>기관매매</Category03>
-            </StockCategory>
+        <InlineContainer
+          color=""
+          contents={
+            <StockListContainer>
+              <StockCategory>
+                <Category01 onClick={handleCategoryClick}>상승</Category01>
+                <Category02 onClick={handleCategoryClick}>
+                  외국인매매
+                </Category02>
+                <Category03 onClick={handleCategoryClick}>기관매매</Category03>
+              </StockCategory>
 
-            <StockInfoBackboard>
-              <StockDiv>
-                <Div01 onClick={handleStockDivClick}>KOSPI</Div01>
-                <Div02 onClick={handleStockDivClick}>KOSDAQ</Div02>
-              </StockDiv>
+              <StockInfoBackboard>
+                <StockDiv>
+                  <Div01 onClick={handleStockDivClick}>KOSPI</Div01>
+                  <Div02 onClick={handleStockDivClick}>KOSDAQ</Div02>
+                </StockDiv>
 
-              <StockTitleBox>
-                <StockTitle01>순위</StockTitle01>
-                <StockTitle02>종목명</StockTitle02>
-                <StockTitle03>현재가</StockTitle03>
-                <StockTitle04>전일비</StockTitle04>
-                <StockTitle05>등락률</StockTitle05>
-                <StockTitle06>거래량</StockTitle06>
-                <StockTitle07>매수호가</StockTitle07>
-                <StockTitle08>매도호가</StockTitle08>
-              </StockTitleBox>
+                <StockTitleBox>
+                  <StockTitle01>순위</StockTitle01>
+                  <StockTitle02>종목명</StockTitle02>
+                  <StockTitle03>현재가</StockTitle03>
+                  <StockTitle04>전일비</StockTitle04>
+                  <StockTitle05>등락률</StockTitle05>
+                  <StockTitle06>거래량</StockTitle06>
+                  <StockTitle07>매수호가</StockTitle07>
+                  <StockTitle08>매도호가</StockTitle08>
+                </StockTitleBox>
 
-              {stockInfoData.map((data, index) => (
-                <StockInfoList key={index}>
-                  <StockInfo01>{data.rank}</StockInfo01>
-                  <StockInfo02>{data.name}</StockInfo02>
-                  <StockInfo03>{data.currentPrice}</StockInfo03>
-                  <StockInfo04>{data.difference}</StockInfo04>
-                  <StockInfo05>{data.fluctuation}</StockInfo05>
-                  <StockInfo06>{data.volume}</StockInfo06>
-                  <StockInfo07>{data.bidPrice}</StockInfo07>
-                  <StockInfo08>{data.askPrice}</StockInfo08>
-                </StockInfoList>
-              ))}
-            </StockInfoBackboard>
-          </StockListContainer>
-        }
-      ></InlineContainer>
+                {stockInfoData.map((data, index) => (
+                  <StockInfoList key={index}>
+                    <StockInfo01>{data.rank}</StockInfo01>
+                    <StockInfo02>{data.name}</StockInfo02>
+                    <StockInfo03>{data.currentPrice}</StockInfo03>
+                    <StockInfo04>{data.difference}</StockInfo04>
+                    <StockInfo05>{data.fluctuation}</StockInfo05>
+                    <StockInfo06>{data.volume}</StockInfo06>
+                    <StockInfo07>{data.bidPrice}</StockInfo07>
+                    <StockInfo08>{data.askPrice}</StockInfo08>
+                  </StockInfoList>
+                ))}
+              </StockInfoBackboard>
+            </StockListContainer>
+          }
+        ></InlineContainer>
+      </StockListPageContainer>
       <Footer />
     </>
   );

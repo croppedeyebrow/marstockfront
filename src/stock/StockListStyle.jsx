@@ -21,16 +21,23 @@ export const Example = styled.div`
   }
 `;
 
+export const StockListPageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+`;
+
 export const StockHeadTitle = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
 
   align-items: center;
+  border: 1px solid white;
   gap: 1.5rem;
-  width: 70%;
+  width: 50%;
   height: 7rem;
-  left: 16rem;
+  left: 36rem;
   top: 14rem;
 `;
 

@@ -17,15 +17,19 @@ export const Example = styled.div`
   }
 `;
 
+export const NewsPageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
 export const NewsTitle = styled.div`
   position: relative;
   display: flex;
-  width: 10rem;
-  justify-content: center;
-  align-items: center;
-  top: 12rem;
-  left: 20rem;
+  width: 50%;
 
+  align-items: center;
+  top: 14rem;
+  left: 40rem;
   height: 6.3rem;
   font-family: "Noto Sans KR";
   font-style: normal;
