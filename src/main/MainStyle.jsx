@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const Space = styled.div`
    width: 100%;
@@ -19,19 +19,43 @@ export const Container = styled.div`
       position: absolute;
       z-index: -1;
    }
+   #aurora {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: fixed;
+      background-color: var(--mainpurple);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: -2;
+      @keyframes light {  
+            0% { opacity: 0; } 
+            50% { opacity: .5; }
+            100% { opacity: .0; }
+         }
+         animation: light 5s ease-in-out infinite;
+   }
 
 `;
 export const WelcomeBanner = styled.div`
    z-index: 1;
    scale: .9;
-   position: absolute;
-   left: ${props => props.open ? '10%' : '-100%'};
-   transition: left 0.7s ease;
+   position: fixed;
+   left: ${props => props.open ? '10%' : '-350%'};
+   transition: left 1s ease;
    margin-top: -7rem;
    width: 100rem;
    height: auto;
    padding: 7rem;
    background-color: rgba(255, 255, 255, 0.08);
+   box-shadow: inset 5px 5px 5px -4px rgba(255, 255, 255, .4), 
+               inset -5px -5px 3px -1px rgba(0, 0, 0, .6), 
+               inset 30px 30px 120px -50px rgba(0, 0, 0, .9), 
+               inset -30px -30px 50px -50px rgba(255, 255, 255, .9), 
+               50px 50px 40px -15px rgba(17, 17, 17, .9);
    backdrop-filter: blur(20px);
    border-radius: 5rem;
    display: flex;
@@ -53,7 +77,7 @@ export const WelcomeBanner = styled.div`
       width: 20rem;
       height: 5rem;
       border: 0.15rem solid white;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.3);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -64,21 +88,35 @@ export const WelcomeBanner = styled.div`
       cursor: pointer;
       &:hover {
          background-color: rgba(171, 129, 255, 0.2);
+         border: 0.3rem solid white;
       }
    }
 `;
+
+const fadein = keyframes`
+   0% { opacity: 0; } 
+   50% { opacity: 0; }
+   100% { opacity: 1; }
+`;
+
+const growin = keyframes`
+   0% {scale: 0; }
+   50% {scale: 0; }
+   100% {scale: 1; }
+`;
+
 
 export const InfoContainer = styled.div`
    /* scale: 0; */
    width: 100%;
    height: auto;
-   background-color: rgba(255, 255, 255, 0.04);
+   background-color: rgba(255, 255, 255, 0.08);
    box-shadow : inset 0px 20px 50px rgba(255, 255, 255, .05);
    backdrop-filter: blur(20px);
    border-radius: 5rem;
    margin-top: 1rem;
-   opacity: ${props => props.open ? '1' : '0'};
-   transition: opacity 0.7s ease-in-out;
+   scale: ${props => props.open ? '1' : '0'};
+   transition: scale 0.5s ease-in-out;
    
    gap: 5rem;
    display: flex;
@@ -90,35 +128,28 @@ export const InfoContainer = styled.div`
       width: 52.5rem;
       height: auto;
       border-radius: 2rem; 
-      background-color: rgba(0, 0, 0, 0.34);
+      background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(150px);
       box-shadow : inset 0px 10px 45px rgba(0, 0, 0, .2);
       color:white;
       padding: 2.5rem;
       #infoline{
-         @keyframes fadein {  
-            0% { opacity: 0; } 
-            80% { opacity: 0; }
-            100% { opacity: 1; }
-         }
-         animation: fadein 1.4s ease-in-out;
-      }
+         animation: ${props => props.open ? css`${fadein} 0.6s ease-in-out` : 'none'};
+   }
+      
       #title{
          font-size: 2.4rem;
          font-weight: 800;
       }
-      &#oneinfo{
-         scale: ${props => props.open ? '1' : '0'};
-         transition: scale 1.2s ease;
+      &#oneinfo{ 
+         animation: ${props => props.open ? css`${growin} 0.6s ease-in-out` : 'none'};
       }
       &#twoinfo{
-         scale: ${props => props.open ? '1' : '0'};
-         transition: scale 1.2s ease;
+         animation: ${props => props.open ? css`${growin} 0.6s ease` : 'none'};
       }
       &#threeinfo{
          width: 110rem;
-         scale: ${props => props.open ? '1' : '0'};
-         transition: scale 1.2s ease;
+         animation: ${props => props.open ? css`${growin} 0.9s ease` : 'none'};
       }
    }
 `;
