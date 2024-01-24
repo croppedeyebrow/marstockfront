@@ -20,9 +20,12 @@ export const Example = styled.div`
 export const NewsTitle = styled.div`
   position: relative;
   display: flex;
-  width: 100%;
-  top: 14rem;
-  left: 5rem;
+  width: 10rem;
+  justify-content: center;
+  align-items: center;
+  top: 12rem;
+  left: 20rem;
+
   height: 6.3rem;
   font-family: "Noto Sans KR";
   font-style: normal;
