@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Background,
   InputContainer,
@@ -18,7 +18,6 @@ const SignupPage = () => {
   const [termsAgree, setTermsAgree] = useState(false);
   const [privacyAgree, setPrivacyAgree] = useState(false);
   const [openEmailModal, setOpenEmailModal] = useState(false);
-  const [isClose, setIsClose] = useState(true);
   const [sms, setSms] = useState(false);
 
   // 입력 변수 설정
@@ -28,7 +27,7 @@ const SignupPage = () => {
   const [tel, setTel] = useState();
   const [cnum, setCnum] = useState();
   const [inputPassword, setInputPassword] = useState();
-  const [confirmPassword, setConfirmPassword] = useState();
+  const confirmPasswordRef = useRef(null);
 
   // 회원 가입 상태 체크
   const [isEmail, setIsEmail] = useState(false);
@@ -99,14 +98,12 @@ const SignupPage = () => {
     const email = e.target.value;
     if (emailRegex.test(email)) {
       setOpenEmailModal(true);
-      setIsClose(false);
       setEmail(email);
       // 인증함수 실행
       authEmail();
       // 모달 오픈
       isEmailModal();
     } else alert("이메일을 확인하세요");
-    setIsClose(true);
   };
   // 인증 함수
   const authEmail = async () => {
@@ -162,10 +159,11 @@ const SignupPage = () => {
   };
   // 비밀번호 확인
   const onChangeConfirmPassword = (e) => {
-    setConfirmPassword(e.target.value);
+    confirmPasswordRef.current = e.target.value;
   };
   // 비밀번호 및 비밀번호 확인 체크
   const checkPassword = () => {
+    const confirmPassword = confirmPasswordRef.current;
     if (inputPassword !== "" && confirmPassword !== "") {
       if (inputPassword === confirmPassword) {
         alert("입력 정보가 동일합니다.");
