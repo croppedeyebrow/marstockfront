@@ -24,7 +24,6 @@ export const Example = styled.div`
 export const StockInfoPageContainer = styled.div`
   width: 100%;
   height: 100%;
-  border: 1px solid white;
 `;
 
 export const StockHeadTitle = styled.div`
@@ -33,7 +32,7 @@ export const StockHeadTitle = styled.div`
   flex-direction: row;
 
   align-items: center;
-  border: 1px solid white;
+
   gap: 1.5rem;
   width: 50%;
   height: 7rem;
@@ -153,7 +152,7 @@ export const StockInfoBackboard = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  height: 113.4rem;
+  height: 100rem;
   width: 113.4rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
