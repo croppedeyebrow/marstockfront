@@ -31,14 +31,25 @@ import {
   LeftInfoTitle,
   LeftInfoNum,
   PurchaseBox,
+  StockSellingBox,
   StockPurchaseBox,
-  StockSellBox,
+  SellingTitle,
   PurchaseTitle,
-  SellTitle,
+  SellingTop,
+  SellingButton,
+  SellingBottom,
+  SellingItem,
+  SellingeTag,
+  SellingNum,
+  TageNumber,
+  ProfitNumber,
   PurchaseTop,
   PurchaseButton,
-  SellTop,
-  SellButton,
+  PurchaseBottom,
+  PurchaseItem,
+  PurchaseTag,
+  PurchaseNumber,
+  PurchaseNum,
 } from "./StockInfoStyle";
 
 const StockInfoPage = () => {
@@ -52,6 +63,10 @@ const StockInfoPage = () => {
     event.target.style.color = "#ab81ff";
     setSelectedHeadTitle(event.target);
   };
+
+  const [purchaseNum, setPurchaseNum] = useState(0);
+  const [sellingNum, setSellingNum] = useState(0);
+  const [message, setMessage] = useState("");
 
   return (
     <>
@@ -157,19 +172,156 @@ const StockInfoPage = () => {
                   <StockGraphZone alt="주식그래프" src={stockgraph} />
 
                   <PurchaseBox>
+                    <StockSellingBox>
+                      <SellingTop>
+                        <SellingTitle>매도</SellingTitle>
+                        <SellingButton
+                          onClick={() => {
+                            if (
+                              window.confirm(
+                                `매도하려는 수량은 ${sellingNum}개 입니다. 진행하시겠습니까?`
+                              )
+                            ) {
+                              setMessage("매도 성공");
+                              setTimeout(() => setMessage(""), 3000); // 3초 후에 메시지 숨기기
+                            }
+                          }}
+                        >
+                          매도
+                        </SellingButton>{" "}
+                        {message && (
+                          <div
+                            style={{
+                              position: "fixed",
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              width: "30rem",
+                              height: "4rem",
+                              fontSize: "2rem",
+                              color: "white",
+                              fontWeight: "bold",
+                              margin: "auto",
+                              backgroundColor: "rgba(255, 255, 255, 0.1)",
+                              borderRadius: "0.5rem",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            {message}
+                          </div>
+                        )}
+                        )}{" "}
+                      </SellingTop>
+
+                      <SellingBottom>
+                        <SellingItem>
+                          <SellingeTag>매입가</SellingeTag>
+                          <TageNumber>5,500</TageNumber>
+                        </SellingItem>
+
+                        <SellingItem>
+                          <SellingeTag>보유수량</SellingeTag>
+                          <TageNumber>30</TageNumber>
+                        </SellingItem>
+
+                        <SellingItem>
+                          <SellingeTag>현재가</SellingeTag>
+                          <TageNumber>11,000</TageNumber>
+                        </SellingItem>
+
+                        <SellingItem>
+                          <SellingeTag>매도수량</SellingeTag>
+                          <SellingNum
+                            onChange={(e) => setSellingNum(e.target.value)}
+                          ></SellingNum>
+                        </SellingItem>
+
+                        <SellingItem>
+                          <SellingeTag>매입금</SellingeTag>
+                          <TageNumber>165,500</TageNumber>
+                        </SellingItem>
+
+                        <SellingItem>
+                          <SellingeTag>매도가격</SellingeTag>
+                          <TageNumber>0</TageNumber>
+                        </SellingItem>
+
+                        <SellingItem>
+                          <SellingeTag>평가금</SellingeTag>
+                          <TageNumber>330,000</TageNumber>
+                        </SellingItem>
+
+                        <SellingItem>
+                          <SellingeTag>수익률</SellingeTag>
+                          <ProfitNumber>+100%</ProfitNumber>
+                        </SellingItem>
+                      </SellingBottom>
+                    </StockSellingBox>
+
                     <StockPurchaseBox>
                       <PurchaseTop>
-                        <PurchaseTitle>매도</PurchaseTitle>
-                        <PurchaseButton>매도</PurchaseButton>
+                        <PurchaseTitle>매수</PurchaseTitle>
+                        <PurchaseButton
+                          onClick={() => {
+                            if (
+                              window.confirm(
+                                `매수하려는 수량은 ${purchaseNum}개 입니다. 진행하시겠습니까?`
+                              )
+                            ) {
+                              setMessage("매수 성공");
+                              setTimeout(() => setMessage(""), 3000); // 3초 후에 메시지 숨기기
+                            }
+                          }}
+                        >
+                          매수
+                        </PurchaseButton>{" "}
+                        {message && (
+                          <div
+                            style={{
+                              position: "fixed",
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              width: "30rem",
+                              height: "4rem",
+                              fontSize: "2rem",
+                              color: "white",
+                              fontWeight: "bold",
+                              margin: "auto",
+                              backgroundColor: "rgba(255, 255, 255, 0.1)",
+                              borderRadius: "0.5rem",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            {message}
+                          </div>
+                        )}
+                        )}{" "}
                       </PurchaseTop>
-                    </StockPurchaseBox>
 
-                    <StockSellBox>
-                      <SellTop>
-                        <SellTitle>매수</SellTitle>
-                        <SellButton>매수</SellButton>
-                      </SellTop>
-                    </StockSellBox>
+                      <PurchaseBottom>
+                        <PurchaseItem>
+                          <PurchaseTag>현재보유잔고</PurchaseTag>
+                          <PurchaseNumber>664,280,010</PurchaseNumber>
+                        </PurchaseItem>
+
+                        <PurchaseItem>
+                          <PurchaseTag>매수수량</PurchaseTag>
+                          <PurchaseNum
+                            onChange={(e) => setPurchaseNum(e.target.value)}
+                          ></PurchaseNum>
+                        </PurchaseItem>
+
+                        <PurchaseItem>
+                          <PurchaseTag>매수가격</PurchaseTag>
+                          <PurchaseNumber>0</PurchaseNumber>
+                        </PurchaseItem>
+                      </PurchaseBottom>
+                    </StockPurchaseBox>
                   </PurchaseBox>
                 </StockDivRight>
               </StockInfoBackboard>
