@@ -47,8 +47,8 @@ const Header = () => {
          <MidBox>
          <Link to="/"><img src={headlogo} alt="logo" /></Link>
             <div className="link">
-               <Link to="/"><div id="stock">주식</div></Link>
-               <Link to="/"><div id="news">뉴스</div></Link>
+               <Link to="/stockinfo"><div id="stock">주식</div></Link>
+               <Link to="/news"><div id="news">뉴스</div></Link>
                <Link to="/signin"><div id="log">로그인</div></Link>
                <Link to="/signup"><div id="sign">회원가입</div></Link>
             </div>

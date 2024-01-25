@@ -12,6 +12,7 @@ import SignupPage from "./sign/SignupPage";
 import FindIdPage from "./sign/FindIdPage";
 import FindPwPage from "./sign/FindPwPage";
 import StockInfoPage from "./stock/StockInfoPage";
+
 function App() {
   return (
     <>
