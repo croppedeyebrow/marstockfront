@@ -19,6 +19,13 @@ import {
   Point01,
   Point02,
   Point03,
+  Kospi,
+  PointInfo,
+  Num,
+  Value,
+  Percent,
+  Kosdaq,
+  Kospi200,
   LeftIndexZone,
   IndexTopRight,
   MiddleContainer,
@@ -106,9 +113,30 @@ const StockIndexPage = () => {
               <IndexPageTop>
                 <IndexTopLeft>
                   <LeftPointZone>
-                    <Point01></Point01>
-                    <Point02></Point02>
-                    <Point03></Point03>
+                    <Point01>
+                      <Kospi>KOSPI</Kospi>
+                      <PointInfo>
+                        <Num value="+2,525.83">2,525.83</Num>
+                        <Value value="▲ 1.73">▲ 1.73</Value>
+                        <Percent value="+0.06%">+0.06%</Percent>
+                      </PointInfo>
+                    </Point01>
+                    <Point02>
+                      <Kosdaq>KOSDAQ</Kosdaq>
+                      <PointInfo>
+                        <Num value="-858.25">858.25</Num>
+                        <Value value="-▼ 9.83">▼ 9.83</Value>
+                        <Percent value="-1.14%">-1.14%</Percent>
+                      </PointInfo>
+                    </Point02>
+                    <Point03>
+                      <Kospi200>KOSPI 200</Kospi200>
+                      <PointInfo>
+                        <Num value="+338.75">338.75</Num>
+                        <Value value="▲ 0.69">▲ 0.69</Value>
+                        <Percent value="+0.20%">+0.20%</Percent>
+                      </PointInfo>
+                    </Point03>
                   </LeftPointZone>
 
                   <LeftIndexZone></LeftIndexZone>

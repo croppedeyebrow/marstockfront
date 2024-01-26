@@ -174,11 +174,87 @@ export const LeftPointZone = styled.div`
 export const Point01 = styled.div`
   display: flex;
   position: relative;
+  fle-direction: row;
   width: 26rem;
   height: 11.4rem;
-
+  padding: 1rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+`;
+
+export const Kospi = styled.div`
+  display: flex;
+  position: relative;
+  width: 10.3rem;
+  height: 3.6rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ffffff;
+`;
+
+export const PointInfo = styled.div`
+  display: flex;
+  position: relative;
+  width: 14rem;
+  height: 9rem;
+
+  flex-direction: column;
+`;
+
+export const Num = styled.div`
+  width: 13.6rem;
+  height: 3.6rem;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: ${(props) =>
+    props.value.startsWith("-") ? "var(--downblue)" : "var(--upred)"};
+
+  display: flex;
+  position: relative;
+`;
+
+export const Value = styled.div`
+  width: 13.6rem;
+  height: 1.8rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: ${(props) =>
+    props.value.startsWith("-") ? "var(--downblue)" : "var(--upred)"};
+
+  display: flex;
+  position: relative;
+`;
+
+export const Percent = styled.div`
+  width: 13.6rem;
+  height: 1.8rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: ${(props) =>
+    props.value.startsWith("-") ? "var(--downblue)" : "var(--upred)"};
+
+  display: flex;
+  position: relative;
+`;
+
+export const Kosdaq = styled.div`
+  display: flex;
+  position: relative;
+  width: 10.3rem;
+  height: 3.6rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ffffff;
+`;
+
+export const Kospi200 = styled.div`
+  display: flex;
+  position: relative;
+  width: 10.3rem;
+  height: 3.6rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ffffff;
 `;
 
 export const Point02 = styled.div`
@@ -186,7 +262,7 @@ export const Point02 = styled.div`
   position: relative;
   width: 26rem;
   height: 11.4rem;
-
+  padding: 1rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
 `;
@@ -196,7 +272,7 @@ export const Point03 = styled.div`
   position: relative;
   width: 26rem;
   height: 11.4rem;
-
+  padding: 1rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
 `;
