@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Background,
   InputContainer,
@@ -10,10 +11,18 @@ import {
 } from "./SignStyle";
 import headlogo from "../images/LogoSymbolHorizonWhite.svg";
 import NoneBtnModalComponent from "../utils/component/NoneBtnModalComponent";
-import CommonAxios from "../utils/CommonAxios";
+import CommonAxios from "../utils/common/CommonAxios";
 import SmsApi from "../api/SmsApi";
 
 const SignupPage = () => {
+  const navigator = useNavigate();
+  const emailInputRef = useRef(null);
+  useEffect(() => {
+    if (emailInputRef.current) {
+      emailInputRef.current.focus();
+    }
+  }, [emailInputRef]);
+
   const [allAgree, setAllAgree] = useState(false);
   const [termsAgree, setTermsAgree] = useState(false);
   const [privacyAgree, setPrivacyAgree] = useState(false);
@@ -27,7 +36,7 @@ const SignupPage = () => {
   const [tel, setTel] = useState();
   const [cnum, setCnum] = useState();
   const [inputPassword, setInputPassword] = useState();
-  const confirmPasswordRef = useRef(null);
+  const [confirmPassword, setConfirmPassword] = useState();
 
   // 회원 가입 상태 체크
   const [isEmail, setIsEmail] = useState(false);
@@ -54,6 +63,7 @@ const SignupPage = () => {
     return isAllFilled && isAgreed;
   };
 
+  // 회원 가입
   const handleSignup = async () => {
     if (isSignupValid()) {
       try {
@@ -66,6 +76,7 @@ const SignupPage = () => {
         });
         if (res.status === 200) {
           alert("회원가입 성공!");
+          navigator("/signin");
         } else {
           alert("회원가입 실패!");
         }
@@ -100,16 +111,16 @@ const SignupPage = () => {
       setOpenEmailModal(true);
       setEmail(email);
       // 인증함수 실행
-      authEmail();
+      authEmail(email);
       // 모달 오픈
       isEmailModal();
     } else alert("이메일을 확인하세요");
   };
   // 인증 함수
-  const authEmail = async () => {
+  const authEmail = async (email) => {
     try {
       const res = await CommonAxios.getAxios(
-        "auth",
+        "member",
         "mailConfirm",
         "email",
         email
@@ -134,7 +145,7 @@ const SignupPage = () => {
   // 입력받은 인증번호 체크
   const checkEPW = async () => {
     try {
-      const res = await CommonAxios.getAxios("auth", "ePw", "EPW", EPW);
+      const res = await CommonAxios.getAxios("member", "ePw", "epw", EPW);
       if (res.data === true) {
         alert("인증 성공");
         setIsEmail(true);
@@ -159,11 +170,10 @@ const SignupPage = () => {
   };
   // 비밀번호 확인
   const onChangeConfirmPassword = (e) => {
-    confirmPasswordRef.current = e.target.value;
+    setConfirmPassword(e.target.value);
   };
   // 비밀번호 및 비밀번호 확인 체크
   const checkPassword = () => {
-    const confirmPassword = confirmPasswordRef.current;
     if (inputPassword !== "" && confirmPassword !== "") {
       if (inputPassword === confirmPassword) {
         alert("입력 정보가 동일합니다.");
@@ -191,7 +201,7 @@ const SignupPage = () => {
           nickName
         );
         // 중복이 없어야 true 설정. false를 받아야 중복이 없는것.
-        console.log(checkNickName.data);
+        // console.log(checkNickName.data);
         if (checkNickName.data === true) {
           alert("이미 존재하는 닉네임입니다.");
         } else {
@@ -208,18 +218,19 @@ const SignupPage = () => {
 
   // 휴대전화 번호
   const onChangeTel = (e) => {
-    setTel(e.target.value);
+    const tel = e.target.value;
+    const telReg = /^\d{11}$/;
+    if (telReg.test(tel)) {
+      setSms(true);
+      setTel(tel);
+    } else {
+      setSms(false);
+    }
   };
 
   // 인증 번호
   const onChangeCnum = (event) => {
     setCnum(event.target.value);
-  };
-
-  // Sms 모달 오픈
-  const onBlurSms = () => {
-    console.log("tel", tel);
-    setSms(true);
   };
 
   const CloseSms = () => {
@@ -229,7 +240,7 @@ const SignupPage = () => {
   // SMS를 보내는 함수
   const handleSendMessage = async () => {
     try {
-      const res = await CommonAxios.get("sms", "send-mms", "tel", tel);
+      const res = await CommonAxios.getAxios("sms", "send-mms", "tel", tel);
       console.log("휴대전화 번호", tel);
       console.log(res.data);
       if (res.data.statusCode === "2000") {
@@ -267,7 +278,11 @@ const SignupPage = () => {
         </Link>
         <InputContainer>
           <div id="title">Sign up</div>
-          <InputBox placeholder="E-Mail" onBlur={checkEmail}></InputBox>
+          <InputBox
+            placeholder="E-Mail"
+            onBlur={checkEmail}
+            ref={emailInputRef}
+          ></InputBox>
           <NoneBtnModalComponent
             closeModalHandler={closeEmailModal}
             isOpen={openEmailModal}
@@ -277,8 +292,7 @@ const SignupPage = () => {
               <>
                 <p>인증 번호를 입력하시오.</p>
                 <InputBox
-                  backgroundColor="white"
-                  color="black"
+                  style={{ backgroundColor: "white", color: "black" }}
                   placeholder="인증번호"
                   onChange={onChangeEpw}
                 ></InputBox>
@@ -300,7 +314,7 @@ const SignupPage = () => {
           <InputBox
             placeholder="Phone"
             onChange={onChangeTel}
-            onBlur={onBlurSms}
+            // onBlur={onBlurSms}
           ></InputBox>
           <NoneBtnModalComponent
             isOpen={sms}
@@ -310,10 +324,11 @@ const SignupPage = () => {
             content={
               <>
                 <SmsApi
+                  onChange={onChangeTel}
                   send={handleSendMessage}
-                  tel={tel}
                   cn={handleSendCnum}
                   cnum={cnum}
+                  tel={tel}
                   onChangeCnum={onChangeCnum}
                 />
               </>

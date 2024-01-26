@@ -212,7 +212,6 @@ const StockInfoPage = () => {
                             {message}
                           </div>
                         )}
-                        )}{" "}
                       </SellingTop>
 
                       <SellingBottom>
@@ -300,7 +299,6 @@ const StockInfoPage = () => {
                             {message}
                           </div>
                         )}
-                        )}{" "}
                       </PurchaseTop>
 
                       <PurchaseBottom>
