@@ -51,8 +51,24 @@ export const StockHeadTitle01 = styled.div`
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
 
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--mainorange);
+    transition: all 0.3s;
+  }
+
   &:hover {
     cursor: pointer;
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
   }
 `;
 
@@ -67,8 +83,24 @@ export const StockHeadTitle02 = styled.div`
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
 
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--mainorange);
+    transition: all 0.3s;
+  }
+
   &:hover {
     cursor: pointer;
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
   }
 `;
 
@@ -83,8 +115,24 @@ export const StockHeadTitle03 = styled.div`
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
 
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--mainorange);
+    transition: all 0.3s;
+  }
+
   &:hover {
     cursor: pointer;
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
   }
 `;
 
