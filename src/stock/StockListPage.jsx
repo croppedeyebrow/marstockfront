@@ -4,6 +4,7 @@ import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";
 import styled from "styled-components";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   StockListPageContainer,
@@ -70,6 +71,10 @@ const StockListPage = () => {
     setSelectedStockDiv(event.target);
   };
 
+  const StyledLink = styled(Link)`
+    text-decoration: none;
+  `;
+
   const stockInfoData = Array(30).fill({
     rank: "순위",
     name: "종목명",
@@ -129,7 +134,9 @@ const StockListPage = () => {
                 {stockInfoData.map((data, index) => (
                   <StockInfoList key={index}>
                     <StockInfo01>{data.rank}</StockInfo01>
-                    <StockInfo02>{data.name}</StockInfo02>
+                    <StyledLink to="/StockInfo">
+                      <StockInfo02>{data.name}</StockInfo02>
+                    </StyledLink>
                     <StockInfo03>{data.currentPrice}</StockInfo03>
                     <StockInfo04>{data.difference}</StockInfo04>
                     <StockInfo05>{data.fluctuation}</StockInfo05>
