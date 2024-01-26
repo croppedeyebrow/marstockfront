@@ -1,4 +1,3 @@
-import GlobalStyle from "../utils/style/GlobalStyle";
 import Header from "../utils/style/Header";
 import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";

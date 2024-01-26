@@ -59,7 +59,7 @@ const Header = () => {
               <img src={headlogo} alt="logo" />
             </Link>
             <div className="link">
-              <Link to="/stockinfo">
+              <Link to="/stockList">
                 <div id="stock">주식</div>
               </Link>
               <Link to="/news">
@@ -79,7 +79,7 @@ const Header = () => {
               <img src={headlogo} alt="logo" />
             </Link>
             <div className="link">
-              <Link to="/stockinfo">
+              <Link to="/stockList">
                 <div id="stock">주식</div>
               </Link>
               <Link to="/news">

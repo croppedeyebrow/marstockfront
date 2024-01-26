@@ -7,6 +7,11 @@ import SignupPage from "./sign/SignupPage";
 import FindIdPage from "./sign/FindIdPage";
 import FindPwPage from "./sign/FindPwPage";
 import StockInfoPage from "./stock/StockInfoPage";
+import StockListPage from "./stock/StockListPage";
+import StockIndexPage from "./stock/StockIndexPage";
+import MyPage from "./my/MyPage";
+import AdminPage from "./admin/AdminPage";
+import NewsPage from "./news/NewsPage";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -18,6 +23,12 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/stockInfo" element={<StockInfoPage />} />
+            <Route path="/stockList" element={<StockListPage />} />
+            <Route path="/stockIndex" element={<StockIndexPage />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/news" element={<NewsPage />} />
+
             <Route path="/form" element={<FormPage />} />
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/signup" element={<SignupPage />} />
