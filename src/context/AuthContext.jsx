@@ -1,5 +1,3 @@
-// 로그인 체크 커스텀 훅과 컨텍스트 api
-// 로그인 상태 (t or f)
 import React, { createContext, useContext, useState } from "react";
 import { Common } from "../utils/common/Common";
 // createContext를 사용하여 새로운 컨텍스트를 생성
@@ -21,11 +19,12 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // 회원 정보
+  // 로그인
   const login = (role) => {
+    setIsLogin(true);
     setUserRole(role);
   };
-  // 로그아웃 함수
+  // 로그아웃
   const logout = () => {
     console.log("로그아웃 함수 실행");
     // 로그아웃 시 액세스 토큰과 사용자 역할 상태를 초기화

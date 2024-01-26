@@ -8,7 +8,7 @@ import { useAuth } from "../context/AuthContext";
 
 const SigninPage = () => {
   const navigator = useNavigate();
-  const { loginRole, accessToLogin } = useAuth();
+  const { login } = useAuth();
 
   const emailInputRef = useRef(null);
   // useRef로 돔에 직접 컨트롤.
@@ -41,21 +41,15 @@ const SigninPage = () => {
         const accessToken = res.data.accessToken;
         Common.setAccessToken(accessToken);
         // 회원 권한 설정
-        loginRole(res.data.role);
-        accessToLogin(accessToken);
+        login(res.data.role);
         alert("환영합니다!!");
         navigator("/");
       } else {
         alert("입력 정보를 확인하시오.");
       }
     } catch (error) {
+      console.log(error);
       alert("네트 워크 연결이 불안정합니다.");
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      onClickLogin();
     }
   };
 
@@ -87,13 +81,7 @@ const SigninPage = () => {
               <span id="forgetpw">비밀번호가 기억나지 않아요</span>
             </Link>
           </div>
-          <div
-            id="signbutton"
-            onClick={onClickLogin}
-            onKeyDown={() => handleKeyDown}
-            role="button"
-            tabIndex={0}
-          >
+          <div id="signbutton" onClick={onClickLogin}>
             Sign in
           </div>
           <Link to="/signup">

@@ -1,8 +1,6 @@
-import GlobalStyle from "../utils/style/GlobalStyle";
 import Header from "../utils/style/Header";
 import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";
-import styled from "styled-components";
 import React, { useState } from "react";
 import stockgraph from "../images/stockgraph.png";
 
@@ -275,7 +273,7 @@ const StockInfoPage = () => {
                           }}
                         >
                           매수
-                        </PurchaseButton>{" "}
+                        </PurchaseButton>
                         {message && (
                           <div
                             style={{

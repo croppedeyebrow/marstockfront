@@ -46,6 +46,7 @@ const Header = () => {
   // console.log(isLogin);
   useEffect(() => {
     const accessToken = Common.getAccessToken();
+    console.log("accessToken", accessToken);
     updateLoginStatus(accessToken);
   }, []);
 
