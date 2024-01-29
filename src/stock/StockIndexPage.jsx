@@ -3,8 +3,9 @@ import Header from "../utils/style/Header";
 import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CommonAxios from "../utils/common/CommonAxios";
 
 import {
   StockIndexPageContainer,
@@ -56,6 +57,8 @@ import {
 } from "./StockIndexStyle";
 
 const StockIndexPage = () => {
+  const [stock, setStock] = useState([]);
+
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
   const [selectedHeadTitle, setSelectedHeadTitle] = useState(null);
   const [selectedKategorie, setSelectedKategorie] = useState(null);
@@ -75,6 +78,15 @@ const StockIndexPage = () => {
     event.target.style.color = "#ab81ff";
     setSelectedKategorie(event.target);
   };
+
+  // 임시 데이터 가져오기
+  useEffect(() => {
+    const getIndex = async () => {
+      const res = await CommonAxios.getAxios("common", "index", "", "");
+      console.log("인덱스", res.data);
+    };
+    getIndex();
+  }, []);
 
   const data = Array.from({ length: 10 }, (_, i) => ({
     rank: (i + 1).toString(),

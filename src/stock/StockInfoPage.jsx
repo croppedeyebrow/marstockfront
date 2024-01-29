@@ -1,7 +1,7 @@
 import Header from "../utils/style/Header";
 import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import stockgraph from "../images/stockgraph.png";
 
 import {
@@ -49,6 +49,7 @@ import {
   PurchaseNumber,
   PurchaseNum,
 } from "./StockInfoStyle";
+import CommonAxios from "../utils/common/CommonAxios";
 
 const StockInfoPage = () => {
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
