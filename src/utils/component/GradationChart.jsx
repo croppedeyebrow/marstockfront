@@ -11,15 +11,15 @@ const ChartContainer = styled.div`
   justify-content: center;
 `;
 
-const MyChart = () => {
+const GradationChart = () => {
   const [chartState, setChartState] = useState({
     series: [
       {
         name: "Sales",
         data: [
-          -2000000, -3000000, -2000000, -1200000, 0, 1000000, 200000, -1000000,
-          -500000, 0, 500000, 1000000, 2000000, 3000000, 4000000, 5000000,
-          5660000, 4000000, 2000000,
+          -8000000, -7000000, -6000000, -5000000, -4000000, -3000000, -2000000,
+          -1000000, -500000, 0, 500000, 1000000, 2000000, 3000000, 4000000,
+          5000000, 6000000, 7000000, 8000000, 9000000,
         ],
       },
     ],
@@ -96,9 +96,6 @@ const MyChart = () => {
           style: {
             colors: "white",
           },
-          formatter: function (value) {
-            return value / 10000 + "만원";
-          },
         },
       },
     },
@@ -120,4 +117,4 @@ const MyChart = () => {
   );
 };
 
-export default MyChart;
+export default GradationChart;

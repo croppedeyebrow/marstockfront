@@ -49,6 +49,7 @@ import {
   StockInfoText08,
 } from "./MyStyle";
 import MyChart from "./mycomponent/MyChart";
+import MyPointModal from "./mycomponent/MyPointModal";
 
 const MyPage = () => {
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
@@ -67,6 +68,8 @@ const MyPage = () => {
       totalrevenue: `총 수익액`,
     }));
 
+  const [openModal, setOpenModal] = useState(false); // 이 줄 추가
+
   return (
     <>
       <Header />
@@ -75,6 +78,7 @@ const MyPage = () => {
         contents={
           <MyPageContainer>
             <Pagename>Portfolio</Pagename>
+
             <MyPagetop>
               <MyPagetopleft>
                 <MyPointBox>
@@ -83,7 +87,14 @@ const MyPage = () => {
                     <PointWallet alt="포인트지갑" src={pointwallet} />
                   </PointName>
                   <PointZone>8,000,000 P</PointZone>
-                  <PointAdd>충전하러 가기</PointAdd>
+                  <PointAdd
+                    onClick={() => {
+                      console.log("Button clicked");
+                      setOpenModal(true);
+                    }}
+                  >
+                    충전하러 가기
+                  </PointAdd>
                 </MyPointBox>
 
                 <MyTradingINfo>
@@ -157,7 +168,9 @@ const MyPage = () => {
           </MyPageContainer>
         }
       ></InlineContainer>
+
       <Footer />
+      {openModal && <MyPointModal setOpenModal={setOpenModal} />}
     </>
   );
 };
