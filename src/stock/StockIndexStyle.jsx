@@ -21,121 +21,6 @@ export const Example = styled.div`
   }
 `;
 
-export const StockIndexPageContainer = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
-export const StockHeadTitle = styled.div`
-  display: flex;
-  position: relative;
-  flex-direction: row;
-
-  align-items: center;
-
-  gap: 1.5rem;
-  width: 50%;
-  height: 7rem;
-  left: 36rem;
-  top: 14rem;
-`;
-
-export const StockHeadTitle01 = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 16.6rem;
-  height: 6.3rem;
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.7);
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background-color: var(--mainorange);
-    transition: all 0.3s;
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    &::before {
-      left: 0;
-      width: 100%;
-    }
-  }
-`;
-
-export const StockHeadTitle02 = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 16.6rem;
-  height: 6.3rem;
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.7);
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background-color: var(--mainorange);
-    transition: all 0.3s;
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    &::before {
-      left: 0;
-      width: 100%;
-    }
-  }
-`;
-
-export const StockHeadTitle03 = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 16.6rem;
-  height: 6.3rem;
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.7);
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background-color: var(--mainorange);
-    transition: all 0.3s;
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    &::before {
-      left: 0;
-      width: 100%;
-    }
-  }
-`;
-
 export const IndexPageTop = styled.div`
   display: flex;
   position: relative;
@@ -190,6 +75,7 @@ export const Kospi = styled.div`
   font-size: 2.2rem;
   font-weight: bold;
   color: #ffffff;
+  left: 0.7rem;
 `;
 
 export const PointInfo = styled.div`
@@ -211,6 +97,8 @@ export const Num = styled.div`
 
   display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Value = styled.div`
@@ -223,6 +111,8 @@ export const Value = styled.div`
 
   display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Percent = styled.div`
@@ -235,6 +125,8 @@ export const Percent = styled.div`
 
   display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Kosdaq = styled.div`
@@ -245,6 +137,7 @@ export const Kosdaq = styled.div`
   font-size: 2.2rem;
   font-weight: bold;
   color: #ffffff;
+  left: 0.7rem;
 `;
 
 export const Kospi200 = styled.div`
@@ -255,6 +148,7 @@ export const Kospi200 = styled.div`
   font-size: 2.2rem;
   font-weight: bold;
   color: #ffffff;
+  left: 0.7rem;
 `;
 
 export const Point02 = styled.div`
@@ -265,6 +159,7 @@ export const Point02 = styled.div`
   padding: 1rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+  gap: 1.4rem;
 `;
 
 export const Point03 = styled.div`
@@ -288,6 +183,78 @@ export const LeftIndexZone = styled.div`
 
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+`;
+
+export const IndexTitleZone = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  height: 3.6rem;
+  border: 1px solid red;
+  gap: 1.2rem;
+  padding-left: 0.5rem;
+`;
+
+export const IndexTitle = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 13.6rem;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.9rem;
+  font-weight: bold;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--mainorange);
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
+  }
+`;
+
+export const IndexDetail = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1.5rem;
+  border: 1px solid red;
+  width: 100%;
+  height: 2.2rem;
+  margin-top: 0.5rem;
+`;
+
+export const DetailName01 = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  width: 17.5rem;
+  height: 100%;
+  color: var(--mainlightpurple);
+  font-size: 1.4rem;
+  font-weight: bold;
 `;
 
 export const IndexTopRight = styled.div`
