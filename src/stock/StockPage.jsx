@@ -1,11 +1,7 @@
-import GlobalStyle from "../utils/style/GlobalStyle";
 import Header from "../utils/style/Header";
 import Footer from "../utils/style/Footer";
-import InlineContainer from "../utils/style/InlineContainer";
-import styled from "styled-components";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import React, { useState, useEffect } from "react";
+import CommonAxios from "../utils/common/CommonAxios";
 import {
   StockContainer,
   StockHeadTitle,
@@ -17,9 +13,40 @@ import StockIndexPage from "./StockIndexPage";
 import StockListPage from "./StockListPage";
 
 const StockPage = () => {
+  // 데이터 프롭스
+  const [all, setAll] = useState({
+    crawlExchangeDtoList: [],
+    crawlMarketDtoList: [],
+    crawlOilDtoList: [],
+    crawlGoldDtoList: [],
+    crawlMetalDtoList: [],
+    crawlEnergyDtoList: [],
+    crawlArgDtoList: [],
+    crawlStockDtoList: [],
+  });
+
+  // 임시 데이터 가져오기
+  useEffect(() => {
+    const getIndex = async () => {
+      try {
+        const res = await CommonAxios.getAxios("common", "index", "", "");
+        console.log("인덱스", res.data);
+        if (res.status === 200) {
+          setAll(res.data);
+        } else {
+          console.log("인덱스 : False");
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    console.log("all", all);
+    getIndex();
+  }, []);
+
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
   const [selectedHeadTitle, setSelectedHeadTitle] = useState(null);
-  const [showStockListPage, setShowStockListPage] = useState(false);
+  const [showStockListPage, setShowStockListPage] = useState(true);
   const [showStockIndexPage, setShowStockIndexPage] = useState(false);
   //   const [showStockDiscussionPage, setShowStockDiscussionPage] = useState(false);
 
@@ -67,7 +94,7 @@ const StockPage = () => {
           </StockHeadTitle03>
         </StockHeadTitle>
         {showStockListPage && <StockListPage />}
-        {showStockIndexPage && <StockIndexPage />}
+        {showStockIndexPage && <StockIndexPage all={all} />}
       </StockContainer>
 
       {/* <InlineContainer color=""></InlineContainer> */}

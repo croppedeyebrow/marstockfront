@@ -78,7 +78,6 @@ const StockListPage = () => {
       {/* <StockPage /> */}
 
       <InlineContainer
-        color=""
         contents={
           <StockListContainer>
             <StockCategory>

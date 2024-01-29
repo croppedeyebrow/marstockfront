@@ -6,6 +6,7 @@ import SigninPage from "./sign/SigninPage";
 import SignupPage from "./sign/SignupPage";
 import FindIdPage from "./sign/FindIdPage";
 import FindPwPage from "./sign/FindPwPage";
+import StockPage from "./stock/StockPage";
 import StockInfoPage from "./stock/StockInfoPage";
 import StockListPage from "./stock/StockListPage";
 import StockIndexPage from "./stock/StockIndexPage";
@@ -22,6 +23,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<MainPage />} />
+            <Route path="/stockpage" element={<StockPage />} />
+
             <Route path="/stockInfo" element={<StockInfoPage />} />
             <Route path="/stockList" element={<StockListPage />} />
             <Route path="/stockIndex" element={<StockIndexPage />} />

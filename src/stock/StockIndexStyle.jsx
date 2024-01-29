@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const StockListContainer = styled.div`
   width: 100%;
@@ -59,7 +59,7 @@ export const LeftPointZone = styled.div`
 export const Point01 = styled.div`
   display: flex;
   position: relative;
-  fle-direction: row;
+  flex-direction: row;
   width: 26rem;
   height: 11.4rem;
   padding: 1rem;
@@ -179,10 +179,90 @@ export const LeftIndexZone = styled.div`
   align-items: center;
   width: 98%;
   height: 38rem;
-  border: 1px solid red;
+  border: 1px solid green;
 
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+`;
+export const LeftIndexTopZone = styled.div`
+  display: flex;
+  height: 10%;
+  width: 100%;
+`;
+export const LeftIndexTopTitle = styled.div`
+  height: 3.6rem;
+  width: 20rem;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 28px;
+  margin-left: 2rem;
+  color: #ffffff;
+  /* border: 3px solid red; */
+`;
+
+export const LeftIndexMainZone = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+`;
+
+export const LeftIndexMainTitle = styled.div`
+  width: 12rem;
+  text-align: center;
+  /* width: 100%; */
+  /* 매매기준율 */
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 20px;
+  color: #ab81ff;
+`;
+
+export const LeftIndexMainInnerTitle = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const LeftIndexMainInnerText = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const LeftIndexMainText = styled.div`
+  width: 10rem;
+  text-align: center;
+  /* width: 100%; */
+  /* 매매기준율 */
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 13px;
+  color: #ffffff;
+  margin-top: 15px;
+`;
+
+export const LeftTitle = styled.div`
+  /* 통화명 */
+  width: 1.7rem;
+  height: 2.2rem;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 20px;
+
+  color: #ab81ff;
 `;
 
 export const IndexTitleZone = styled.div`
@@ -268,6 +348,79 @@ export const IndexTopRight = styled.div`
   height: 54rem;
 `;
 
+export const IndexTopContainer = styled.div`
+  width: 100%;
+  height: 96%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  overflow-y: auto;
+`;
+
+export const IndexTopTitle = styled.div`
+  width: 100%;
+  height: 12%;
+  font-weight: 900;
+  font-size: 3rem;
+  color: white;
+  padding: 10px;
+`;
+
+export const IndexTopRow = styled.div`
+  width: 100%;
+  height: 8%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const IndexTopNum = styled.div`
+  color: #ab81ff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+`;
+
+export const IndexTopName = styled.div`
+  color: white;
+  /* font-size: 1rem;
+  font-weight: 700; */
+  width: 3rem;
+  height: 1.3rem;
+  overflow: hidden;
+  white-space: nowrap; /* 글자가 넘칠 경우 줄 바꿈 방지 */
+`;
+
+export const AnimatedText = styled.span`
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap; /* 글자가 넘칠 경우 줄 바꿈 방지 */
+
+  /* 애니메이션 적용 */
+  animation: ${keyframes`
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  `} 1s ease infinite;
+`;
+
+export const IndexTopPrice = styled.div`
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+`;
+export const IndexTopRate = styled.div`
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+`;
+
 export const MiddleContainer = styled.div`
   display: flex;
   position: relative;
@@ -293,6 +446,7 @@ export const IndexPageBottom = styled.div`
   width: 113rem;
   height: 38rem;
   border: 1px solid white;
+  overflow-y: auto;
 `;
 
 export const BottomTitleBox = styled.div`
