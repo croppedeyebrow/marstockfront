@@ -329,7 +329,7 @@ const StockIndexPage = ({ all }) => {
                 <IndexTopContainer>
                   <IndexTopTitle>검색 상위</IndexTopTitle>
                   {all?.crawlStockDtoList.map((data, index) => (
-                    <IndexTopRow>
+                    <IndexTopRow key={index}>
                       <IndexTopNum>{index + 1}</IndexTopNum>
                       <IndexTopName>
                         <AnimatedText>{data.name}</AnimatedText>
