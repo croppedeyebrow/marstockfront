@@ -68,15 +68,15 @@ const SearchButton = styled.button`
   }
 `;
 
-const AdminSearch = () => {
+const NewsSearch = () => {
   return (
     <>
       <SearchZone>
-        <SearchInput placeholder="검색어를 입력하세요"></SearchInput>
+        <SearchInput placeholder="검색하고 싶은 뉴스를 입력하세요"></SearchInput>
         <SearchButton>검색</SearchButton>
       </SearchZone>
     </>
   );
 };
 
-export default AdminSearch;
+export default NewsSearch;

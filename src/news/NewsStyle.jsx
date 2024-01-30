@@ -256,7 +256,7 @@ export const NewsInfoBox = styled.div`
   flex-direction: column;
   align-items: center;
 
-  gap: 0.5rem;
+  gap: 1.5rem;
   width: 34rem;
   height: 8.3rem;
   border: 1px solid white;

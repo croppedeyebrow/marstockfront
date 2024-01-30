@@ -68,7 +68,7 @@ const SearchButton = styled.button`
   }
 `;
 
-const AdminSearch = () => {
+const CommonSearch = () => {
   return (
     <>
       <SearchZone>
@@ -79,4 +79,4 @@ const AdminSearch = () => {
   );
 };
 
-export default AdminSearch;
+export default CommonSearch;
