@@ -132,7 +132,7 @@ const SignupPage = () => {
         alert("이미 존재하는 이메일 혹은 존재하지 않는 이메일입니다.");
       }
     } catch (error) {
-      alert("서버의 연결이 불안정 합니다.");
+      alert("이메일 전속 실패?");
       console.log("이메일 입력:", error);
     }
   };
