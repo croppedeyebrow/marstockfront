@@ -19,8 +19,12 @@ import {
   ComCon02,
   ComCon03,
   ComCon04,
+  BottomCheckZone,
+  RadioButton,
+  RadioButtonContainer,
 } from "./StockCommunityStyle";
 import StockCommunityUpload from "./stockcomponent/StockCommunityUpload";
+import StockCommunitySearch from "./stockcomponent/StockCommunitySearch";
 
 const data = Array.from({ length: 200 }).map((_, i) => ({
   id: i,
@@ -78,11 +82,26 @@ const StockCommunityPage = () => {
                   <ComCon04>{item.dislikes}</ComCon04>
                 </ComContentZone>
               ))}
+
               <CommunityPagination
                 totalPages={totalPages}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
               />
+
+              <BottomCheckZone>
+                <RadioButtonContainer>
+                  <RadioButton id="radio1" name="radio" />
+                  내용
+                </RadioButtonContainer>
+
+                <RadioButtonContainer>
+                  <RadioButton id="radio2" name="radio" />
+                  글쓴이
+                </RadioButtonContainer>
+
+                <StockCommunitySearch />
+              </BottomCheckZone>
             </CommentBox>
           </StockCommunityContainer>
         }

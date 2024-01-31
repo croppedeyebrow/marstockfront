@@ -89,7 +89,6 @@ export const CommentBox = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  border: 1px solid red;
 `;
 
 export const ComContentZone = styled.div`
@@ -150,4 +149,38 @@ export const ComCon04 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: #ffffff;
+`;
+
+export const BottomCheckZone = styled.div`
+  width: 110rem;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+export const RadioButton = styled.input.attrs({ type: "radio" })`
+  display: relative;
+  position: relative;
+
+  &:checked + label {
+    color: white;
+    background: #6633cc;
+  }
+`;
+
+export const RadioButtonContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #ffffff;
+
+  width: 7rem;
+  height: 2.2rem;
 `;

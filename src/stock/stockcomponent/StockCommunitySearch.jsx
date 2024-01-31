@@ -5,18 +5,18 @@ const SearchZone = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 110rem;
-  height: 10rem;
+  width: 40rem;
+  height: 4rem;
   flex-direction: row;
   gap: 2rem;
 `;
 
-const SearchInput = styled.textarea`
+const SearchInput = styled.input`
   display: flex;
   position: relative;
 
-  width: 100rem;
-  height: 20rem;
+  width: 30.5rem;
+  height: 2.8rem;
 
   background: #ffffff;
   border-radius: 3rem;
@@ -30,8 +30,6 @@ const SearchInput = styled.textarea`
   &::placeholder {
     color: gray;
     padding-left: 1rem;
-    text-align: center;
-    font-size: 2rem;
   }
 
   &:focus {
@@ -44,14 +42,14 @@ const SearchButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 8rem;
-  height: 20rem;
+  width: 7.8rem;
+  height: 2.8rem;
 
   background: var(--mainpurple);
-  border-radius: 1.2rem;
+  border-radius: 3rem;
   border: 1px solid transparent; /* 투명한 초기 테두리 */
   font-weight: 400;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   line-height: 29px;
 
   color: #ffffff;
@@ -70,15 +68,15 @@ const SearchButton = styled.button`
   }
 `;
 
-const StockCommunityUpload = () => {
+const StockCommunitySearch = () => {
   return (
     <>
       <SearchZone>
-        <SearchInput placeholder="주식에 대해 공유할 내용을 작성해주세요"></SearchInput>
-        <SearchButton>등록</SearchButton>
+        <SearchInput></SearchInput>
+        <SearchButton>검색</SearchButton>
       </SearchZone>
     </>
   );
 };
 
-export default StockCommunityUpload;
+export default StockCommunitySearch;
