@@ -11,6 +11,7 @@ import {
 } from "./StockStyle";
 import StockIndexPage from "./StockIndexPage";
 import StockListPage from "./StockListPage";
+import StockCommunityPage from "./StockCommunityPage";
 
 const StockPage = () => {
   // async 관리 switch
@@ -100,7 +101,7 @@ const StockPage = () => {
   const [selectedHeadTitle, setSelectedHeadTitle] = useState(null);
   const [showStockListPage, setShowStockListPage] = useState(true);
   const [showStockIndexPage, setShowStockIndexPage] = useState(false);
-  //   const [showStockDiscussionPage, setShowStockDiscussionPage] = useState(false);
+  const [showStockDiscussionPage, setShowStockDiscussionPage] = useState(false);
 
   const handleHeadTitleClick01 = (event) => {
     if (selectedHeadTitle) {
@@ -110,6 +111,7 @@ const StockPage = () => {
     setSelectedHeadTitle(event.target);
     setShowStockListPage(true);
     setShowStockIndexPage(false);
+    setShowStockDiscussionPage(false);
     setSwitchTitle("주식");
   };
 
@@ -120,6 +122,9 @@ const StockPage = () => {
     event.target.style.color = "#ab81ff";
     setSelectedHeadTitle(event.target);
     setSwitchTitle("종목토론");
+    setShowStockListPage(false);
+    setShowStockIndexPage(false);
+    setShowStockDiscussionPage(true);
   };
 
   const handleHeadTitleClick03 = (event) => {
@@ -129,6 +134,7 @@ const StockPage = () => {
     event.target.style.color = "#ab81ff";
     setSelectedHeadTitle(event.target);
     setShowStockListPage(false);
+    setShowStockDiscussionPage(false);
     setShowStockIndexPage(true);
     setSwitchTitle("시장지표");
   };
@@ -156,6 +162,7 @@ const StockPage = () => {
         {showStockListPage && (
           <StockListPage stock={stock} setStockList={setStockList} />
         )}
+        {showStockDiscussionPage && <StockCommunityPage />}
         {showStockIndexPage && <StockIndexPage all={all} />}
       </StockContainer>
 
