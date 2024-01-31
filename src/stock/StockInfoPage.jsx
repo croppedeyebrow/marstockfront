@@ -51,6 +51,7 @@ import {
   PurchaseNumber,
   PurchaseNum,
 } from "./StockInfoStyle";
+import { useParams } from "react-router-dom";
 
 const StockInfoPage = () => {
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
@@ -59,11 +60,13 @@ const StockInfoPage = () => {
   const [sellingNum, setSellingNum] = useState(0);
   const [message, setMessage] = useState("");
 
+  // 주식명으로 데이터 조회
+  const { name } = useParams();
+
   return (
     <>
       <Header />
       <InlineContainer
-        color=""
         contents={
           <StockListContainer>
             <StockCategory>

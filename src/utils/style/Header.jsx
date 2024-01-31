@@ -43,7 +43,7 @@ const MidBox = styled.div`
 
 const Header = () => {
   const { updateLoginStatus, isLogin, logout } = useAuth();
-  // console.log(isLogin);
+  console.log("isLogin", isLogin);
   useEffect(() => {
     const accessToken = Common.getAccessToken();
     console.log("accessToken", accessToken);
