@@ -61,7 +61,7 @@ const StockInfoPage = () => {
 
   return (
     <>
-      <StockPage />
+      <Header />
       <InlineContainer
         color=""
         contents={

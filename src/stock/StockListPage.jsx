@@ -52,8 +52,6 @@ const StockListPage = ({ stock, setStockList }) => {
     text-decoration: none;
   `;
 
-  console.log(stock);
-
   return (
     <>
       {/* <StockPage /> */}
@@ -81,7 +79,7 @@ const StockListPage = ({ stock, setStockList }) => {
               {stock.map((data, index) => (
                 <StockInfoList key={index}>
                   <StockInfo01>{index + 1}</StockInfo01>
-                  <StyledLink to="/StockInfo">
+                  <StyledLink to={`/stockInfo/${data.종목명}`}>
                     <StockInfo02>{data.종목명}</StockInfo02>
                   </StyledLink>
                   <StockInfo03>{data.고가}</StockInfo03>

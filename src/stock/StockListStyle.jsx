@@ -135,6 +135,7 @@ export const StockInfoBackboard = styled.div`
   width: 113.4rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+  overflow-y: auto;
 `;
 
 export const StockDiv = styled.div`

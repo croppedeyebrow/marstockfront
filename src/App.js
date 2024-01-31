@@ -25,7 +25,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/stockpage" element={<StockPage />} />
 
-            <Route path="/stockInfo" element={<StockInfoPage />} />
+            <Route path="/stockInfo/:name" element={<StockInfoPage />} />
             <Route path="/stockList" element={<StockListPage />} />
             <Route path="/stockIndex" element={<StockIndexPage />} />
             <Route path="/mypage" element={<MyPage />} />
