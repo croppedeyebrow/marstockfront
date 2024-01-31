@@ -35,6 +35,7 @@ import {
   StockInfo07,
   StockInfo08,
 } from "./StockListStyle";
+import StockSearch from "./stockcomponent/StockSearch";
 
 const StockListPage = ({ stock, setStockList }) => {
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
@@ -52,6 +53,8 @@ const StockListPage = ({ stock, setStockList }) => {
     text-decoration: none;
   `;
 
+  console.log(stock);
+
   return (
     <>
       {/* <StockPage /> */}
@@ -59,6 +62,7 @@ const StockListPage = ({ stock, setStockList }) => {
       <InlineContainer
         contents={
           <StockListContainer>
+            <StockSearch />
             <StockCategory>
               <Category01 onClick={handleCategoryClick}>고가</Category01>
               <Category02 onClick={handleCategoryClick}>EPS</Category02>
@@ -79,7 +83,7 @@ const StockListPage = ({ stock, setStockList }) => {
               {stock.map((data, index) => (
                 <StockInfoList key={index}>
                   <StockInfo01>{index + 1}</StockInfo01>
-                  <StyledLink to={`/stockInfo/${data.종목명}`}>
+                  <StyledLink to="/StockInfo">
                     <StockInfo02>{data.종목명}</StockInfo02>
                   </StyledLink>
                   <StockInfo03>{data.고가}</StockInfo03>
