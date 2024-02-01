@@ -9,7 +9,7 @@ export const StockHeadTitle = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
-
+  justify-content: center;
   align-items: center;
 
   gap: 1.5rem;
@@ -17,6 +17,11 @@ export const StockHeadTitle = styled.div`
   height: 7rem;
   left: 36rem;
   top: 14rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    left: 5.6rem;
+  }
 `;
 
 export const StockHeadTitle01 = styled.div`
@@ -48,6 +53,11 @@ export const StockHeadTitle01 = styled.div`
       left: 0;
       width: 100%;
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 10rem;
+    font-size: 3rem;
   }
 `;
 
@@ -81,6 +91,10 @@ export const StockHeadTitle02 = styled.div`
       width: 100%;
     }
   }
+  @media (max-width: 768px) {
+    width: 12rem;
+    font-size: 3rem;
+  }
 `;
 
 export const StockHeadTitle03 = styled.div`
@@ -112,5 +126,9 @@ export const StockHeadTitle03 = styled.div`
       left: 0;
       width: 100%;
     }
+  }
+  @media (max-width: 768px) {
+    width: 12rem;
+    font-size: 3rem;
   }
 `;

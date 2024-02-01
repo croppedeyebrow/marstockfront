@@ -31,6 +31,11 @@ export const StockCategory = styled.div`
   align-items: center;
 
   right: 2rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    left: 0.4rem;
+  }
 `;
 
 export const Category01 = styled.div`
@@ -136,6 +141,10 @@ export const StockInfoBackboard = styled.div`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const StockDiv = styled.div`
@@ -187,6 +196,10 @@ export const StockTitleBox = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const StockTitle01 = styled.div`
@@ -202,6 +215,11 @@ export const StockTitle01 = styled.div`
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -219,6 +237,11 @@ export const StockTitle02 = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const StockTitle03 = styled.div`
@@ -234,6 +257,11 @@ export const StockTitle03 = styled.div`
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -251,6 +279,11 @@ export const StockTitle04 = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const StockTitle05 = styled.div`
@@ -266,6 +299,11 @@ export const StockTitle05 = styled.div`
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -283,6 +321,11 @@ export const StockTitle06 = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const StockTitle07 = styled.div`
@@ -299,6 +342,11 @@ export const StockTitle07 = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const StockTitle08 = styled.div`
@@ -314,6 +362,11 @@ export const StockTitle08 = styled.div`
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
   }
 `;
 
