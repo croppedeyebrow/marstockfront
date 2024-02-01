@@ -117,7 +117,7 @@ export const PayComponent = ({ email, username, phone }) => {
 
   return (
     <PayBox>
-      <h1>충전하기</h1>
+      <h1 style={{ color: "#ffffff" }}>충전하기</h1>
       <span>{`${price.toLocaleString()}원`}</span>
       <div>
         <div>

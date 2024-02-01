@@ -19,8 +19,16 @@ const StyledModalContainer = styled.div`
   width: 50rem;
   height: 60rem;
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.88);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  // background-color: rgba(255, 255, 255, 0.88);
+  // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 5px 5px 5px -4px rgba(255, 255, 255, 0.4),
+    inset -5px -5px 3px -1px rgba(0, 0, 0, 0.6),
+    inset 30px 30px 120px -50px rgba(0, 0, 0, 0.9),
+    inset -30px -30px 50px -50px rgba(255, 255, 255, 0.9),
+    50px 50px 40px -15px rgba(17, 17, 17, 0.9);
+  backdrop-filter: blur(20px);
+  border-radius: 5rem;
   display: flex;
   flex-direction: column;
   padding: 25px;
@@ -43,6 +51,8 @@ const StyledTitle = styled.div`
   text-align: center;
   margin-top: 10px;
   font-size: 3.2rem;
+  color: #ffffff;
+  text-shadow: -4px -4px 6px var(--mainpurple), 3px 3px 6px var(--mainorange);
 `;
 
 const StyledBody = styled.div`
@@ -52,6 +62,8 @@ const StyledBody = styled.div`
   align-items: center;
   font-size: 2.8rem;
   text-align: center;
+  color: #ffffff;
+  text-shadow: -4px -4px 6px var(--downblue), 3px 3px 6px var(--upred);
 `;
 
 const StyledFooter = styled.div`
