@@ -49,16 +49,22 @@ import {
 import AdminSearch from "./admincomponent/AdminSearch";
 
 const AdminPage = () => {
-  const members = Array(6)
-    .fill()
-    .map((_, index) => ({
-      email: `회원이메일`,
-      author: `글쓴이`,
-      phone: `핸드폰번호`,
-      date: `가입일`,
-      birth: `생년월일`,
-      status: `활동여부`,
-    }));
+  const [searchResults, setSearchResults] = useState([]);
+  // const [currentPage, setCurrentPage] = useState(0);
+  // const [pageSize, setPageSize] = useState(6);
+
+  // AdminPage에서 검색 결과를 업데이트하는 콜백 함수
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
+    console.log(searchResults);
+  };
+
+  // // 페이지 변경 시 실행되는 함수
+  // const handlePageChange = (newPage, newSize) => {
+  //   // 이 부분에서 필요한 로직을 수행할 수 있습니다.
+  //   setCurrentPage(newPage);
+  //   setPageSize(newSize);
+  // };
 
   return (
     <>
@@ -73,7 +79,10 @@ const AdminPage = () => {
         color=""
         contents={
           <AdminContainer>
-            <AdminSearch />
+            <AdminSearch
+              onSearchResults={handleSearchResults}
+              // onPageChange={handlePageChange}
+            />
 
             <MemberListBox>
               <MemberListTitle>
@@ -85,14 +94,14 @@ const AdminPage = () => {
                 <LitstTitle06>활동여부</LitstTitle06>
               </MemberListTitle>
 
-              {members.map((member, index) => (
+              {searchResults.map((member, index) => (
                 <MemberListInfo key={index}>
-                  <ListInfo01>{member.email}</ListInfo01>
-                  <ListInfo02>{member.author}</ListInfo02>
+                  <ListInfo01>{member.memberEmail}</ListInfo01>
+                  <ListInfo02>{member.nickName}</ListInfo02>
                   <ListInfo03>{member.phone}</ListInfo03>
-                  <ListInfo04>{member.date}</ListInfo04>
+                  <ListInfo04>{member.registrationDate}</ListInfo04>
                   <ListInfo05>{member.birth}</ListInfo05>
-                  <ListInfo06>{member.status}</ListInfo06>
+                  <ListInfo06>{member.authority}</ListInfo06>
                 </MemberListInfo>
               ))}
             </MemberListBox>

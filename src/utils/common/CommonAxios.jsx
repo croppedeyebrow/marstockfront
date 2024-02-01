@@ -9,6 +9,13 @@ const CommonAxios = {
     );
   },
 
+  // RequestParam 방식
+  getPageableAxios: async (controller, path, params) => {
+    return await axios.get(MARSTOCK_DOMAIN + `/${controller}/${path}`, {
+      params,
+    });
+  },
+
   // RequestBody 방식
   postAxios: async (controller, path, object) => {
     return await axios.post(MARSTOCK_DOMAIN + `/${controller}/${path}`, object);

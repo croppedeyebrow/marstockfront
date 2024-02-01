@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import AdminAxios from "../AdminAxios";
+import { useState } from "react";
 
 const SearchZone = styled.div`
   position: relative;
@@ -68,12 +70,25 @@ const SearchButton = styled.button`
   }
 `;
 
-const AdminSearch = () => {
+const AdminSearch = ({ onSearchResults, onPageChange }) => {
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const handleSearch = async () => {
+    const response = await AdminAxios.search(searchKeyword, 0, 6);
+
+    // 전체 응답을 부모 컴포넌트로 전달
+    onSearchResults(response.content);
+  };
+
   return (
     <>
       <SearchZone>
-        <SearchInput placeholder="검색어를 입력하세요"></SearchInput>
-        <SearchButton>검색</SearchButton>
+        <SearchInput
+          placeholder="검색어를 입력하세요"
+          value={searchKeyword}
+          onChange={(e) => setSearchKeyword(e.target.value)}
+        ></SearchInput>
+        <SearchButton onClick={handleSearch}>검색</SearchButton>
       </SearchZone>
     </>
   );
