@@ -50,27 +50,50 @@ const MidBox = styled.div`
 const MenuContainer = styled.div`
   display: ${(props) => (props.isOpen ? "block" : "none")};
   position: fixed;
+  z-index: 2;
   top: 0;
   right: 0;
-  width: 200px;
-  height: 100%;
-  background: white;
+  width: 4rem;
+  height: 99%;
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 5px 5px 5px -4px rgba(255, 255, 255, 0.4),
+    inset -5px -5px 3px -1px rgba(0, 0, 0, 0.6),
+    inset 30px 30px 120px -50px rgba(0, 0, 0, 0.9),
+    inset -30px -30px 50px -50px rgba(255, 255, 255, 0.9),
+    50px 50px 40px -15px rgba(17, 17, 17, 0.9);
+  backdrop-filter: blur(20px);
+  border-radius: 5rem 0 0 5rem;
+
   transform: ${(props) =>
     props.isOpen ? "translateX(0)" : "translateX(100%)"};
   transition: ${(props) =>
     props.isOpen ? "transform 0.3s ease-in-out" : "none"};
 
-  @media (min-width: 769px) {
-    display: ${(props) => (props.isOpen ? "flex" : "none")};
-    position: static;
-    background: none;
+  @media (min-width: 768px) {
+    display: ${(props) => (props.isOpen ? "none" : "none")};
+    position: relative;
+    width: 4rem;
+    height: auto;
+    background-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    border-radius: 0;
     transform: none;
     transition: none;
+  }
+  @media (max-width: 768px) {
+    display: ${(props) => (props.isOpen ? "flex" : "none")};
+    top: 7rem;
+    flex-direction: column;
+    align-items: center;
+    width: 50%; // adjust this value as needed
+    gap: 0;
   }
 `;
 
 const Menubutton = styled.img`
   display: none;
+  z-index: 2;
 
   @media (max-width: 769px) {
     display: block;
@@ -82,6 +105,7 @@ const Header = () => {
   const { updateLoginStatus, isLogin, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   console.log("isLogin", isLogin);
+
   useEffect(() => {
     const accessToken = Common.getAccessToken();
     console.log("accessToken", accessToken);
@@ -91,6 +115,18 @@ const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsMenuOpen(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
