@@ -9,6 +9,10 @@ const SearchZone = styled.div`
   height: 4rem;
   flex-direction: row;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 30rem;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -34,6 +38,10 @@ const SearchInput = styled.input`
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 768px) {
+    width: 20rem;
   }
 `;
 
@@ -65,6 +73,12 @@ const SearchButton = styled.button`
     outline-color: rgba(255, 255, 255, 0);
     outline-offset: 15px;
     text-shadow: 1px 1px 2px #427388;
+  }
+
+  @media (max-width: 768px) {
+    width: 4rem;
+    height: 2.8rem;
+    font-size: 0.8rem;
   }
 `;
 

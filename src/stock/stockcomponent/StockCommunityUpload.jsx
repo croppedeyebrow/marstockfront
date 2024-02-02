@@ -9,6 +9,11 @@ const SearchZone = styled.div`
   height: 10rem;
   flex-direction: row;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    height: 6rem;
+  }
 `;
 
 const SearchInput = styled.textarea`

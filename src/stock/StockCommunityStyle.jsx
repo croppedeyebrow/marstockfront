@@ -32,6 +32,10 @@ export const CommunityTitleZone = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
   margin-top: 10rem;
   border-radius: 1.5rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const ComTitle01 = styled.div`
@@ -44,6 +48,11 @@ export const ComTitle01 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 15rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const ComTitle02 = styled.div`
@@ -56,6 +65,11 @@ export const ComTitle02 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 12rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const ComTitle03 = styled.div`
@@ -68,6 +82,11 @@ export const ComTitle03 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 8rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const ComTitle04 = styled.div`
@@ -81,6 +100,11 @@ export const ComTitle04 = styled.div`
   font-size: 1.6rem;
 
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const CommentBox = styled.div`
@@ -89,6 +113,10 @@ export const CommentBox = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const ComContentZone = styled.div`
@@ -101,6 +129,10 @@ export const ComContentZone = styled.div`
   align-items: center;
 
   border-radius: 1.5rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const ComCon01 = styled.div`
@@ -113,6 +145,11 @@ export const ComCon01 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 15rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const ComCon02 = styled.div`
@@ -125,6 +162,11 @@ export const ComCon02 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 12rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const ComCon03 = styled.div`
@@ -137,6 +179,11 @@ export const ComCon03 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 8rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const ComCon04 = styled.div`
@@ -149,6 +196,11 @@ export const ComCon04 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const BottomCheckZone = styled.div`
@@ -161,6 +213,10 @@ export const BottomCheckZone = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const RadioButton = styled.input.attrs({ type: "radio" })`
@@ -183,4 +239,9 @@ export const RadioButtonContainer = styled.div`
 
   width: 7rem;
   height: 2.2rem;
+
+  @media (max-width: 768px) {
+    width: 8rem;
+    font-size: 1rem;
+  }
 `;

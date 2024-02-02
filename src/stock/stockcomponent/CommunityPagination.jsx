@@ -8,6 +8,10 @@ const PaginationContainer = styled.div`
   position: relative;
   width: 110rem;
   height: 10rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 const PageButton = styled.button`
