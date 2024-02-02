@@ -30,7 +30,6 @@ const StockPage = () => {
     crawlArgDtoList: [],
     crawlStockDtoList: [],
   });
-  // 고가, eps, per, div
 
   // 데이터 가져오는 switch 케이스
   const getIndex = async () => {

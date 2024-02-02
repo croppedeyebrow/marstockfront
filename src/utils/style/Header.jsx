@@ -110,7 +110,7 @@ const Header = () => {
     const accessToken = Common.getAccessToken();
     console.log("accessToken", accessToken);
     updateLoginStatus(accessToken);
-  }, []);
+  }, [isLogin, logout]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -144,10 +144,10 @@ const Header = () => {
               <Link to="/news">
                 <div id="news">뉴스</div>
               </Link>
-              <Link to="/signup">
-                <div id="sign">마이페이지</div>
+              <Link to="/mypage">
+                <div id="mypage">마이페이지</div>
               </Link>
-              <Link to="/" onClick={logout()}>
+              <Link to="/" onClick={() => logout()}>
                 <div id="logout">로그아웃</div>
               </Link>
             </MenuContainer>

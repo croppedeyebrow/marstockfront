@@ -53,12 +53,8 @@ const StockListPage = ({ stock, setStockList }) => {
     text-decoration: none;
   `;
 
-  console.log(stock);
-
   return (
     <>
-      {/* <StockPage /> */}
-
       <InlineContainer
         contents={
           <StockListContainer>

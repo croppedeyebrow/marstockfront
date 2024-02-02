@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   // 상태 체크
   const updateLoginStatus = (accessToken) => {
     if (accessToken) {
+      console.log("로그인 상태입니다.");
       setIsLogin(true);
     } else {
       console.log("로그인 상태가 아닙니다.");
