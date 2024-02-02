@@ -31,6 +31,11 @@ export const StockCategory = styled.div`
   align-items: center;
 
   right: 2rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    left: 0.4rem;
+  }
 `;
 
 export const Category01 = styled.div`
@@ -85,10 +90,16 @@ export const StockInfoBackboard = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  height: 100rem;
+  height: 120rem;
   width: 113.4rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    height: 100%;
+    flex-direction: column;
+  }
 `;
 
 export const StockDivLeft = styled.div`
@@ -101,6 +112,64 @@ export const StockDivLeft = styled.div`
   align-items: center;
   padding-top: 5rem;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    gap: 0.5rem;
+    padding-top: 0.6rem;
+    height: 80%;
+  }
+`;
+
+export const RightLeftContainer = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  align-items: center;
+  padding-top: 5rem;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    gap: 0.5rem;
+    flex-direction: row;
+    padding-top: 0.6rem;
+  }
+`;
+
+export const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 28.3rem;
+  height: 100%;
+
+  align-items: center;
+  padding-top: 5rem;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 20rem;
+    padding-top: 0.6rem;
+  }
+`;
+
+export const RightContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 28.3rem;
+  height: 100%;
+
+  align-items: center;
+  padding-top: 5rem;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 20rem;
+    padding-top: 0.6rem;
+  }
 `;
 
 export const CurrentPrice = styled.div`
@@ -172,6 +241,11 @@ export const LeftInfo = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 18rem;
+    gap: 0.5rem;
+  }
 `;
 
 export const LeftInfoTitle = styled.div`
@@ -185,6 +259,10 @@ export const LeftInfoTitle = styled.div`
   align-items: center;
   font-size: 2rem;
   font-weight: lighter;
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const LeftInfoNum = styled.div`
@@ -199,6 +277,10 @@ export const LeftInfoNum = styled.div`
   justify-content: right;
   font-size: 2rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const StockDivRight = styled.div`
@@ -212,6 +294,12 @@ export const StockDivRight = styled.div`
   padding-top: 7rem;
 
   gap: 6rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    gap: 2rem;
+    padding-top: 0.6rem;
+  }
 `;
 
 export const StockGraphZone = styled.img`
@@ -219,6 +307,11 @@ export const StockGraphZone = styled.img`
   position: relative;
   width: 81.7rem;
   height: 36.6rem;
+
+  @media (max-width: 768px) {
+    width: 38rem;
+    height: 20rem;
+  }
 `;
 
 export const PurchaseBox = styled.div`
@@ -231,6 +324,11 @@ export const PurchaseBox = styled.div`
   margin-top: 2rem;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    flex-direction: column;
+  }
 `;
 
 export const StockSellingBox = styled.div`
@@ -243,6 +341,14 @@ export const StockSellingBox = styled.div`
   background: rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 5rem 3rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    height: 20rem;
+    flex-direction: column;
+    padding: 2rem 2rem;
+    gap: 1rem;
+  }
 `;
 
 export const StockPurchaseBox = styled.div`
@@ -255,6 +361,14 @@ export const StockPurchaseBox = styled.div`
   background: rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 5rem 3rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    height: 20rem;
+    flex-direction: column;
+    padding: 2rem 2rem;
+    gap: 1rem;
+  }
 `;
 
 export const SellingTop = styled.div`
@@ -263,6 +377,10 @@ export const SellingTop = styled.div`
   width: 100%;
   height: 5.2rem;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+  }
 `;
 
 export const SellingTitle = styled.div`
@@ -273,6 +391,11 @@ export const SellingTitle = styled.div`
   color: white;
   font-size: 3rem;
   font-weight: bold;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 2.8rem;
+  }
 `;
 
 export const SellingButton = styled.button`
@@ -297,6 +420,10 @@ export const SellingButton = styled.button`
   &:active {
     transform: scale(0.95); // 클릭 시 눌리는 효과 추가
   }
+
+  @media (max-width: 768px) {
+    width: 12rem;
+  }
 `;
 
 export const SellingBottom = styled.div`
@@ -308,6 +435,10 @@ export const SellingBottom = styled.div`
   align-items: center;
   grid-template-columns: repeat(2, 1fr); // 4열 생성
   grid-template-rows: repeat(4, 1fr); // 2행 생성
+
+  @media (max-width: 768px) {
+    width: 34rem;
+  }
 `;
 
 export const SellingItem = styled.div`
@@ -319,6 +450,11 @@ export const SellingItem = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 16rem;
+    height: 2.8rem;
+  }
 `;
 
 export const SellingeTag = styled.div`
@@ -335,6 +471,10 @@ export const SellingeTag = styled.div`
   line-height: 3rem;
 
   color: #ff954f;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const SellingNum = styled.input`
@@ -383,6 +523,10 @@ export const PurchaseTitle = styled.div`
   color: white;
   font-size: 3rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 2.8rem;
+  }
 `;
 
 export const PurchaseTop = styled.div`
@@ -391,6 +535,10 @@ export const PurchaseTop = styled.div`
   width: 100%;
   height: 5.2rem;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+  }
 `;
 
 export const PurchaseButton = styled.button`
@@ -414,6 +562,10 @@ export const PurchaseButton = styled.button`
   &:active {
     transform: scale(0.95); // 클릭 시 눌리는 효과 추가
   }
+
+  @media (max-width: 768px) {
+    width: 12rem;
+  }
 `;
 
 export const PurchaseBottom = styled.div`
@@ -424,6 +576,11 @@ export const PurchaseBottom = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+    gap: 1rem;
+  }
 `;
 
 export const PurchaseItem = styled.div`
@@ -433,6 +590,10 @@ export const PurchaseItem = styled.div`
   height: 3rem;
 
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    height: 2.8rem;
+  }
 `;
 
 export const PurchaseTag = styled.div`
@@ -444,6 +605,11 @@ export const PurchaseTag = styled.div`
   color: var(--mainpurple);
   font-size: 2rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    width: 16rem;
+    height: 2.8rem;
+  }
 `;
 
 export const PurchaseNumber = styled.div`

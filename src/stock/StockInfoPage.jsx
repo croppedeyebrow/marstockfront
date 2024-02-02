@@ -21,6 +21,9 @@ import {
   StockInfoBackboard,
   StockDivLeft,
   StockDivRight,
+  LeftContainer,
+  RightContainer,
+  RightLeftContainer,
   StockGraphZone,
   CurrentPrice,
   CurrentPriceNum,
@@ -88,65 +91,71 @@ const StockInfoPage = () => {
                   <Percent>+10.00%</Percent>
                 </UpDownCheck>
 
-                <LeftInfo>
-                  <LeftInfoTitle>전일가</LeftInfoTitle>
-                  <LeftInfoNum>10,000</LeftInfoNum>
-                </LeftInfo>
+                <RightLeftContainer>
+                  <LeftContainer>
+                    <LeftInfo>
+                      <LeftInfoTitle>전일가</LeftInfoTitle>
+                      <LeftInfoNum>10,000</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>고가</LeftInfoTitle>
-                  <LeftInfoNum>13,800</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>고가</LeftInfoTitle>
+                      <LeftInfoNum>13,800</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>저가</LeftInfoTitle>
-                  <LeftInfoNum>9,280</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>저가</LeftInfoTitle>
+                      <LeftInfoNum>9,280</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>시가</LeftInfoTitle>
-                  <LeftInfoNum>9,980</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>시가</LeftInfoTitle>
+                      <LeftInfoNum>9,980</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>거래량</LeftInfoTitle>
-                  <LeftInfoNum>17,482,300</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>거래량</LeftInfoTitle>
+                      <LeftInfoNum>17,482,300</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>거래대금</LeftInfoTitle>
-                  <LeftInfoNum>174,823 백만</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>거래대금</LeftInfoTitle>
+                      <LeftInfoNum>174,823 백만</LeftInfoNum>
+                    </LeftInfo>
+                  </LeftContainer>
 
-                <LeftInfo>
-                  <LeftInfoTitle>시가총액</LeftInfoTitle>
-                  <LeftInfoNum>8,241 억원</LeftInfoNum>
-                </LeftInfo>
+                  <RightContainer>
+                    <LeftInfo>
+                      <LeftInfoTitle>시가총액</LeftInfoTitle>
+                      <LeftInfoNum>8,241 억원</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>시총순위</LeftInfoTitle>
-                  <LeftInfoNum>코스피 298위</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>시총순위</LeftInfoTitle>
+                      <LeftInfoNum>코스피 298위</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>상장주수</LeftInfoTitle>
-                  <LeftInfoNum>74,918,182</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>상장주수</LeftInfoTitle>
+                      <LeftInfoNum>74,918,182</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>액면가</LeftInfoTitle>
-                  <LeftInfoNum>4,500</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>액면가</LeftInfoTitle>
+                      <LeftInfoNum>4,500</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>52주 최고</LeftInfoTitle>
-                  <LeftInfoNum>11,000</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>52주 최고</LeftInfoTitle>
+                      <LeftInfoNum>11,000</LeftInfoNum>
+                    </LeftInfo>
 
-                <LeftInfo>
-                  <LeftInfoTitle>52주 최저</LeftInfoTitle>
-                  <LeftInfoNum>3,387</LeftInfoNum>
-                </LeftInfo>
+                    <LeftInfo>
+                      <LeftInfoTitle>52주 최저</LeftInfoTitle>
+                      <LeftInfoNum>3,387</LeftInfoNum>
+                    </LeftInfo>
+                  </RightContainer>
+                </RightLeftContainer>
               </StockDivLeft>
 
               <StockDivRight>

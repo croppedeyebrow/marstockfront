@@ -20,7 +20,7 @@ export const StockHeadTitle = styled.div`
 
   @media (max-width: 768px) {
     width: 40rem;
-    left: 5.6rem;
+    left: 3rem;
   }
 `;
 
