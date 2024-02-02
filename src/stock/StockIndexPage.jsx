@@ -1,6 +1,7 @@
 import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import {
   StockIndexPageContainer,
@@ -19,6 +20,8 @@ import {
   Kosdaq,
   Kospi200,
   LeftIndexZone,
+  IndexDrop,
+  IndexDropMenu,
   IndexTitleZone,
   IndexTitle,
   IndexDetail,
@@ -70,6 +73,9 @@ const StockIndexPage = ({ all }) => {
 
   const [selectedKategorie, setSelectedKategorie] = useState(null);
   const [selectedIndexTitile, setSelectedIndexTitile] = useState(null);
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleKategorieClick = (event) => {
     if (selectedKategorie) {
@@ -94,6 +100,21 @@ const StockIndexPage = ({ all }) => {
     setIndex(index);
   };
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentPage((prevPage) => (prevPage + 1) % 3);
+    }, 3000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  const handleDropdown = (event) => {
+    event.stopPropagation();
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <InlineContainer
@@ -103,30 +124,67 @@ const StockIndexPage = ({ all }) => {
             <IndexPageTop>
               <IndexTopLeft>
                 <LeftPointZone>
-                  <Point01>
-                    <Kospi>KOSPI</Kospi>
-                    <PointInfo>
-                      <Num value="+2,525.83">2,525.83</Num>
-                      <Value value="▲ 1.73">▲ 1.73</Value>
-                      <Percent value="+0.06%">+0.06%</Percent>
-                    </PointInfo>
-                  </Point01>
-                  <Point02>
-                    <Kosdaq>KOSDAQ</Kosdaq>
-                    <PointInfo>
-                      <Num value="-858.25">858.25</Num>
-                      <Value value="-▼ 9.83">▼ 9.83</Value>
-                      <Percent value="-1.14%">-1.14%</Percent>
-                    </PointInfo>
-                  </Point02>
-                  <Point03>
-                    <Kospi200>KOSPI 200</Kospi200>
-                    <PointInfo>
-                      <Num value="+338.75">338.75</Num>
-                      <Value value="▲ 0.69">▲ 0.69</Value>
-                      <Percent value="+0.20%">+0.20%</Percent>
-                    </PointInfo>
-                  </Point03>
+                  {isMobile ? (
+                    <>
+                      {currentPage === 0 && (
+                        <Point01>
+                          <Kospi>KOSPI</Kospi>
+                          <PointInfo>
+                            <Num value="+2,525.83">2,525.83</Num>
+                            <Value value="▲ 1.73">▲ 1.73</Value>
+                            <Percent value="+0.06%">+0.06%</Percent>
+                          </PointInfo>
+                        </Point01>
+                      )}
+                      {currentPage === 1 && (
+                        <Point02>
+                          <Kosdaq>KOSDAQ</Kosdaq>
+                          <PointInfo>
+                            <Num value="-858.25">858.25</Num>
+                            <Value value="-▼ 9.83">▼ 9.83</Value>
+                            <Percent value="-1.14%">-1.14%</Percent>
+                          </PointInfo>
+                        </Point02>
+                      )}
+                      {currentPage === 2 && (
+                        <Point03>
+                          <Kospi200>KOSPI 200</Kospi200>
+                          <PointInfo>
+                            <Num value="+338.75">338.75</Num>
+                            <Value value="▲ 0.69">▲ 0.69</Value>
+                            <Percent value="+0.20%">+0.20%</Percent>
+                          </PointInfo>
+                        </Point03>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <Point01>
+                        <Kospi>KOSPI</Kospi>
+                        <PointInfo>
+                          <Num value="+2,525.83">2,525.83</Num>
+                          <Value value="▲ 1.73">▲ 1.73</Value>
+                          <Percent value="+0.06%">+0.06%</Percent>
+                        </PointInfo>
+                      </Point01>
+                      <Point02>
+                        <Kosdaq>KOSDAQ</Kosdaq>
+                        <PointInfo>
+                          <Num value="-858.25">858.25</Num>
+                          <Value value="-▼ 9.83">▼ 9.83</Value>
+                          <Percent value="-1.14%">-1.14%</Percent>
+                        </PointInfo>
+                      </Point02>
+                      <Point03>
+                        <Kospi200>KOSPI 200</Kospi200>
+                        <PointInfo>
+                          <Num value="+338.75">338.75</Num>
+                          <Value value="▲ 0.69">▲ 0.69</Value>
+                          <Percent value="+0.20%">+0.20%</Percent>
+                        </PointInfo>
+                      </Point03>
+                    </>
+                  )}
                 </LeftPointZone>
 
                 {/* <IndexTitleZone>
@@ -146,25 +204,75 @@ const StockIndexPage = ({ all }) => {
 
                 <LeftIndexZone>
                   <LeftIndexTopZone>
-                    <LeftIndexTopTitle value="환전고시" onClick={onClickIndex}>
-                      환전고시
-                    </LeftIndexTopTitle>
-                    <LeftIndexTopTitle
-                      value="국제시장환율"
-                      onClick={onClickIndex}
-                    >
-                      국제시장환율
-                    </LeftIndexTopTitle>
-                    <LeftIndexTopTitle value="유가" onClick={onClickIndex}>
-                      유가/에너지
-                    </LeftIndexTopTitle>
-                    <LeftIndexTopTitle value="금시세" onClick={onClickIndex}>
-                      금시세
-                    </LeftIndexTopTitle>
-                    <LeftIndexTopTitle value="원자재" onClick={onClickIndex}>
-                      원자재/농업
-                    </LeftIndexTopTitle>
+                    {isMobile ? (
+                      <div onClick={handleDropdown}>
+                        <IndexDrop>Index Title</IndexDrop>
+                        {isOpen && (
+                          <>
+                            <IndexDropMenu
+                              value="환전고시"
+                              onClick={onClickIndex}
+                            >
+                              {" "}
+                              환전고시
+                            </IndexDropMenu>
+                            <IndexDropMenu
+                              value="국제시장환율"
+                              onClick={onClickIndex}
+                            >
+                              국제시장환율
+                            </IndexDropMenu>
+                            <IndexDropMenu value="유가" onClick={onClickIndex}>
+                              유가/에너지
+                            </IndexDropMenu>
+                            <IndexDropMenu
+                              value="금시세"
+                              onClick={onClickIndex}
+                            >
+                              금시세
+                            </IndexDropMenu>
+                            <IndexDropMenu
+                              value="원자재"
+                              onClick={onClickIndex}
+                            >
+                              원자재/농업
+                            </IndexDropMenu>
+                          </>
+                        )}
+                      </div>
+                    ) : (
+                      <>
+                        <LeftIndexTopTitle
+                          value="환전고시"
+                          onClick={onClickIndex}
+                        >
+                          환전고시
+                        </LeftIndexTopTitle>
+                        <LeftIndexTopTitle
+                          value="국제시장환율"
+                          onClick={onClickIndex}
+                        >
+                          국제시장환율
+                        </LeftIndexTopTitle>
+                        <LeftIndexTopTitle value="유가" onClick={onClickIndex}>
+                          유가/에너지
+                        </LeftIndexTopTitle>
+                        <LeftIndexTopTitle
+                          value="금시세"
+                          onClick={onClickIndex}
+                        >
+                          금시세
+                        </LeftIndexTopTitle>
+                        <LeftIndexTopTitle
+                          value="원자재"
+                          onClick={onClickIndex}
+                        >
+                          원자재/농업
+                        </LeftIndexTopTitle>
+                      </>
+                    )}
                   </LeftIndexTopZone>
+
                   {index === "환전고시" && (
                     <LeftIndexMainZone>
                       <LeftIndexMainInnerTitle>

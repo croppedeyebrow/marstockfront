@@ -29,7 +29,10 @@ export const IndexPageTop = styled.div`
   justify-content: space-between;
   width: 113rem;
   height: 54rem;
-  border: 1px solid white;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const IndexTopLeft = styled.div`
@@ -42,6 +45,10 @@ export const IndexTopLeft = styled.div`
   width: 84rem;
   height: 54rem;
   border: 1px solid white;
+
+  @media (max-width: 768px) {
+    width: 24rem;
+  }
 `;
 
 export const LeftPointZone = styled.div`
@@ -51,9 +58,13 @@ export const LeftPointZone = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.4rem;
-  border: 1px solid red;
+
   width: 98%;
   height: 12rem;
+
+  @media (max-width: 768px) {
+    width: 24rem;
+  }
 `;
 
 export const Point01 = styled.div`
@@ -65,6 +76,12 @@ export const Point01 = styled.div`
   padding: 1rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 24rem;
+    height: 12rem;
+    flex-direction: column;
+  }
 `;
 
 export const Kospi = styled.div`
@@ -76,6 +93,14 @@ export const Kospi = styled.div`
   font-weight: bold;
   color: #ffffff;
   left: 0.7rem;
+
+  @media (max-width: 768px) {
+    width: 22rem;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    font-size: 2.4rem;
+  }
 `;
 
 export const PointInfo = styled.div`
@@ -85,6 +110,13 @@ export const PointInfo = styled.div`
   height: 9rem;
 
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 22rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
 `;
 
 export const Num = styled.div`
@@ -99,6 +131,11 @@ export const Num = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 11rem;
+    font-size: 2rem;
+  }
 `;
 
 export const Value = styled.div`
@@ -138,6 +175,13 @@ export const Kosdaq = styled.div`
   font-weight: bold;
   color: #ffffff;
   left: 0.7rem;
+
+  @media (max-width: 768px) {
+    width: 22rem;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+  }
 `;
 
 export const Kospi200 = styled.div`
@@ -149,6 +193,13 @@ export const Kospi200 = styled.div`
   font-weight: bold;
   color: #ffffff;
   left: 0.7rem;
+
+  @media (max-width: 768px) {
+    width: 22rem;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+  }
 `;
 
 export const Point02 = styled.div`
@@ -160,6 +211,13 @@ export const Point02 = styled.div`
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
   gap: 1.4rem;
+
+  @media (max-width: 768px) {
+    width: 24rem;
+    height: 12rem;
+    flex-direction: column;
+    gap: 0;
+  }
 `;
 
 export const Point03 = styled.div`
@@ -170,6 +228,12 @@ export const Point03 = styled.div`
   padding: 1rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 24rem;
+    height: 12rem;
+    flex-direction: column;
+  }
 `;
 
 export const LeftIndexZone = styled.div`
@@ -179,10 +243,13 @@ export const LeftIndexZone = styled.div`
   align-items: center;
   width: 98%;
   height: 38rem;
-  border: 1px solid green;
 
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 24rem;
+  }
 `;
 export const LeftIndexTopZone = styled.div`
   display: flex;
@@ -199,7 +266,55 @@ export const LeftIndexTopTitle = styled.div`
   line-height: 28px;
   margin-left: 2rem;
   color: #ffffff;
-  /* border: 3px solid red; */
+  // border: 3px solid red;
+  z-index: 3;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+export const IndexDrop = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 24rem;
+  height: 3.6rem;
+  color: #ffffff;
+  // border: 1px solid white;
+  font-size: 2rem;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+  }
+`;
+
+export const IndexDropMenu = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 24rem;
+  height: 4rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  font-size: 1.6rem;
+  z-index: 3;
+  border: 1px solid white;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+  }
 `;
 
 export const LeftIndexMainZone = styled.div`
@@ -221,6 +336,11 @@ export const LeftIndexMainTitle = styled.div`
   font-size: 1.5rem;
   line-height: 20px;
   color: #ab81ff;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 8rem;
+  }
 `;
 
 export const LeftIndexMainInnerTitle = styled.div`
@@ -363,6 +483,18 @@ export const IndexTopTitle = styled.div`
   font-size: 3rem;
   color: white;
   padding: 10px;
+
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
 `;
 
 export const IndexTopRow = styled.div`
@@ -436,6 +568,10 @@ export const MiddleContainer = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding-left: 1rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const IndexPageBottom = styled.div`
@@ -447,6 +583,10 @@ export const IndexPageBottom = styled.div`
   height: 38rem;
   border: 1px solid white;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const BottomTitleBox = styled.div`
