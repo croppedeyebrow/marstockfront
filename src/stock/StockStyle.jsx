@@ -9,9 +9,8 @@ export const StockHeadTitle = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
-
   gap: 1.5rem;
   width: 50%;
   height: 7rem;
