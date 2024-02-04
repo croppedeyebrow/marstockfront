@@ -36,6 +36,11 @@ export const NewsTitle = styled.div`
   font-weight: bold;
   font-size: 3.6rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+    left: 4rem;
+  }
 `;
 
 export const NewsTopContainer = styled.div`
@@ -44,8 +49,15 @@ export const NewsTopContainer = styled.div`
   position: relative;
   width: 100%;
   height: 44.8rem;
-  border: 1px solid black;
+
   gap: 2.6rem;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+    gap: 3rem;
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 export const Realtimezone = styled.div`
@@ -57,6 +69,11 @@ export const Realtimezone = styled.div`
   gap: 2.4rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+    height: 46rem;
+  }
 `;
 
 export const MostViewZone = styled.div`
@@ -68,6 +85,12 @@ export const MostViewZone = styled.div`
   gap: 0.5rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+    height: 60rem;
+    gap: 2rem;
+  }
 `;
 
 export const TopTitile = styled.div`
@@ -80,6 +103,11 @@ export const TopTitile = styled.div`
   width: 100%;
   top: 1.5rem;
   left: 1.5rem;
+
+  @media (max-width: 768px) {
+    height: 2rem;
+    font-size: 1.5rem;
+  }
 `;
 
 export const RealTimeBox = styled.div`
@@ -92,6 +120,11 @@ export const RealTimeBox = styled.div`
   height: 5rem;
 
   left: 1.5rem;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+    left: 1rem;
+  }
 `;
 
 export const TopBox = styled.div`
@@ -107,6 +140,11 @@ export const TopBox = styled.div`
   line-height: 2.3rem;
 
   color: #ab81ff;
+
+  @media (max-width: 768px) {
+    width: 32rem;
+    font-size: 1rem;
+  }
 `;
 
 export const RealNewsName = styled.div`
@@ -122,6 +160,11 @@ export const RealNewsName = styled.div`
   font-size: 1.6rem;
   line-height: 2.3rem;
   color: var(--mainlightorange);
+
+  @media (max-width: 768px) {
+    width: 3rem;
+    font-size: 1rem;
+  }
 `;
 
 export const BottomBox = styled.div`
@@ -139,6 +182,12 @@ export const BottomBox = styled.div`
   line-height: 1.9rem;
 
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 32rem;
+    height: 3rem;
+    font-size: 0.8rem;
+  }
 `;
 
 export const RealTime = styled.div`
@@ -154,6 +203,11 @@ export const RealTime = styled.div`
   font-size: 1.3rem;
   line-height: 1.9rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 10rem;
+    font-size: 0.8rem;
+  }
 `;
 
 export const MostViewBox = styled.div`
@@ -171,6 +225,12 @@ export const MostViewBox = styled.div`
   line-height: 2rem;
   left: 1.5rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 32rem;
+
+    font-size: 0.8rem;
+  }
 `;
 
 export const MostNewsName = styled.div`
@@ -186,6 +246,11 @@ export const MostNewsName = styled.div`
   font-size: 1.3rem;
   line-height: 2rem;
   color: var(--mainlightorange);
+
+  @media (max-width: 768px) {
+    width: 6rem;
+    font-size: 0.8rem;
+  }
 `;
 
 export const NewsUploadTime = styled.div`
@@ -201,6 +266,11 @@ export const NewsUploadTime = styled.div`
   font-size: 1.3rem;
   line-height: 2rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 10rem;
+    font-size: 0.8rem;
+  }
 `;
 
 export const NewsBottomTitle = styled.div`
@@ -216,6 +286,10 @@ export const NewsBottomTitle = styled.div`
   top: 3rem;
   left: 1.2rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+  }
 `;
 
 export const NewsBottomContainer = styled.div`
@@ -240,6 +314,10 @@ export const TvNewsBox = styled.div`
 
   background: rgba(255, 184, 136, 0.12);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+  }
 `;
 
 export const NewsImgBox = styled.img`
@@ -248,6 +326,10 @@ export const NewsImgBox = styled.img`
   width: 14.8rem;
   height: 8.3rem;
   border: 1px solid black;
+
+  @media (max-width: 768px) {
+    width: 8rem;
+  }
 `;
 
 export const NewsInfoBox = styled.div`
@@ -260,6 +342,10 @@ export const NewsInfoBox = styled.div`
   width: 34rem;
   height: 8.3rem;
   border: 1px solid white;
+
+  @media (max-width: 768px) {
+    width: 20rem;
+  }
 `;
 
 export const TvNewsTitle = styled.div`
@@ -272,6 +358,11 @@ export const TvNewsTitle = styled.div`
   font-weight: bold;
   font-size: 1.5rem;
   color: var(--mainlightorange);
+
+  @media (max-width: 768px) {
+    width: 20rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const TvnewsInfo = styled.div`
@@ -284,4 +375,9 @@ export const TvnewsInfo = styled.div`
   font-weight: lighter;
   font-size: 1.1rem;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 20rem;
+    font-size: 0.8rem;
+  }
 `;

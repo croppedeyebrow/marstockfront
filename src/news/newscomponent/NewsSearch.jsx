@@ -9,6 +9,10 @@ const SearchZone = styled.div`
   height: 10rem;
   flex-direction: row;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 34rem;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -34,6 +38,16 @@ const SearchInput = styled.input`
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 768px) {
+    width: 28rem;
+    height: 4rem;
+
+    &::placeholder {
+      font-size: 1.6rem;
+      padding-left: 0rem;
+    }
   }
 `;
 
@@ -65,6 +79,12 @@ const SearchButton = styled.button`
     outline-color: rgba(255, 255, 255, 0);
     outline-offset: 15px;
     text-shadow: 1px 1px 2px #427388;
+  }
+
+  @media (max-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.2rem;
   }
 `;
 
