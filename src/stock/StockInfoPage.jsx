@@ -82,77 +82,72 @@ const StockInfoPage = () => {
             <StockInfoBackboard>
               <StockDivLeft>
                 <CurrentPrice>
-                  현재가
-                  <CurrentPriceNum>11,000</CurrentPriceNum>
+                  종가
+                  <CurrentPriceNum>4,770</CurrentPriceNum>
                 </CurrentPrice>
 
                 <UpDownCheck>
-                  <Point>▲1,000</Point>
-                  <Percent>+10.00%</Percent>
+                  <Point>등락률</Point>
+                  <Percent>-1.24%</Percent>
                 </UpDownCheck>
 
                 <RightLeftContainer>
                   <LeftContainer>
                     <LeftInfo>
-                      <LeftInfoTitle>전일가</LeftInfoTitle>
-                      <LeftInfoNum>10,000</LeftInfoNum>
-                    </LeftInfo>
-
-                    <LeftInfo>
                       <LeftInfoTitle>고가</LeftInfoTitle>
-                      <LeftInfoNum>13,800</LeftInfoNum>
+                      <LeftInfoNum>4,815</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>저가</LeftInfoTitle>
-                      <LeftInfoNum>9,280</LeftInfoNum>
+                      <LeftInfoNum>4,705</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>시가</LeftInfoTitle>
-                      <LeftInfoNum>9,980</LeftInfoNum>
+                      <LeftInfoNum>4,785</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>거래량</LeftInfoTitle>
-                      <LeftInfoNum>17,482,300</LeftInfoNum>
+                      <LeftInfoNum>158,207</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>거래대금</LeftInfoTitle>
-                      <LeftInfoNum>174,823 백만</LeftInfoNum>
+                      <LeftInfoNum>751,639,235</LeftInfoNum>
                     </LeftInfo>
                   </LeftContainer>
 
                   <RightContainer>
                     <LeftInfo>
-                      <LeftInfoTitle>시가총액</LeftInfoTitle>
-                      <LeftInfoNum>8,241 억원</LeftInfoNum>
+                      <LeftInfoTitle>BPS</LeftInfoTitle>
+                      <LeftInfoNum>8,076.0</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
-                      <LeftInfoTitle>시총순위</LeftInfoTitle>
-                      <LeftInfoNum>코스피 298위</LeftInfoNum>
+                      <LeftInfoTitle>PER</LeftInfoTitle>
+                      <LeftInfoNum>23.73</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
-                      <LeftInfoTitle>상장주수</LeftInfoTitle>
-                      <LeftInfoNum>74,918,182</LeftInfoNum>
+                      <LeftInfoTitle>PBR</LeftInfoTitle>
+                      <LeftInfoNum>0.59</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
-                      <LeftInfoTitle>액면가</LeftInfoTitle>
-                      <LeftInfoNum>4,500</LeftInfoNum>
+                      <LeftInfoTitle>EPS</LeftInfoTitle>
+                      <LeftInfoNum>201.0</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
-                      <LeftInfoTitle>52주 최고</LeftInfoTitle>
-                      <LeftInfoNum>11,000</LeftInfoNum>
+                      <LeftInfoTitle>DIV</LeftInfoTitle>
+                      <LeftInfoNum>5.66</LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
-                      <LeftInfoTitle>52주 최저</LeftInfoTitle>
-                      <LeftInfoNum>3,387</LeftInfoNum>
+                      <LeftInfoTitle>DPS</LeftInfoTitle>
+                      <LeftInfoNum>270.0</LeftInfoNum>
                     </LeftInfo>
                   </RightContainer>
                 </RightLeftContainer>
