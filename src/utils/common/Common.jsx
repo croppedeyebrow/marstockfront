@@ -4,8 +4,8 @@ import "moment/locale/ko";
 moment.locale("ko");
 
 export const MARSTOCK_DOMAIN = "http://localhost:8111";
-export const SOCKET_URL = "ws://localhost:8111/ws/comment";
-export const SOCKET_CHAT_URL = "ws://localhost:8111/ws/chat";
+export const SOCKET_URL = "ws://localhost:8111/ws/marstock";
+// export const SOCKET_CHAT_URL = "ws://localhost:8111/ws/chat";
 export const API_KEY = "a42a4db55c114cff5770a883fc8607f9";
 export const REDIRECT_URL = "http://localhost:3000/kakao";
 export const SECRET_KEY = "Xs7FwH1FUNOkspaOszcuw2wZXTQGrEIs";

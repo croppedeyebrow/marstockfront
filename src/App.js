@@ -13,7 +13,7 @@ import StockIndexPage from "./stock/StockIndexPage";
 import MyPage from "./my/MyPage";
 import AdminPage from "./admin/AdminPage";
 import NewsPage from "./news/NewsPage";
-import WebSocketComponent from "./utils/WebSocketComponent ";
+import WebSocketComponent from "./utils/common/WebSocket";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
 
             <Route path="/" element={<MainPage />} />
             <Route path="/test" element={<WebSocketComponent />} />
+            <Route path="/ws" element={<WebSocketComponent />} />
 
             <Route path="/stockInfo/:name" element={<StockInfoPage />} />
             <Route path="/stockList" element={<StockListPage />} />
