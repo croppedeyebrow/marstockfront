@@ -102,6 +102,8 @@ const Menubutton = styled.img`
 `;
 
 const Header = () => {
+  // 헤더 로그인 상태 결정
+  // 인터셉터 수정 필요: 로그인 상태 관리 필요
   const { updateLoginStatus, isLogin, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   console.log("isLogin", isLogin);
