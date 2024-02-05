@@ -7,6 +7,11 @@ export const MyPageContainer = styled.div`
   flex-direction: column;
   padding-left: 10.4rem;
   padding-top: 0.2rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    padding: 2rem;
+  }
 `;
 
 export const MyPagetop = styled.div`
@@ -18,6 +23,12 @@ export const MyPagetop = styled.div`
   gap: 1.4rem;
 
   margin-top: 4.2rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 export const MyPagetopleft = styled.div`
@@ -228,6 +239,11 @@ export const MyAssetBox = styled.div`
   height: 5.1rem;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    gap: 2rem;
+  }
 `;
 
 export const AssetTitle = styled.div`
@@ -239,6 +255,11 @@ export const AssetTitle = styled.div`
   color: white;
   width: 20rem;
   height: 90%;
+
+  @media (max-width: 768px) {
+    width: 13rem;
+    font-size: 1.8rem;
+  }
 `;
 
 export const AssetPoint = styled.div`
@@ -250,6 +271,10 @@ export const AssetPoint = styled.div`
   color: white;
   width: 26.7rem;
   height: 90%;
+
+  @media (max-width: 768px) {
+    width: 13rem;
+    font-size: 2.4rem;
 `;
 
 export const UpdownBox = styled.div`
@@ -270,6 +295,11 @@ export const UpdownBox = styled.div`
     cursor: pointer;
     scale: 1.05;
   }
+
+  @media (max-width: 768px) {
+    width: 6rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const GraphBox = styled.div`
@@ -282,10 +312,14 @@ export const GraphBox = styled.div`
 
   background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const MyPageBottom = styled.div`
-  positon: relative;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,6 +329,10 @@ export const MyPageBottom = styled.div`
 
   background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const BottomInnerBox = styled.div`
@@ -308,6 +346,10 @@ export const BottomInnerBox = styled.div`
 
   background: rgba(0, 0, 0, 0.2);
   border-radius: 12px;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const BottomTitle = styled.div`
@@ -321,6 +363,10 @@ export const BottomTitle = styled.div`
   font-size: 3rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const TitleLine = styled.div`
@@ -333,6 +379,10 @@ export const TitleLine = styled.div`
   background: #ffffff;
   border-radius: 50px;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const StockInfoBox = styled.div`
@@ -344,6 +394,10 @@ export const StockInfoBox = styled.div`
 
   height: 94%;
   width: 95rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const StockInfoTitle = styled.div`
@@ -358,6 +412,11 @@ export const StockInfoTitle = styled.div`
   font-weight: bold;
   color: var(--mainlightpurple);
   gap: 2.8rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    height: 2.8rem;
+  }
 `;
 
 export const StockInfoTitleText = styled.div`
@@ -367,10 +426,15 @@ export const StockInfoTitleText = styled.div`
 
   display: flex;
   position: relative;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    height: 1.4rem;
+  }
 `;
 
 export const MyStockNumber = styled.div`
-  postion: relative;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -379,6 +443,10 @@ export const MyStockNumber = styled.div`
   width: 94%;
   gap: 1.4rem;
   border-top: 1px solid #5b5b5b;
+
+  @media (max-width: 768px) {
+    gap: 1.8rem;
+  }
 `;
 
 export const StockInfoText01 = styled.div`
@@ -391,6 +459,11 @@ export const StockInfoText01 = styled.div`
   height: 2rem;
   width: 24rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    height: 1.4rem;
+  }
 `;
 
 export const StockInfoText02 = styled.div`
@@ -403,6 +476,12 @@ export const StockInfoText02 = styled.div`
   height: 2rem;
   width: 22rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    width: 32rem;
+    right: 0.3rem;
+  }
 `;
 
 export const StockInfoText03 = styled.div`
@@ -415,6 +494,11 @@ export const StockInfoText03 = styled.div`
   height: 2rem;
   width: 22rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    height: 1.4rem;
+  }
 `;
 
 export const StockInfoText04 = styled.div`
@@ -428,6 +512,13 @@ export const StockInfoText04 = styled.div`
   width: 22rem;
   right: 1rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    width: 28rem;
+    height: 1.4rem;
+    right: 0;
+  }
 `;
 
 export const StockInfoText05 = styled.div`
@@ -440,6 +531,12 @@ export const StockInfoText05 = styled.div`
   height: 2rem;
   width: 22rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    width: 28rem;
+    height: 1.4rem;
+  }
 `;
 
 export const StockInfoText06 = styled.div`
@@ -452,6 +549,12 @@ export const StockInfoText06 = styled.div`
   height: 2rem;
   width: 22rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    width: 28rem;
+    height: 1.4rem;
+  }
 `;
 
 export const StockInfoText07 = styled.div`
@@ -465,6 +568,13 @@ export const StockInfoText07 = styled.div`
   width: 22rem;
   right: 1.2rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    width: 28rem;
+    height: 1.4rem;
+    right: 0.3rem;
+  }
 `;
 
 export const StockInfoText08 = styled.div`
@@ -478,6 +588,13 @@ export const StockInfoText08 = styled.div`
   width: 22rem;
   right: 1.6rem;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    width: 32rem;
+    height: 1.4rem;
+    right: 0.8rem;
+  }
 `;
 
 export const Example = styled.div`

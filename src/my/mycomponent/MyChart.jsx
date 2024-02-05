@@ -6,9 +6,13 @@ const ChartContainer = styled.div`
   margin: 20px;
   display: flex;
   position: relative;
-  width: 55rem;
+  width: 100%;
   height: 24rem;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 const MyChart = () => {
@@ -112,7 +116,7 @@ const MyChart = () => {
           series={chartState.series}
           type="line"
           height={240}
-          width={540}
+          width="130%"
         />
       </div>
       <div id="html-dist"></div>

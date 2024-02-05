@@ -32,6 +32,10 @@ const StyledModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 25px;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const StyledTitleCloseBtn = styled.div`
