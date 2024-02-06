@@ -3,6 +3,29 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   *{
    box-sizing: border-box;
+
+   ::-webkit-scrollbar {
+         width: 1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--mainblack);
+
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--mainpurple), var(--mainorange));
+    height: 1rem;
+    border-radius: 1rem;
+  
+
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, var(--mainlightpurple), var(--mainlightorange));
+  }
+
+
   } 
 
   body {
@@ -10,6 +33,15 @@ const GlobalStyle = createGlobalStyle`
    padding: 0px;
    font-family: 'Noto Sans KR', sans-serif;
    background-color: var(--mainblack);
+
+   ::-webkit-scrollbar {
+    width: 30px;
+
+   }
+
+
+
+   
   }
 
   html {
