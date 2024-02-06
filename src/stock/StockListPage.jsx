@@ -83,12 +83,12 @@ const StockListPage = ({ stock, setStockList }) => {
                   <StyledLink to="/StockInfo">
                     <StockInfo02>{data.종목명}</StockInfo02>
                   </StyledLink>
-                  <StockInfo03>{data.고가}</StockInfo03>
-                  <StockInfo04>{data.등락률}</StockInfo04>
-                  <StockInfo05>{data.BPS}</StockInfo05>
-                  <StockInfo06>{data.PER}</StockInfo06>
-                  <StockInfo07>{data.DIV}</StockInfo07>
-                  <StockInfo08>{data.EPS}</StockInfo08>
+                  <StockInfo03>{data.고가 ? data.고가 : 0}</StockInfo03>
+                  <StockInfo04>{data.등락률 ? data.등락률 : 0}</StockInfo04>
+                  <StockInfo05>{data.BPS ? data.BPS : 0}</StockInfo05>
+                  <StockInfo06>{data.PER ? data.PER : 0}</StockInfo06>
+                  <StockInfo07>{data.DIV ? data.DIV : 0}</StockInfo07>
+                  <StockInfo08>{data.EPS ? data.EPS : 0}</StockInfo08>
                 </StockInfoList>
               ))}
             </StockInfoBackboard>

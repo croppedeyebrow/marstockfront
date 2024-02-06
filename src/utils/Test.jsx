@@ -3,7 +3,7 @@ import WebSocketComponent from "./common/WebSocket";
 import CommonAxios from "./common/CommonAxios";
 
 const Test = () => {
-  // async 관리 switch
+  const [num, setNum] = useState();
   const [switchTitle, setSwitchTitle] = useState("주식");
   const [stockList, setStockList] = useState("고가");
   const [stock, setStock] = useState([]);
@@ -131,7 +131,7 @@ const Test = () => {
           console.log("제이슨 타입", parsedMessage.message);
           // eval은 내장 함수로 만약 문자열이 객체형식이면 객체 형태로 반환한다.
           const stockObject = eval(`(${parsedMessage.message})`);
-
+          setNum(parsedMessage.type);
           setStock(stockObject);
         } catch (error) {
           console.error("Failed to parse JSON:", error);
@@ -157,6 +157,7 @@ const Test = () => {
       <button onClick={handleCategoryClick}>EPS</button>
       <button onClick={handleCategoryClick}>PER</button>
       <button onClick={handleCategoryClick}>DIV</button>
+      {<p style={{ color: "white" }}>{num}</p>}
       {stock.map((data, index) => (
         <p key={index}>
           <p style={{ color: "white" }}>{index + 1}</p>

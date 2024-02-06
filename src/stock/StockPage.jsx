@@ -16,7 +16,7 @@ import StockListPage from "./StockListPage";
 import StockCommunityPage from "./StockCommunityPage";
 
 const StockPage = () => {
-  // async 관리 switch
+  const [num, setNum] = useState();
   const [switchTitle, setSwitchTitle] = useState("주식");
   const [stockList, setStockList] = useState("고가");
   const [stock, setStock] = useState([]);
@@ -80,27 +80,25 @@ const StockPage = () => {
     }
   };
 
-  const getStock = async (socket) => {
-    try {
-      // onmessage 이벤트 핸들러를 정의하여 데이터를 처리하고 상태를 업데이트합니다.
-      socket.onmessage = (event) => {
-        const message = event.data;
+  const getStock = async () => {
+    const socket = WebSocketComponent("stockList", "", stockList);
 
-        // 여기서 데이터 처리 또는 상태 업데이트를 수행할 수 있습니다.
-        try {
-          const parsedMessage = JSON.parse(message);
-          console.log("제이슨 타입", parsedMessage.message);
-          // eval은 내장 함수로 만약 문자열이 객체형식이면 객체 형태로 반환한다.
-          const stockObject = eval(`(${parsedMessage.message})`);
-
-          setStock(stockObject);
-        } catch (error) {
-          console.error("Failed to parse JSON:", error);
-        }
-      };
-    } catch (e) {
-      console.log(e);
-    }
+    // onmessage 이벤트 핸들러를 정의하여 데이터를 처리하고 상태를 업데이트합니다.
+    socket.onmessage = (event) => {
+      const message = event.data;
+      // console.log("getStock 메세지", message);
+      // 여기서 데이터 처리 또는 상태 업데이트를 수행할 수 있습니다.
+      try {
+        const parsedMessage = JSON.parse(message);
+        // console.log("제이슨 타입", parsedMessage.message);
+        // eval은 내장 함수로 만약 문자열이 객체형식이면 객체 형태로 반환한다.
+        const stockObject = eval(`(${parsedMessage.message})`);
+        setNum(parsedMessage.type);
+        setStock(stockObject);
+      } catch (error) {
+        console.error("Failed to parse JSON:", error);
+      }
+    };
   };
 
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
@@ -153,7 +151,7 @@ const StockPage = () => {
       // 컴포넌트가 언마운트되면 WebSocket 연결을 닫습니다.
       socket.close();
     };
-  }, [switchTitle, stockList, stock]);
+  }, [switchTitle, stockList]);
 
   return (
     <>
@@ -170,6 +168,8 @@ const StockPage = () => {
             시장지표
           </StockHeadTitle03>
         </StockHeadTitle>
+        {<p style={{ color: "white" }}>{num}</p>}
+
         {showStockListPage && (
           <StockListPage stock={stock} setStockList={setStockList} />
         )}

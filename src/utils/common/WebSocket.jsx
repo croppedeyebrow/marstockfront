@@ -9,7 +9,7 @@ const WebSocketComponent = (roomId, name, type) => {
 
   socket.onmessage = (event) => {
     const message = event.data;
-    console.log(message);
+    // console.log(message);
   };
 
   socket.onclose = () => {
