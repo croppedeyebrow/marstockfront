@@ -275,6 +275,7 @@ export const AssetPoint = styled.div`
   @media (max-width: 768px) {
     width: 13rem;
     font-size: 2.4rem;
+  }
 `;
 
 export const UpdownBox = styled.div`
