@@ -78,6 +78,12 @@ const MainPage = () => {
                   </div>
                <div id="startbutton" onClick={closeBanner}>시작하기</div>
             </WelcomeBanner>
+            <CardContainer open={openInfo}>
+               <div className="card" id="card1">종목토론</div>
+               <div className="card" id="card2">주식 예측</div>
+               <div className="card" id="card3">MARSTOCK <br/> 모의투자 시작</div>
+               <div className="card" id="card4">실시간 차트</div>
+            </CardContainer>
             <InfoContainer open={openInfo}>
                <div className="infobox" id="oneinfo">
                   <div id="infoline">
@@ -139,12 +145,7 @@ const MainPage = () => {
                   </div>
                </div>
             </InfoContainer>
-            <CardContainer open={openInfo}>
-               <div className="card" id="card1">종목토론</div>
-               <div className="card" id="card2">주식 예측</div>
-               <div className="card" id="card3">MARSTOCK <br/> 모의투자 시작</div>
-               <div className="card" id="card4">실시간 차트</div>
-            </CardContainer>
+            
             <GuideContainer open={openInfo}>
                <div className="guide" id="guide01">
                   어떻게 <br/>사용하나요?

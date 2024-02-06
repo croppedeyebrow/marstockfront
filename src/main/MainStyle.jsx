@@ -28,10 +28,11 @@ export const Container = styled.div`
    justify-content: center;
    align-items: center;
    #circle {
-      width: 40%;
+      width: 35%;
       height: auto;
-      position: absolute;
+      position: fixed;
       z-index: -1;
+      top: 20%;
    }
    #aurora {
       width: 100%;
@@ -95,9 +96,9 @@ export const WelcomeBanner = styled.div`
    z-index: 1;
    scale: .9;
    position: fixed;
+   top: 20%;
    left: ${props => props.open ? '10%' : '-350%'};
    transition: left 1.5s ease;
-   margin-top: -50rem;
    width: 100rem;
    height: auto;
    padding: 7rem;
@@ -242,7 +243,7 @@ export const CardContainer = styled.div`
    scale: ${props => props.open ? '1' : '0'};
   .card {
    width: 27rem;
-   height: 45rem;
+   height: 40rem;
    background-color: red;
    border-radius: 3rem;
    color: white;
@@ -262,7 +263,7 @@ export const CardContainer = styled.div`
   }
   #card1 {
    background-image: url(${conimg04});
-   background-size: 300%;
+   background-size: 150%;
    background-position: center;
   }
   #card2 {
