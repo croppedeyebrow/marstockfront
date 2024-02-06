@@ -4,6 +4,10 @@ export const AdminContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 6.3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
 `;
 export const Example = styled.div`
   width: 100px;
@@ -17,13 +21,31 @@ export const Example = styled.div`
   }
 `;
 
+export const AdminPageContainer = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  flex-direction: column;
+`;
+
 export const AdminHello = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  top: 14rem;
-  left: 5rem;
-  gap: 1rem;
+
+  height: 5rem;
+  width: 40rem;
+  top: 15rem;
+  left: 40rem;
+
+  @media (max-width: 768px) {
+    left: 0;
+    width: 40rem;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Hello1 = styled.div`
@@ -50,6 +72,10 @@ export const MemberListBox = styled.div`
   height: 40rem;
   margin-top: 4.8rem;
   border: 1px solid black;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const MemberListTitle = styled.div`
@@ -63,6 +89,10 @@ export const MemberListTitle = styled.div`
   height: 4.5rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const LitstTitle01 = styled.div`
@@ -74,6 +104,10 @@ export const LitstTitle01 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const LitstTitle02 = styled.div`
@@ -85,6 +119,10 @@ export const LitstTitle02 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const LitstTitle03 = styled.div`
@@ -96,6 +134,10 @@ export const LitstTitle03 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const LitstTitle04 = styled.div`
@@ -107,6 +149,10 @@ export const LitstTitle04 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const LitstTitle05 = styled.div`
@@ -118,6 +164,10 @@ export const LitstTitle05 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const LitstTitle06 = styled.div`
@@ -129,6 +179,10 @@ export const LitstTitle06 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const MemberListInfo = styled.div`
@@ -140,6 +194,10 @@ export const MemberListInfo = styled.div`
   gap: 2rem;
   width: 110rem;
   height: 4.5rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const ListInfo01 = styled.div`
@@ -151,6 +209,10 @@ export const ListInfo01 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const ListInfo02 = styled.div`
@@ -162,6 +224,10 @@ export const ListInfo02 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const ListInfo03 = styled.div`
@@ -173,6 +239,10 @@ export const ListInfo03 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const ListInfo04 = styled.div`
@@ -184,6 +254,10 @@ export const ListInfo04 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const ListInfo05 = styled.div`
@@ -195,6 +269,10 @@ export const ListInfo05 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const ListInfo06 = styled.div`
@@ -206,6 +284,10 @@ export const ListInfo06 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const MemberStockInfoBox = styled.div`
@@ -216,6 +298,10 @@ export const MemberStockInfoBox = styled.div`
   height: 40rem;
   margin-top: 4.8rem;
   border: 1px solid black;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 export const MemberStockTitle = styled.div`
@@ -229,6 +315,11 @@ export const MemberStockTitle = styled.div`
   height: 4.5rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    gap: 1rem;
+  }
 `;
 
 export const StockTitle01 = styled.div`
@@ -240,6 +331,11 @@ export const StockTitle01 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockTitle02 = styled.div`
@@ -251,6 +347,11 @@ export const StockTitle02 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockTitle03 = styled.div`
@@ -262,6 +363,11 @@ export const StockTitle03 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockTitle04 = styled.div`
@@ -273,6 +379,11 @@ export const StockTitle04 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockTitle05 = styled.div`
@@ -284,6 +395,11 @@ export const StockTitle05 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockTitle06 = styled.div`
@@ -295,6 +411,10 @@ export const StockTitle06 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockTitle07 = styled.div`
@@ -306,6 +426,11 @@ export const StockTitle07 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockTitle08 = styled.div`
@@ -317,6 +442,11 @@ export const StockTitle08 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockTitle09 = styled.div`
@@ -328,6 +458,11 @@ export const StockTitle09 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const MemberStockInfo = styled.div`
@@ -339,6 +474,11 @@ export const MemberStockInfo = styled.div`
   gap: 2rem;
   width: 110rem;
   height: 4.5rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    gap: 1rem;
+  }
 `;
 
 export const StockListInfo01 = styled.div`
@@ -350,6 +490,11 @@ export const StockListInfo01 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockListInfo02 = styled.div`
@@ -361,6 +506,11 @@ export const StockListInfo02 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockListInfo03 = styled.div`
@@ -372,6 +522,11 @@ export const StockListInfo03 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockListInfo04 = styled.div`
@@ -383,6 +538,11 @@ export const StockListInfo04 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockListInfo05 = styled.div`
@@ -394,6 +554,11 @@ export const StockListInfo05 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockListInfo06 = styled.div`
@@ -405,6 +570,11 @@ export const StockListInfo06 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockListInfo07 = styled.div`
@@ -416,6 +586,11 @@ export const StockListInfo07 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockListInfo08 = styled.div`
@@ -427,6 +602,11 @@ export const StockListInfo08 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;
 
 export const StockListInfo09 = styled.div`
@@ -438,4 +618,9 @@ export const StockListInfo09 = styled.div`
   height: 4.4rem;
   font-size: 1.6rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 8rem;
+  }
 `;

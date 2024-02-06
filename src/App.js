@@ -17,6 +17,48 @@ import WebSocketComponent from "./utils/common/WebSocket";
 import Test from "./utils/Test";
 import { AuthProvider } from "./context/AuthContext";
 import WsTest from "./WsTest";
+import SolarSystem from "./utils/style/OrbitPage";
+import { useLocation } from "react-router-dom";
+
+function RoutesWithLoading() {
+  const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 3000); // 10 seconds delay
+    return () => clearTimeout(timer);
+  }, [location]);
+
+  return (
+    <>
+      {isLoading ? (
+        <SolarSystem />
+      ) : (
+        <Routes>
+          <Route path="/stockpage" element={<StockPage />} />
+          <Route path="/test" element={<Test />} />
+
+          <Route path="/" element={<MainPage />} />
+          <Route path="/ws" element={<WebSocketComponent />} />
+          <Route path="/ws-stockinfo" element={<WsTest />} />
+
+          <Route path="/stockInfo/:name" element={<StockInfoPage />} />
+          <Route path="/stockList" element={<StockListPage />} />
+          <Route path="/stockIndex" element={<StockIndexPage />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/news" element={<NewsPage />} />
+
+          <Route path="/form" element={<FormPage />} />
+          <Route path="/signin" element={<SigninPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/findid" element={<FindIdPage />} />
+          <Route path="/findpw" element={<FindPwPage />} />
+        </Routes>
+      )}
+    </>
+  );
+}
 
 function App() {
   return (
@@ -25,7 +67,7 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
-            <Route path="/stockpage" element={<StockPage />} />
+            {/* <Route path="/stockpage" element={<StockPage />} />
             <Route path="/test" element={<Test />} />
 
             <Route path="/" element={<MainPage />} />
@@ -43,7 +85,8 @@ function App() {
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/findid" element={<FindIdPage />} />
-            <Route path="/findpw" element={<FindPwPage />} />
+            <Route path="/findpw" element={<FindPwPage />} /> */}
+            <RoutesWithLoading />
           </Routes>
         </Router>
       </AuthProvider>
