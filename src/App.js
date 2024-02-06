@@ -19,6 +19,7 @@ import { AuthProvider } from "./context/AuthContext";
 import WsTest from "./WsTest";
 import SolarSystem from "./utils/style/OrbitPage";
 import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function RoutesWithLoading() {
   const [isLoading, setIsLoading] = useState(true);
@@ -66,8 +67,9 @@ function App() {
       <GlobalStyle />
       <AuthProvider>
         <Router>
-          <Routes>
-            {/* <Route path="/stockpage" element={<StockPage />} />
+          <RoutesWithLoading />
+          {/* <Routes> */}
+          {/* <Route path="/stockpage" element={<StockPage />} />
             <Route path="/test" element={<Test />} />
 
             <Route path="/" element={<MainPage />} />
@@ -86,8 +88,8 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/findid" element={<FindIdPage />} />
             <Route path="/findpw" element={<FindPwPage />} /> */}
-            <RoutesWithLoading />
-          </Routes>
+
+          {/* </Routes> */}
         </Router>
       </AuthProvider>
     </>
