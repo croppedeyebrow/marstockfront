@@ -2,6 +2,7 @@ const WebSocketComponent = (roomId, name, type) => {
   const socket = new WebSocket(
     `ws://localhost:8111/ws/marstock?room=${roomId}&name=${name}&type=${type}`
   );
+  console.log(socket.url);
 
   socket.onopen = () => {
     console.log("WebSocket connected");

@@ -55,6 +55,8 @@ import {
   PurchaseNum,
 } from "./StockInfoStyle";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import WebSocketComponent from "../utils/common/WebSocket";
 
 const StockInfoPage = () => {
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
@@ -62,9 +64,42 @@ const StockInfoPage = () => {
   const [purchaseNum, setPurchaseNum] = useState(0);
   const [sellingNum, setSellingNum] = useState(0);
   const [message, setMessage] = useState("");
+  const [stock, setStock] = useState([]);
 
   // 주식명으로 데이터 조회
   const { name } = useParams();
+  useEffect(() => {
+    // WebSocket 객체 얻기
+    const socket = WebSocketComponent(name);
+
+    socket.onmessage = (event) => {
+      const message = event.data;
+      try {
+        const parsedMessage = JSON.parse(message);
+        console.log("파싱된 JSON 데이터:", parsedMessage);
+        // parsedMessage.message를 객체로 변환
+        const stockData = JSON.parse(parsedMessage.message);
+
+        // stockData에서 필요한 데이터에 접근
+        const latestStock = stockData.latestStock;
+
+        // latestStock 배열의 첫 번째 요소에 접근
+        const firstStock = latestStock[0];
+        setStock(firstStock);
+
+        // 여기에서 parsedMessage를 사용하여 상태를 업데이트하거나 다른 작업을 수행할 수 있습니다.
+        // 예를 들어:
+        // setStock(parsedMessage.latestStock);
+      } catch (error) {
+        console.error("Failed to parse JSON:", error);
+      }
+    };
+
+    // 언마운트될 때 WebSocket 연결 닫기
+    return () => {
+      socket.close();
+    };
+  }, [name, message]);
 
   return (
     <>
@@ -73,81 +108,114 @@ const StockInfoPage = () => {
         contents={
           <StockListContainer>
             <StockCategory>
-              <Category01>종목명</Category01>
-              <Category02>종목코드</Category02>
-              <Category03>KOSPI</Category03>
-              <Category04>날짜</Category04>
+              <Category01>{stock.stockName}</Category01>
+              <Category02>{stock.stockCode}</Category02>
+              {/* <Category03>KOSPI</Category03> */}
+              <Category04>{stock.stockDate}</Category04>
             </StockCategory>
 
             <StockInfoBackboard>
               <StockDivLeft>
                 <CurrentPrice>
                   종가
-                  <CurrentPriceNum>4,770</CurrentPriceNum>
+                  <CurrentPriceNum>
+                    {Number(stock.stockClose).toLocaleString()}
+                  </CurrentPriceNum>
                 </CurrentPrice>
 
                 <UpDownCheck>
                   <Point>등락률</Point>
-                  <Percent>-1.24%</Percent>
+                  <Percent>{Number(stock.stockFluctuationRate)}%</Percent>
                 </UpDownCheck>
 
                 <RightLeftContainer>
                   <LeftContainer>
                     <LeftInfo>
                       <LeftInfoTitle>고가</LeftInfoTitle>
-                      <LeftInfoNum>4,815</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockHigh).toLocaleString()}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>저가</LeftInfoTitle>
-                      <LeftInfoNum>4,705</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockLow).toLocaleString()}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>시가</LeftInfoTitle>
-                      <LeftInfoNum>4,785</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockOpen).toLocaleString()}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>거래량</LeftInfoTitle>
-                      <LeftInfoNum>158,207</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockVolume).toLocaleString()}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>거래대금</LeftInfoTitle>
-                      <LeftInfoNum>751,639,235</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockTradingValue).toLocaleString()}
+                      </LeftInfoNum>
                     </LeftInfo>
                   </LeftContainer>
 
                   <RightContainer>
                     <LeftInfo>
                       <LeftInfoTitle>BPS</LeftInfoTitle>
-                      <LeftInfoNum>8,076.0</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockBps).toLocaleString()}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>PER</LeftInfoTitle>
-                      <LeftInfoNum>23.73</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockPer).toLocaleString(undefined, {
+                          minimumFractionDigits: 1,
+                          maximumFractionDigits: 1,
+                        })}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>PBR</LeftInfoTitle>
-                      <LeftInfoNum>0.59</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockPbr).toLocaleString(undefined, {
+                          minimumFractionDigits: 1,
+                          maximumFractionDigits: 1,
+                        })}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>EPS</LeftInfoTitle>
-                      <LeftInfoNum>201.0</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockEps).toLocaleString()}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>DIV</LeftInfoTitle>
-                      <LeftInfoNum>5.66</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockDiv).toLocaleString(undefined, {
+                          minimumFractionDigits: 1,
+                          maximumFractionDigits: 1,
+                        })}
+                      </LeftInfoNum>
                     </LeftInfo>
 
                     <LeftInfo>
                       <LeftInfoTitle>DPS</LeftInfoTitle>
-                      <LeftInfoNum>270.0</LeftInfoNum>
+                      <LeftInfoNum>
+                        {Number(stock.stockDps).toLocaleString()}
+                      </LeftInfoNum>
                     </LeftInfo>
                   </RightContainer>
                 </RightLeftContainer>
