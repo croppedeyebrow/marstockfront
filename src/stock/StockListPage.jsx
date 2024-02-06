@@ -6,6 +6,7 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import StockPage from "./StockPage";
+
 import {
   StockListContainer,
   StockCategory,

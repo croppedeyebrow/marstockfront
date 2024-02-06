@@ -1,21 +1,8 @@
-import Header from "../utils/style/Header";
-import Footer from "../utils/style/Footer";
-import React, { useState, useEffect } from "react";
-import CommonAxios from "../utils/common/CommonAxios";
-import WebSocketComponent from "../utils/common/WebSocket";
+import { useEffect, useState } from "react";
+import WebSocketComponent from "./common/WebSocket";
+import CommonAxios from "./common/CommonAxios";
 
-import {
-  StockContainer,
-  StockHeadTitle,
-  StockHeadTitle01,
-  StockHeadTitle02,
-  StockHeadTitle03,
-} from "./StockStyle";
-import StockIndexPage from "./StockIndexPage";
-import StockListPage from "./StockListPage";
-import StockCommunityPage from "./StockCommunityPage";
-
-const StockPage = () => {
+const Test = () => {
   // async 관리 switch
   const [switchTitle, setSwitchTitle] = useState("주식");
   const [stockList, setStockList] = useState("고가");
@@ -80,29 +67,6 @@ const StockPage = () => {
     }
   };
 
-  const getStock = async (socket) => {
-    try {
-      // onmessage 이벤트 핸들러를 정의하여 데이터를 처리하고 상태를 업데이트합니다.
-      socket.onmessage = (event) => {
-        const message = event.data;
-
-        // 여기서 데이터 처리 또는 상태 업데이트를 수행할 수 있습니다.
-        try {
-          const parsedMessage = JSON.parse(message);
-          console.log("제이슨 타입", parsedMessage.message);
-          // eval은 내장 함수로 만약 문자열이 객체형식이면 객체 형태로 반환한다.
-          const stockObject = eval(`(${parsedMessage.message})`);
-
-          setStock(stockObject);
-        } catch (error) {
-          console.error("Failed to parse JSON:", error);
-        }
-      };
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
   const [selectedHeadTitle, setSelectedHeadTitle] = useState(null);
   const [showStockListPage, setShowStockListPage] = useState(true);
@@ -145,7 +109,39 @@ const StockPage = () => {
     setSwitchTitle("시장지표");
   };
 
-  // 데이터 컨트롤 useEffect
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const handleCategoryClick = (event) => {
+    if (selectedCategory) {
+      selectedCategory.style.color = "rgba(255, 255, 255, 0.7)";
+    }
+    event.target.style.color = "#ffffff";
+    setSelectedCategory(event.target);
+    setStockList(event.target.textContent);
+  };
+
+  const getStock = async (socket) => {
+    try {
+      // onmessage 이벤트 핸들러를 정의하여 데이터를 처리하고 상태를 업데이트합니다.
+      socket.onmessage = (event) => {
+        const message = event.data;
+
+        // 여기서 데이터 처리 또는 상태 업데이트를 수행할 수 있습니다.
+        try {
+          const parsedMessage = JSON.parse(message);
+          console.log("제이슨 타입", parsedMessage.message);
+          // eval은 내장 함수로 만약 문자열이 객체형식이면 객체 형태로 반환한다.
+          const stockObject = eval(`(${parsedMessage.message})`);
+
+          setStock(stockObject);
+        } catch (error) {
+          console.error("Failed to parse JSON:", error);
+        }
+      };
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   useEffect(() => {
     const socket = WebSocketComponent("stockList", "", stockList);
     getIndex(socket);
@@ -157,31 +153,26 @@ const StockPage = () => {
 
   return (
     <>
-      <Header />
-      <StockContainer>
-        <StockHeadTitle>
-          <StockHeadTitle01 onClick={handleHeadTitleClick01}>
-            주식
-          </StockHeadTitle01>
-          <StockHeadTitle02 onClick={handleHeadTitleClick02}>
-            종목토론
-          </StockHeadTitle02>
-          <StockHeadTitle03 onClick={handleHeadTitleClick03}>
-            시장지표
-          </StockHeadTitle03>
-        </StockHeadTitle>
-        {showStockListPage && (
-          <StockListPage stock={stock} setStockList={setStockList} />
-        )}
-        {showStockDiscussionPage && <StockCommunityPage />}
-        {showStockIndexPage && <StockIndexPage all={all} />}
-      </StockContainer>
-
-      {/* <InlineContainer color=""></InlineContainer> */}
-
-      <Footer />
+      <button onClick={handleCategoryClick}>고가</button>
+      <button onClick={handleCategoryClick}>EPS</button>
+      <button onClick={handleCategoryClick}>PER</button>
+      <button onClick={handleCategoryClick}>DIV</button>
+      {stock.map((data, index) => (
+        <p key={index}>
+          <p style={{ color: "white" }}>{index + 1}</p>
+          <p to="/StockInfo">
+            <p style={{ color: "white" }}>{data.종목명}</p>
+          </p>
+          <p style={{ color: "white" }}>{data.고가}</p>
+          <p style={{ color: "white" }}>{data.등락률}</p>
+          <p style={{ color: "white" }}>{data.BPS}</p>
+          <p style={{ color: "white" }}>{data.PER}</p>
+          <p style={{ color: "white" }}>{data.DIV}</p>
+          <p style={{ color: "white" }}>{data.EPS}</p>
+        </p>
+      ))}
     </>
   );
 };
 
-export default StockPage;
+export default Test;

@@ -1,6 +1,6 @@
-const WebSocketComponent = (roomId, name) => {
+const WebSocketComponent = (roomId, name, type) => {
   const socket = new WebSocket(
-    `ws://localhost:8111/ws/marstock?room=${roomId}&name=${name}`
+    `ws://localhost:8111/ws/marstock?room=${roomId}&name=${name}&type=${type}`
   );
 
   socket.onopen = () => {

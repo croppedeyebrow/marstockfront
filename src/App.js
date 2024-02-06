@@ -14,6 +14,7 @@ import MyPage from "./my/MyPage";
 import AdminPage from "./admin/AdminPage";
 import NewsPage from "./news/NewsPage";
 import WebSocketComponent from "./utils/common/WebSocket";
+import Test from "./utils/Test";
 import { AuthProvider } from "./context/AuthContext";
 import WsTest from "./WsTest";
 
@@ -25,9 +26,9 @@ function App() {
         <Router>
           <Routes>
             <Route path="/stockpage" element={<StockPage />} />
+            <Route path="/test" element={<Test />} />
 
             <Route path="/" element={<MainPage />} />
-            <Route path="/test" element={<WebSocketComponent />} />
             <Route path="/ws" element={<WebSocketComponent />} />
             <Route path="/ws-stockinfo" element={<WsTest />} />
 
