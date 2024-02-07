@@ -49,7 +49,7 @@ const InlineContainer = ({ color, contents, category }) => {
   return (
     <>
       <Space>
-        <Category>{category}</Category>
+        {/* <Category>{category}</Category> */}
         <InlineCon color={color}>{contents}</InlineCon>
       </Space>
     </>

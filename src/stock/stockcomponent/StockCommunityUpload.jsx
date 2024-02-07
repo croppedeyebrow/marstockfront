@@ -25,12 +25,12 @@ const SearchInput = styled.textarea`
   height: 20rem;
 
   background: #ffffff;
-  border-radius: 3rem;
+  border-radius: 1.5rem;
   border: none;
 
   color: #000000;
   font-size: 2rem;
-  padding-left: 2rem;
+  padding: 1rem 2rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* 볼륨감을 위한 그림자 추가 */
 
   &::placeholder {

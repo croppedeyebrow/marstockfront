@@ -25,16 +25,18 @@ export const NewsPageContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const NewsTitle = styled.div`
   position: relative;
   display: flex;
-  width: 50%;
+  width: 110rem;
 
   align-items: center;
-  top: 14rem;
-  left: 40rem;
+  top: 9rem;
   height: 6.3rem;
   font-family: "Noto Sans KR";
   font-style: normal;

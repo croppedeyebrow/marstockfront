@@ -262,9 +262,9 @@ export const LeftIndexTopTitle = styled.div`
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 28px;
-  margin-left: 2rem;
+  margin-left: 4rem;
   color: #ffffff;
   // border: 3px solid red;
   z-index: 3;

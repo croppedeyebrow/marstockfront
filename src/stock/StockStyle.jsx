@@ -8,6 +8,9 @@ export const StockContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const StockHeadTitle = styled.div`
@@ -15,12 +18,11 @@ export const StockHeadTitle = styled.div`
   position: relative;
   flex-direction: row;
   // justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
-  width: 50%;
+  width: 110rem;
   height: 7rem;
-  left: 36rem;
-  top: 14rem;
+  top: 12rem;
 
   @media (max-width: 768px) {
     width: 40rem;

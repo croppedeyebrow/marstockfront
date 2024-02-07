@@ -19,7 +19,7 @@ const SearchInput = styled.input`
   display: flex;
   position: relative;
 
-  width: 92rem;
+  width: 100rem;
   height: 6rem;
 
   background: #ffffff;
@@ -47,6 +47,7 @@ const SearchInput = styled.input`
     &::placeholder {
       font-size: 1.4rem;
   }
+}
 `;
 
 const SearchButton = styled.button`
@@ -54,14 +55,14 @@ const SearchButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 6rem;
+  width: 12rem;
   height: 6rem;
 
   background: var(--mainpurple);
   border-radius: 3rem;
   border: 1px solid transparent; /* 투명한 초기 테두리 */
-  font-weight: 400;
-  font-size: 1.6rem;
+  font-weight: 600;
+  font-size: 1.8rem;
   line-height: 29px;
 
   color: #ffffff;
