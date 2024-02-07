@@ -59,7 +59,7 @@ const SigninPage = () => {
         <Link to="/">
           <Logo src={headlogo} alt="logo" />
         </Link>
-        <InputContainer>
+        <InputContainer style={{ gap : "3rem"}}>
           <div id="title">Login</div>
           <InputBox
             id="inputid"
