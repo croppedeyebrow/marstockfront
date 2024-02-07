@@ -65,6 +65,15 @@ const StockInfoPage = () => {
   const [sellingNum, setSellingNum] = useState(0);
   const [message, setMessage] = useState("");
   const [stock, setStock] = useState([]);
+  const [dataCount, setDataCount] = useState(0); // 데이터 카운트 추가
+
+  // 밀리초 타임스탬프를 이용하여 Date 객체 생성
+  const date = new Date(Number(stock.stockDate));
+
+  // 날짜를 원하는 형식으로 변환
+  const stockDate = `${date.getFullYear()}-${(date.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
 
   // 주식명으로 데이터 조회
   const { name } = useParams();
@@ -87,9 +96,7 @@ const StockInfoPage = () => {
         const firstStock = latestStock[0];
         setStock(firstStock);
 
-        // 여기에서 parsedMessage를 사용하여 상태를 업데이트하거나 다른 작업을 수행할 수 있습니다.
-        // 예를 들어:
-        // setStock(parsedMessage.latestStock);
+        setDataCount((prevCount) => prevCount + 1); // 데이터가 들어올 때마다 카운트 증가
       } catch (error) {
         console.error("Failed to parse JSON:", error);
       }
@@ -99,11 +106,12 @@ const StockInfoPage = () => {
     return () => {
       socket.close();
     };
-  }, [name, message]);
+  }, [name]);
 
   return (
     <>
       <Header />
+      <p style={{ color: "white" }}>{dataCount}</p>
       <InlineContainer
         contents={
           <StockListContainer>
@@ -111,13 +119,13 @@ const StockInfoPage = () => {
               <Category01>{stock.stockName}</Category01>
               <Category02>{stock.stockCode}</Category02>
               {/* <Category03>KOSPI</Category03> */}
-              <Category04>{stock.stockDate}</Category04>
+              <Category04>{stockDate}</Category04>
             </StockCategory>
 
             <StockInfoBackboard>
               <StockDivLeft>
                 <CurrentPrice>
-                  종가
+                  현재가
                   <CurrentPriceNum>
                     {Number(stock.stockClose).toLocaleString()}
                   </CurrentPriceNum>
@@ -280,7 +288,9 @@ const StockInfoPage = () => {
 
                       <SellingItem>
                         <SellingeTag>현재가</SellingeTag>
-                        <TageNumber>11,000</TageNumber>
+                        <TageNumber>
+                          {Number(stock.stockClose).toLocaleString()}
+                        </TageNumber>
                       </SellingItem>
 
                       <SellingItem>
