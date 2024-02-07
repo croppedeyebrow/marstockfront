@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MarsSpace from "../images/MARSSPACE.png";
 
 export const NewsContainer = styled.div`
   width: 100%;
@@ -20,6 +21,10 @@ export const Example = styled.div`
 export const NewsPageContainer = styled.div`
   width: 100%;
   height: 100%;
+  background-image: url(${MarsSpace});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export const NewsTitle = styled.div`
@@ -301,6 +306,12 @@ export const NewsBottomContainer = styled.div`
   gap: 2rem;
   grid-template-columns: repeat(2, 54rem);
   grid-template-rows: repeat(3, 12.5rem);
+
+  @media (max-width: 768px) {
+    width: 34rem;
+    grid-template-columns: repeat(1, 34rem);
+    grid-template-rows: repeat(8, 12.5rem);
+  }
 `;
 
 export const TvNewsBox = styled.div`

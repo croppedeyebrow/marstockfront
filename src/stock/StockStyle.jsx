@@ -1,8 +1,13 @@
 import styled from "styled-components";
+import MarsMilkeway from "../images/MarsMilkeway.png";
 
 export const StockContainer = styled.div`
   width: 100%;
   height: 100%;
+  background-image: url(${MarsMilkeway});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export const StockHeadTitle = styled.div`
