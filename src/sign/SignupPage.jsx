@@ -283,6 +283,9 @@ const SignupPage = () => {
             onBlur={checkEmail}
             ref={emailInputRef}
           ></InputBox>
+          <div className="checktext">
+            틀렸다틀렸어
+          </div>
           <NoneBtnModalComponent
             closeModalHandler={closeEmailModal}
             isOpen={openEmailModal}
@@ -305,17 +308,26 @@ const SignupPage = () => {
             type="password"
             onChange={onChangePassword}
           ></InputBox>
+          <div className="checktext">
+            틀렸다틀렸어
+          </div>
           <InputBox
             placeholder="Confirm Password"
             type="password"
             onChange={onChangeConfirmPassword}
             onBlur={checkPassword}
           ></InputBox>
+          <div className="checktext">
+            틀렸다틀렸어
+          </div>
           <InputBox
             placeholder="Phone"
             onChange={onChangeTel}
             // onBlur={onBlurSms}
           ></InputBox>
+          <div className="checktext">
+            틀렸다틀렸어
+          </div>
           <NoneBtnModalComponent
             isOpen={sms}
             customButton={false}
@@ -334,12 +346,18 @@ const SignupPage = () => {
               </>
             }
           />
-          <InputBox
+          <InputBox 
             placeholder="Nickname"
             onChange={onChangeNickName}
             onBlur={onClickCheckNickName}
           ></InputBox>
+          <div className="checktext">
+            틀렸다틀렸어
+          </div>
           <InputBox placeholder="birth (ex. 990811)"></InputBox>
+          <div className="checktext">
+            틀렸다틀렸어
+          </div>
           <div id="agreeBox">
             <CheckBoxLabel style={{ fontWeight: "500", fontSize: "1.7rem" }}>
               <CheckBox checked={allAgree} onChange={handleAllAgree} />

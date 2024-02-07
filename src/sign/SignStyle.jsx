@@ -52,7 +52,13 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
+  .checktext{
+    width: 36rem;
+    text-align: start;
+    font-size: 1.1rem;
+    color: var(--mainlightpurple);
+  }
   #title {
     font-size: 3rem;
     font-weight: 900;
