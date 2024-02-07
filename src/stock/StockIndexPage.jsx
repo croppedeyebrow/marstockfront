@@ -128,31 +128,121 @@ const StockIndexPage = ({ all }) => {
                     <>
                       {currentPage === 0 && (
                         <Point01>
-                          <Kospi>KOSPI</Kospi>
+                          <Kospi>
+                            {
+                              all?.crawlDomesticIndicatorsDtoList[0]
+                                ?.crawlDomesticIndicatorsName
+                            }
+                          </Kospi>
                           <PointInfo>
-                            <Num value="+2,525.83">2,525.83</Num>
-                            <Value value="▲ 1.73">▲ 1.73</Value>
-                            <Percent value="+0.06%">+0.06%</Percent>
+                            <Num
+                              value={all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {
+                                all?.crawlDomesticIndicatorsDtoList[0]
+                                  ?.crawlDomesticIndicatorsPrice
+                              }
+                            </Num>
+                            <Value
+                              value={all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                                /[-+]?[0-9]*\.?[0-9]+/
+                              )}
+                            </Value>
+                            <Percent
+                              value={all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            </Percent>
                           </PointInfo>
                         </Point01>
                       )}
                       {currentPage === 1 && (
                         <Point02>
-                          <Kosdaq>KOSDAQ</Kosdaq>
+                          <Kosdaq>
+                            {
+                              all?.crawlDomesticIndicatorsDtoList[1]
+                                ?.crawlDomesticIndicatorsName
+                            }
+                          </Kosdaq>
                           <PointInfo>
-                            <Num value="-858.25">858.25</Num>
-                            <Value value="-▼ 9.83">▼ 9.83</Value>
-                            <Percent value="-1.14%">-1.14%</Percent>
+                            <Num
+                              value={all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {
+                                all?.crawlDomesticIndicatorsDtoList[1]
+                                  ?.crawlDomesticIndicatorsPrice
+                              }
+                            </Num>
+                            <Value
+                              value={all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                                /[-+]?[0-9]*\.?[0-9]+/
+                              )}
+                            </Value>
+                            <Percent
+                              value={all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            </Percent>
                           </PointInfo>
                         </Point02>
                       )}
                       {currentPage === 2 && (
                         <Point03>
-                          <Kospi200>KOSPI 200</Kospi200>
+                          <Kospi200>
+                            {
+                              all?.crawlDomesticIndicatorsDtoList[2]
+                                ?.crawlDomesticIndicatorsName
+                            }
+                          </Kospi200>
                           <PointInfo>
-                            <Num value="+338.75">338.75</Num>
-                            <Value value="▲ 0.69">▲ 0.69</Value>
-                            <Percent value="+0.20%">+0.20%</Percent>
+                            <Num
+                              value={all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {
+                                all?.crawlDomesticIndicatorsDtoList[2]
+                                  ?.crawlDomesticIndicatorsPrice
+                              }
+                            </Num>
+                            <Value
+                              value={all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                                /[-+]?[0-9]*\.?[0-9]+/
+                              )}
+                            </Value>
+                            <Percent
+                              value={all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            >
+                              {all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                                /\+[-+]?[0-9]*\.?[0-9]+%/
+                              )}
+                            </Percent>
                           </PointInfo>
                         </Point03>
                       )}
@@ -160,27 +250,118 @@ const StockIndexPage = ({ all }) => {
                   ) : (
                     <>
                       <Point01>
-                        <Kospi>KOSPI</Kospi>
+                        <Kospi>
+                          {
+                            all?.crawlDomesticIndicatorsDtoList[0]
+                              ?.crawlDomesticIndicatorsName
+                          }
+                        </Kospi>
                         <PointInfo>
-                          <Num value="+2,525.83">2,525.83</Num>
-                          <Value value="▲ 1.73">▲ 1.73</Value>
-                          <Percent value="+0.06%">+0.06%</Percent>
+                          <Num
+                            value={all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {
+                              all?.crawlDomesticIndicatorsDtoList[0]
+                                ?.crawlDomesticIndicatorsPrice
+                            }
+                          </Num>
+                          <Value
+                            value={all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                              /[-+]?[0-9]*\.?[0-9]+/
+                            )}
+                          </Value>
+                          <Percent
+                            value={all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {all?.crawlDomesticIndicatorsDtoList[0]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          </Percent>
                         </PointInfo>
                       </Point01>
+
                       <Point02>
-                        <Kosdaq>KOSDAQ</Kosdaq>
+                        <Kosdaq>
+                          {
+                            all?.crawlDomesticIndicatorsDtoList[1]
+                              ?.crawlDomesticIndicatorsName
+                          }
+                        </Kosdaq>
                         <PointInfo>
-                          <Num value="-858.25">858.25</Num>
-                          <Value value="-▼ 9.83">▼ 9.83</Value>
-                          <Percent value="-1.14%">-1.14%</Percent>
+                          <Num
+                            value={all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {
+                              all?.crawlDomesticIndicatorsDtoList[1]
+                                ?.crawlDomesticIndicatorsPrice
+                            }
+                          </Num>
+                          <Value
+                            value={all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                              /[-+]?[0-9]*\.?[0-9]+/
+                            )}
+                          </Value>
+                          <Percent
+                            value={all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {all?.crawlDomesticIndicatorsDtoList[1]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          </Percent>
                         </PointInfo>
                       </Point02>
                       <Point03>
-                        <Kospi200>KOSPI 200</Kospi200>
+                        <Kospi200>
+                          {
+                            all?.crawlDomesticIndicatorsDtoList[2]
+                              ?.crawlDomesticIndicatorsName
+                          }
+                        </Kospi200>
                         <PointInfo>
-                          <Num value="+338.75">338.75</Num>
-                          <Value value="▲ 0.69">▲ 0.69</Value>
-                          <Percent value="+0.20%">+0.20%</Percent>
+                          <Num
+                            value={all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {
+                              all?.crawlDomesticIndicatorsDtoList[2]
+                                ?.crawlDomesticIndicatorsPrice
+                            }
+                          </Num>
+                          <Value
+                            value={all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                              /[-+]?[0-9]*\.?[0-9]+/
+                            )}
+                          </Value>
+                          <Percent
+                            value={all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          >
+                            {all?.crawlDomesticIndicatorsDtoList[2]?.crawlDomesticIndicatorsChange?.match(
+                              /\+[-+]?[0-9]*\.?[0-9]+%/
+                            )}
+                          </Percent>
                         </PointInfo>
                       </Point03>
                     </>
@@ -436,57 +617,65 @@ const StockIndexPage = ({ all }) => {
               <IndexTopRight>
                 <IndexTopContainer>
                   <IndexTopTitle>검색 상위</IndexTopTitle>
-                  {all?.crawlStockDtoList.map((data, index) => (
+                  <IndexTopRow>
+                    <IndexTopNum>-</IndexTopNum>
+                    <IndexTopName>
+                      <AnimatedText>종목명</AnimatedText>
+                    </IndexTopName>
+                    <IndexTopPrice>종목 가격</IndexTopPrice>
+                    <IndexTopRate>검색율</IndexTopRate>
+                  </IndexTopRow>
+                  {all?.crawlSearchDtos.map((data, index) => (
                     <IndexTopRow key={index}>
                       <IndexTopNum>{index + 1}</IndexTopNum>
                       <IndexTopName>
-                        <AnimatedText>{data.name}</AnimatedText>
+                        <AnimatedText>{data.searchName}</AnimatedText>
                       </IndexTopName>
-                      <IndexTopPrice>{data.price}</IndexTopPrice>
-                      <IndexTopRate>{data.upDown}</IndexTopRate>
+                      <IndexTopPrice>{data.searchPrice}</IndexTopPrice>
+                      <IndexTopRate>{data.searchCount}</IndexTopRate>
                     </IndexTopRow>
                   ))}
                 </IndexTopContainer>
               </IndexTopRight>
             </IndexPageTop>
-            <MiddleContainer>TOP 종목</MiddleContainer>
+            <MiddleContainer>TOP 거래 상위</MiddleContainer>
             <IndexPageBottom>
-              <BottomTitleBox>
+              {/* <BottomTitleBox>
                 <BoTitle onClick={handleKategorieClick}>거래상위</BoTitle>
-                {/* <BoTitle onClick={handleKategorieClick}>하한가</BoTitle>
-                  <BoTitle onClick={handleKategorieClick}>상승</BoTitle>
-                  <BoTitle onClick={handleKategorieClick}>보합</BoTitle>
-                  <BoTitle onClick={handleKategorieClick}>하락</BoTitle>
-                  <BoTitle onClick={handleKategorieClick}>거래량상위</BoTitle>
-                  <BoTitle onClick={handleKategorieClick}>고가대비급락</BoTitle>
-                  <BoTitle onClick={handleKategorieClick}>시가총액상위</BoTitle> */}
-              </BottomTitleBox>
+                <BoTitle onClick={handleKategorieClick}>하한가</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>상승</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>보합</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>하락</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>거래량상위</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>고가대비급락</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>시가총액상위</BoTitle>
+              </BottomTitleBox> */}
 
               <KategorieTitle>
-                {/* <Kategorie01>순위</Kategorie01>
-                  <Kategorie02>종목명</Kategorie02>
-                  <Kategorie03>현재가</Kategorie03>
-                  <Kategorie04>상승/하강</Kategorie04>
-                  <Kategorie05>등락률</Kategorie05>
-                  <Kategorie06>거래량</Kategorie06>
-                  <Kategorie07>시가</Kategorie07>
-                  <Kategorie08>고가</Kategorie08>
-                  <Kategorie09>저가</Kategorie09> */}
+                <Kategorie01>순위</Kategorie01>
+                <Kategorie02>종목명</Kategorie02>
+                <Kategorie03>현재가</Kategorie03>
+                <Kategorie04>상승/하강</Kategorie04>
+                <Kategorie05>등락률</Kategorie05>
+                {/* <Kategorie06>거래량</Kategorie06>
+                <Kategorie07>시가</Kategorie07>
+                <Kategorie08>고가</Kategorie08>
+                <Kategorie09>저가</Kategorie09> */}
               </KategorieTitle>
 
-              {/* {stock.map((item, index) => (
-                  <KategorieInfo key={index}>
-                    <KInfo01>{index + 1}</KInfo01>
-                    <KInfo02>{item.name}</KInfo02>
-                    <KInfo03>{item.price}</KInfo03>
-                    <KInfo04>{item.upDown}</KInfo04>
-                    <KInfo05>{item.rate}</KInfo05>
-                    <KInfo06>{item.value4}</KInfo06>
+              {all?.crawlStockDtoList.map((item, index) => (
+                <KategorieInfo key={index}>
+                  <KInfo01>{index + 1}</KInfo01>
+                  <KInfo02>{item.name}</KInfo02>
+                  <KInfo03>{item.price}</KInfo03>
+                  <KInfo04>{item.upDown}</KInfo04>
+                  <KInfo05>{item.rate}</KInfo05>
+                  {/* <KInfo06>{item.value4}</KInfo06>
                     <KInfo07>{item.value5}</KInfo07>
                     <KInfo08>{item.value6}</KInfo08>
-                    <KInfo09>{item.value7}</KInfo09>
-                  </KategorieInfo>
-                ))} */}
+                    <KInfo09>{item.value7}</KInfo09> */}
+                </KategorieInfo>
+              ))}
             </IndexPageBottom>
           </StockListContainer>
         }

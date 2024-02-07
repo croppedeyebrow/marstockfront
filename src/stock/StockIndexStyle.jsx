@@ -125,7 +125,7 @@ export const Num = styled.div`
   font-size: 2.6rem;
   font-weight: bold;
   color: ${(props) =>
-    props.value.startsWith("-") ? "var(--downblue)" : "var(--upred)"};
+    String(props.value).startsWith("-") ? "var(--downblue)" : "var(--upred)"};
 
   display: flex;
   position: relative;
@@ -144,7 +144,7 @@ export const Value = styled.div`
   font-size: 1.8rem;
   font-weight: bold;
   color: ${(props) =>
-    props.value.startsWith("-") ? "var(--downblue)" : "var(--upred)"};
+    String(props.value).startsWith("-") ? "var(--downblue)" : "var(--upred)"};
 
   display: flex;
   position: relative;
@@ -158,7 +158,7 @@ export const Percent = styled.div`
   font-size: 1.8rem;
   font-weight: bold;
   color: ${(props) =>
-    props.value.startsWith("-") ? "var(--downblue)" : "var(--upred)"};
+    String(props.value).startsWith("-") ? "var(--downblue)" : "var(--upred)"};
 
   display: flex;
   position: relative;

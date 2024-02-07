@@ -23,6 +23,7 @@ const StockPage = () => {
   // 데이터 프롭스
   // 인덱스
   const [all, setAll] = useState({
+    crawlDomesticIndicatorsDtoList: [],
     crawlExchangeDtoList: [],
     crawlMarketDtoList: [],
     crawlOilDtoList: [],
@@ -31,14 +32,17 @@ const StockPage = () => {
     crawlEnergyDtoList: [],
     crawlArgDtoList: [],
     crawlStockDtoList: [],
+    crawlSearchDtos: [],
   });
 
   // 데이터 가져오는 switch 케이스
-  const getIndex = async () => {
+  const getIndex = async (socket) => {
     switch (switchTitle) {
       case "시장지표":
         if (all.crawlMarketDtoList.length === 0) {
           try {
+            // 시장 지표는 비동기 restfull api 사용
+            socket.close();
             const res = await CommonAxios.getAxios("common", "index", "", "");
             console.log("인덱스", res.data);
             if (res.status === 200) {
@@ -58,16 +62,16 @@ const StockPage = () => {
         console.log("주식 페이지 : ", stockList);
         switch (stockList) {
           case "고가":
-            getStock();
+            getStock(socket);
             break;
           case "PER":
-            getStock();
+            getStock(socket);
             break;
           case "EPS":
-            getStock();
+            getStock(socket);
             break;
           case "DIV":
-            getStock();
+            getStock(socket);
             break;
           default:
             console.log("주식 switch 케이스 오류");
@@ -80,8 +84,8 @@ const StockPage = () => {
     }
   };
 
-  const getStock = async () => {
-    const socket = WebSocketComponent("stockList", "", stockList);
+  const getStock = async (socket) => {
+    // const socket = WebSocketComponent("stockList", "", stockList);
 
     // onmessage 이벤트 핸들러를 정의하여 데이터를 처리하고 상태를 업데이트합니다.
     socket.onmessage = (event) => {
