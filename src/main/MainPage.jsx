@@ -12,7 +12,7 @@ import { Circle,
          RotatingElement,
          CardContainer,
          GuideContainer } from "./MainStyle";
-import circle from "../images/MainCircle.png";
+import marscircle from "../images/MarsCircle.png";
 import { useEffect, useState } from "react";
 import aurora from "../images/BackAurora.svg";
 import NoneBtnModalComponent from "../utils/component/NoneBtnModalComponent";
@@ -57,12 +57,12 @@ const MainPage = () => {
             closeButtonStyle={{ b: "blue", textColor: "" }} // 모달창을 닫을 때 버튼의 배경색과 글자색을 설정합니다. 따로 사용하지 않으면 기본 스타일이 적용됩니다. 배경과 글자색만 쓸 수 있습니다.
          />
          <Space>
-         <Container>
+         <Container open={openBanner}>
             <img id="star" src={Backstar} alt="backstar"/>
             <img id="starreverse" src={BackstarReverse} alt="backstarreverse"/>
             <img id="aurora" src={aurora} alt="aurora"/>
             {/* <img id="aurora"  alt="aurora"/> */}
-            <img id="circle" src={circle} alt="circle"/>
+            <img id="circle" src={marscircle} alt="mars" />
             <WelcomeBanner open={openBanner}>
                <div id="text">
                   <div style={{fontSize:"5rem", textShadow:"-4px -4px 6px  var(--mainpurple), 3px 3px 6px  var(--mainorange)"}}>주식의 흐름을 그리다, <br/>MARSTOCK</div>

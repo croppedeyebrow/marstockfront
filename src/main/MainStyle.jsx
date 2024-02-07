@@ -28,11 +28,24 @@ export const Container = styled.div`
    justify-content: center;
    align-items: center;
    #circle {
-      width: 35%;
+      width: 50%;
+      animation: ${props => props.open ? 'scaleup 5.5s ease-in-out forwards' : 'none'};
+
+    @keyframes scaleup {
+      0% {
+        transform: scale(0);
+      }
+      30% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
       height: auto;
       position: fixed;
       z-index: -1;
-      top: 20%;
+      top: 0%;
    }
    #aurora {
       width: 100%;
