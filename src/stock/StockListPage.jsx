@@ -70,6 +70,7 @@ const StockListPage = ({ stock, setStockList }) => {
               <StockTitleBox>
                 <StockTitle01>순위</StockTitle01>
                 <StockTitle02>종목명</StockTitle02>
+                <StockTitle03>현재가</StockTitle03>
                 <StockTitle03>고가</StockTitle03>
                 <StockTitle04>등락률</StockTitle04>
                 <StockTitle05>bps</StockTitle05>
@@ -80,9 +81,10 @@ const StockListPage = ({ stock, setStockList }) => {
               {stock.map((data, index) => (
                 <StockInfoList key={index}>
                   <StockInfo01>{index + 1}</StockInfo01>
-                  <StyledLink to="/StockInfo">
+                  <StyledLink to={`/StockInfo/${data.종목명}`}>
                     <StockInfo02>{data.종목명}</StockInfo02>
                   </StyledLink>
+                  <StockInfo03>{data.종가 ? data.종가 : 0}</StockInfo03>
                   <StockInfo03>{data.고가 ? data.고가 : 0}</StockInfo03>
                   <StockInfo04>{data.등락률 ? data.등락률 : 0}</StockInfo04>
                   <StockInfo05>{data.BPS ? data.BPS : 0}</StockInfo05>
