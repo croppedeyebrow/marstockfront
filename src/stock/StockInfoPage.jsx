@@ -57,6 +57,8 @@ import {
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import WebSocketComponent from "../utils/common/WebSocket";
+import CommonAxios from "../utils/common/CommonAxios";
+import { Common } from "../utils/common/Common";
 
 const StockInfoPage = () => {
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
@@ -107,6 +109,38 @@ const StockInfoPage = () => {
       socket.close();
     };
   }, [name]);
+
+  // 구매 함수
+  const onClickBuy = async () => {
+    try {
+      const accessToken = Common.getAccessToken();
+      const buyDto = {
+        buyCount: sellingNum,
+        buyPrice: stock.stockClose,
+      };
+      const stockDto = {
+        종목명: stock.stockName,
+        종목코드: stock.stockCode,
+      };
+      const multiDto = {
+        accessToken: accessToken,
+        buyDto: buyDto,
+        stockDto: stockDto,
+      };
+      const res = await CommonAxios.postTokenAxios(
+        "buyAndSell",
+        "buy",
+        multiDto
+      );
+      if (res.status === 200) {
+        console.log(res.data);
+      } else {
+        console.log("res 확인할것");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -325,20 +359,7 @@ const StockInfoPage = () => {
                   <StockPurchaseBox>
                     <PurchaseTop>
                       <PurchaseTitle>매수</PurchaseTitle>
-                      <PurchaseButton
-                        onClick={() => {
-                          if (
-                            window.confirm(
-                              `매수하려는 수량은 ${purchaseNum}개 입니다. 진행하시겠습니까?`
-                            )
-                          ) {
-                            setMessage("매수 성공");
-                            setTimeout(() => setMessage(""), 3000); // 3초 후에 메시지 숨기기
-                          }
-                        }}
-                      >
-                        매수
-                      </PurchaseButton>{" "}
+                      <PurchaseButton onClick={onClickBuy}>매수</PurchaseButton>
                       {message && (
                         <div
                           style={{
