@@ -69,6 +69,11 @@ const StockInfoPage = () => {
   const [stock, setStock] = useState([]);
   const [dataCount, setDataCount] = useState(0); // 데이터 카운트 추가
 
+  // 구매 내역 조회
+  const [buyDtoList, setBuyDtoList] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+
   // 밀리초 타임스탬프를 이용하여 Date 객체 생성
   const date = new Date(Number(stock.stockDate));
 
@@ -87,7 +92,7 @@ const StockInfoPage = () => {
       const message = event.data;
       try {
         const parsedMessage = JSON.parse(message);
-        console.log("파싱된 JSON 데이터:", parsedMessage);
+        // console.log("파싱된 JSON 데이터:", parsedMessage);
         // parsedMessage.message를 객체로 변환
         const stockData = JSON.parse(parsedMessage.message);
 
@@ -110,12 +115,48 @@ const StockInfoPage = () => {
     };
   }, [name]);
 
+  // 구매 내역 조회
+  const getInfo = async () => {
+    try {
+      const accessToken = Common.getAccessToken();
+      const stockDto = {
+        종목명: stock.stockName,
+      };
+      const multiDto = {
+        accessToken: accessToken,
+        stockDto: stockDto,
+      };
+      const res = await CommonAxios.postTokenAxios(
+        "buyAndSell",
+        "getInfo",
+        multiDto
+      );
+      if (res.status === 200) {
+        console.log("구매 내역", res.data);
+        setBuyDtoList(res.data.buyDtoList);
+        setTotalPrice(
+          res.data.buyDtoList.reduce(
+            (total, data) => total + data.buyPrice * data.buyCount,
+            0
+          )
+        );
+        setTotalCount(
+          res.data.buyDtoList.reduce((total, data) => total + data.buyCount, 0)
+        );
+      } else {
+        setBuyDtoList([]);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   // 구매 함수
   const onClickBuy = async () => {
     try {
       const accessToken = Common.getAccessToken();
       const buyDto = {
-        buyCount: sellingNum,
+        buyCount: purchaseNum,
         buyPrice: stock.stockClose,
       };
       const stockDto = {
@@ -132,15 +173,25 @@ const StockInfoPage = () => {
         "buy",
         multiDto
       );
-      if (res.status === 200) {
-        console.log(res.data);
+      if (res.data) {
+        alert("구매 완료");
       } else {
-        console.log("res 확인할것");
+        alert("구매 실패");
       }
     } catch (e) {
       console.log(e);
     }
   };
+
+  // 판매 함수
+  const onClickSell = async () => {};
+
+  // 구매내역 useEffect
+  useEffect(() => {
+    if (stock) {
+      getInfo();
+    }
+  }, [stock]);
 
   return (
     <>
@@ -283,7 +334,7 @@ const StockInfoPage = () => {
                         }}
                       >
                         매도
-                      </SellingButton>{" "}
+                      </SellingButton>
                       {message && (
                         <div
                           style={{
@@ -312,12 +363,22 @@ const StockInfoPage = () => {
                     <SellingBottom>
                       <SellingItem>
                         <SellingeTag>매입가</SellingeTag>
-                        <TageNumber>5,500</TageNumber>
+                        <TageNumber>
+                          {buyDtoList[4]?.buyPrice}
+                          {/* {buyDtoList &&
+                            buyDtoList.map((data, index) => (
+                              <>
+                                <span key={index}>{data.buyPrice}/</span>
+                              </>
+                            ))} */}
+                        </TageNumber>
                       </SellingItem>
 
                       <SellingItem>
                         <SellingeTag>보유수량</SellingeTag>
-                        <TageNumber>30</TageNumber>
+                        <TageNumber>
+                          {Number(totalCount).toLocaleString()}
+                        </TageNumber>
                       </SellingItem>
 
                       <SellingItem>
@@ -336,22 +397,39 @@ const StockInfoPage = () => {
 
                       <SellingItem>
                         <SellingeTag>매입금</SellingeTag>
-                        <TageNumber>165,500</TageNumber>
+                        <TageNumber>
+                          {Number(totalPrice).toLocaleString()}
+                        </TageNumber>
                       </SellingItem>
 
                       <SellingItem>
                         <SellingeTag>매도가격</SellingeTag>
-                        <TageNumber>0</TageNumber>
+                        <TageNumber>
+                          {Number(
+                            stock.stockClose * sellingNum
+                          ).toLocaleString()}
+                        </TageNumber>
                       </SellingItem>
 
                       <SellingItem>
                         <SellingeTag>평가금</SellingeTag>
-                        <TageNumber>330,000</TageNumber>
+                        <TageNumber>
+                          {Number(
+                            stock.stockClose * totalCount
+                          ).toLocaleString()}
+                        </TageNumber>
                       </SellingItem>
 
                       <SellingItem>
                         <SellingeTag>수익률</SellingeTag>
-                        <ProfitNumber>+100%</ProfitNumber>
+                        <ProfitNumber>
+                          {(
+                            ((stock.stockClose * totalCount - totalPrice) /
+                              totalPrice) *
+                            100
+                          ).toFixed(5)}
+                          %
+                        </ProfitNumber>
                       </SellingItem>
                     </SellingBottom>
                   </StockSellingBox>
