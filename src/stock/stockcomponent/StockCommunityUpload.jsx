@@ -1,5 +1,6 @@
 import styled from "styled-components";
-// import { useState } from "react";
+import CommonAxios from "../../utils/common/CommonAxios";
+import { useState } from "react";
 
 const SearchZone = styled.div`
   position: relative;
@@ -76,45 +77,46 @@ const SearchButton = styled.button`
   }
 `;
 
-const StockCommunityUpload = () => {
-  // const [content, setContent] = useState("");
+const StockCommunityUpload = ({ setCheckPost }) => {
+  const [content, setContent] = useState("");
 
-  // const handleUpload = async () => {
-  //   try {
-  //     // axios를 사용하여 서버로 데이터 전송
-  //     const response = await axios.post("/community/post", {
-  //       content: content,
-  //       // 다른 필요한 데이터도 추가할 수 있음
-  //     });
+  const handleInputChange = (e) => {
+    setContent(e.target.value);
+  };
 
-  //     // 서버로부터의 응답 처리
-  //     if (response.data === true) {
-  //       // 글 등록 성공
-  //       console.log("글이 성공적으로 등록되었습니다.");
-  //       // 추가적으로 필요한 작업 수행
-  //     } else {
-  //       // 글 등록 실패
-  //       console.log("글 등록에 실패하였습니다.");
-  //       // 추가적으로 필요한 작업 수행
-  //     }
-  //   } catch (error) {
-  //     // 에러 처리
-  //     console.error("글 등록 중 오류가 발생하였습니다.", error);
-  //   }
-  // };
+  const communityNewPost = async () => {
+    try {
+      // content가 비어 있는지 체크
+      if (content.trim() === "") {
+        console.log("post: Content is empty");
+        return; // 등록을 막음
+      }
+
+      const postResponse = await CommonAxios.postAxios("community", "new", {
+        content: content,
+        authorId: "userId",
+      });
+      if (postResponse.status === 200) {
+        console.log("post :  success");
+        setContent("");
+        setCheckPost(true);
+      } else {
+        console.log("post : False");
+      }
+    } catch (error) {
+      console.error("post : Error:", error);
+      throw error;
+    }
+  };
   return (
     <>
       <SearchZone>
         <SearchInput
+          value={content}
+          onChange={handleInputChange}
           placeholder="주식에 대해 공유할 내용을 작성해주세요"
-          // value={content}
-          // onChange={(e) => setContent(e.target.value)}
         ></SearchInput>
-        <SearchButton
-        // onClick={handleUpload}
-        >
-          등록
-        </SearchButton>
+        <SearchButton onClick={communityNewPost}>등록</SearchButton>
       </SearchZone>
     </>
   );

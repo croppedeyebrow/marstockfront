@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 const SearchZone = styled.div`
   position: relative;
@@ -82,12 +83,26 @@ const SearchButton = styled.button`
   }
 `;
 
-const StockCommunitySearch = () => {
+const StockCommunitySearch = ({ setSearchKeyword, setCheckSearch }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSearch = () => {
+    setSearchKeyword(inputValue);
+    setCheckSearch(true);
+  };
   return (
     <>
       <SearchZone>
-        <SearchInput></SearchInput>
-        <SearchButton>검색</SearchButton>
+        <SearchInput
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder="검색어를 입력하세요"
+        ></SearchInput>
+        <SearchButton onClick={handleSearch}>검색</SearchButton>
       </SearchZone>
     </>
   );
