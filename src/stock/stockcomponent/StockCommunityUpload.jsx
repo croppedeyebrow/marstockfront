@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CommonAxios from "../../utils/common/CommonAxios";
 import { useState } from "react";
+import { Common } from "../../utils/common/Common";
 
 const SearchZone = styled.div`
   position: relative;
@@ -92,10 +93,20 @@ const StockCommunityUpload = ({ setCheckPost }) => {
         return; // 등록을 막음
       }
 
-      const postResponse = await CommonAxios.postAxios("community", "new", {
+      const accessToken = Common.getAccessToken();
+      const communityDto = {
         content: content,
-        authorId: "userId",
-      });
+      };
+      const multiDto = {
+        accessToken: accessToken,
+        communityDto: communityDto,
+      };
+      const postResponse = await CommonAxios.postTokenAxios(
+        "community",
+        "new",
+        multiDto
+      );
+
       if (postResponse.status === 200) {
         console.log("post :  success");
         setContent("");
