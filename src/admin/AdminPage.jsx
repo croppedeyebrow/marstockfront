@@ -1,8 +1,10 @@
 import Header from "../utils/style/Header";
 import Footer from "../utils/style/Footer";
 import InlineContainer from "../utils/style/InlineContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MyStockNumber } from "../my/MyStyle";
+import CommonAxios from "../utils/common/CommonAxios";
+import formatDate from "../utils/component/FormatDate";
 
 import {
   AdminContainer,
@@ -50,21 +52,37 @@ import AdminSearch from "./admincomponent/AdminSearch";
 
 const AdminPage = () => {
   const [searchResults, setSearchResults] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(0);
-  // const [pageSize, setPageSize] = useState(6);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [keyword, setKeyword] = useState("");
+  const [checkSearch, setCheckSearch] = useState(false);
 
-  // AdminPage에서 검색 결과를 업데이트하는 콜백 함수
-  const handleSearchResults = (results) => {
-    setSearchResults(results);
-    console.log(searchResults);
+  const handleCheckSearch = () => {
+    setCheckSearch(false);
+    setKeyword("");
   };
 
-  // // 페이지 변경 시 실행되는 함수
-  // const handlePageChange = (newPage, newSize) => {
-  //   // 이 부분에서 필요한 로직을 수행할 수 있습니다.
-  //   setCurrentPage(newPage);
-  //   setPageSize(newSize);
-  // };
+  useEffect(() => {
+    const adminFetchData = async () => {
+      try {
+        const response = await CommonAxios.getPageableAxios("admin", "search", {
+          keyword,
+          currentPage,
+          pageSize: 10,
+          orderBy: "memberEmail,desc",
+        });
+        console.log(response.data.totalPages); // 토탈 페이지
+        // console.log(response.data); // 토탈 페이지
+        setSearchResults(response.data.content);
+      } catch (error) {
+        console.error("Error searching:", error);
+      }
+    };
+
+    if (checkSearch) {
+      adminFetchData();
+      handleCheckSearch();
+    }
+  }, [checkSearch]);
 
   return (
     <>
@@ -80,8 +98,8 @@ const AdminPage = () => {
         contents={
           <AdminContainer>
             <AdminSearch
-              onSearchResults={handleSearchResults}
-              // onPageChange={handlePageChange}
+              setKeyword={setKeyword}
+              setCheckSearch={setCheckSearch}
             />
 
             <MemberListBox>
@@ -99,9 +117,13 @@ const AdminPage = () => {
                   <ListInfo01>{member.memberEmail}</ListInfo01>
                   <ListInfo02>{member.nickName}</ListInfo02>
                   <ListInfo03>{member.phone}</ListInfo03>
-                  <ListInfo04>{member.registrationDate}</ListInfo04>
-                  <ListInfo05>{member.birth}</ListInfo05>
-                  <ListInfo06>{member.authority}</ListInfo06>
+                  <ListInfo04>{formatDate(member.registrationDate)}</ListInfo04>
+                  <ListInfo05>{formatDate(member.birth)}</ListInfo05>
+                  <ListInfo06>
+                    {member.authority === "ROLE_USER"
+                      ? "Normal"
+                      : member.authority}
+                  </ListInfo06>
                 </MemberListInfo>
               ))}
             </MemberListBox>
