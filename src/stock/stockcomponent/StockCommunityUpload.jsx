@@ -22,6 +22,7 @@ const SearchZone = styled.div`
 const SearchInput = styled.textarea`
   display: flex;
   position: relative;
+  font-family: "Noto Sans KR", sans-serif;
 
   width: 100rem;
   height: 20rem;

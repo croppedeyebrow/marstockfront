@@ -20,6 +20,7 @@ const SearchInput = styled.input`
   display: flex;
   position: relative;
 
+
   width: 30.5rem;
   height: 2.8rem;
 
@@ -28,13 +29,14 @@ const SearchInput = styled.input`
   border: none;
 
   color: #000000;
-  font-size: 2rem;
+  font-size: 1.6rem;
   padding-left: 2rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* 볼륨감을 위한 그림자 추가 */
 
   &::placeholder {
     color: gray;
-    padding-left: 1rem;
+    /* padding-left: rem; */
+    font-size: 1.6rem;
   }
 
   &:focus {

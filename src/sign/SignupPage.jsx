@@ -4,7 +4,7 @@ import {
   Background,
   InputContainer,
   Logo,
-  InputBox,
+  InputBox, 
   CheckBox,
   CheckBoxLabel,
   Link,
@@ -277,86 +277,99 @@ const SignupPage = () => {
           <Logo src={headlogo} alt="logo" />
         </Link>
         <InputContainer>
-          <div id="title">Sign up</div>
-          <InputBox
-            placeholder="E-Mail"
-            onBlur={checkEmail}
-            ref={emailInputRef}
-          ></InputBox>
-          <div className="checktext">
-            틀렸다틀렸어
-          </div>
-          <NoneBtnModalComponent
-            closeModalHandler={closeEmailModal}
-            isOpen={openEmailModal}
-            customButton={false}
-            closeText="확인"
-            content={
-              <>
-                <p>인증 번호를 입력하시오.</p>
-                <InputBox
-                  style={{ backgroundColor: "white", color: "black" }}
-                  placeholder="인증번호"
-                  onChange={onChangeEpw}
-                ></InputBox>
-                <button onClick={checkEPW}>확인</button>
-              </>
-            }
-          />
-          <InputBox
-            placeholder="Password"
-            type="password"
-            onChange={onChangePassword}
-          ></InputBox>
-          <div className="checktext">
-            틀렸다틀렸어
-          </div>
-          <InputBox
-            placeholder="Confirm Password"
-            type="password"
-            onChange={onChangeConfirmPassword}
-            onBlur={checkPassword}
-          ></InputBox>
-          <div className="checktext">
-            틀렸다틀렸어
-          </div>
-          <InputBox
-            placeholder="Phone"
-            onChange={onChangeTel}
-            // onBlur={onBlurSms}
-          ></InputBox>
-          <div className="checktext">
-            틀렸다틀렸어
-          </div>
-          <NoneBtnModalComponent
-            isOpen={sms}
-            customButton={false}
-            closeModalHandler={CloseSms}
-            closeText="확인"
-            content={
-              <>
-                <SmsApi
-                  onChange={onChangeTel}
-                  send={handleSendMessage}
-                  cn={handleSendCnum}
-                  cnum={cnum}
-                  tel={tel}
-                  onChangeCnum={onChangeCnum}
-                />
-              </>
-            }
-          />
-          <InputBox 
-            placeholder="Nickname"
-            onChange={onChangeNickName}
-            onBlur={onClickCheckNickName}
-          ></InputBox>
-          <div className="checktext">
-            틀렸다틀렸어
-          </div>
-          <InputBox placeholder="birth (ex. 990811)"></InputBox>
-          <div className="checktext">
-            틀렸다틀렸어
+        <div id="title">Sign up</div>
+        <div id="inputcontainerin">
+            <div className="inputarea">
+              <InputBox
+                placeholder="E-Mail"
+                onBlur={checkEmail}
+                ref={emailInputRef} 
+              >
+              </InputBox>
+              <div className="inputbutton" style={{ top: "34.7rem", left: "49.8rem"}}>중복확인</div>
+            </div>
+            <div className="checktext">틀렸다틀렸어</div>
+            <NoneBtnModalComponent
+              closeModalHandler={closeEmailModal}
+              isOpen={openEmailModal}
+              customButton={false}
+              closeText="확인"
+              content={
+                <>
+                  <p>인증 번호를 입력하시오.</p>
+                  <InputBox
+                    style={{ backgroundColor: "white", color: "black" }}
+                    placeholder="인증번호"
+                    onChange={onChangeEpw}
+                  ></InputBox>
+                  <button onClick={checkEPW}>확인</button>
+                </>
+              }
+            />
+            <InputBox
+              placeholder="Password"
+              type="password"
+              onChange={onChangePassword}
+              style={{ width: "28.333rem" }}
+            ></InputBox>
+            <div className="checktext">
+              틀렸다틀렸어
+            </div>
+            <InputBox
+              placeholder="Confirm Password"
+              type="password"
+              onChange={onChangeConfirmPassword}
+              onBlur={checkPassword}
+              style={{ width: "28.333rem" }}
+            ></InputBox>
+            <div className="checktext">
+              틀렸다틀렸어
+            </div>
+            <div className="inputarea">
+            <InputBox
+              placeholder="Phone"
+              onChange={onChangeTel}
+              // onBlur={onBlurSms}
+            ></InputBox>
+            <div className="inputbutton" style={{ top: "34.7rem", left: "49.8rem"}}>중복확인</div>
+            </div>
+            <div className="checktext">
+              틀렸다틀렸어
+            </div>
+            <NoneBtnModalComponent
+              isOpen={sms}
+              customButton={false}
+              closeModalHandler={CloseSms}
+              closeText="확인"
+              content={
+                <>
+                  <SmsApi
+                    onChange={onChangeTel}
+                    send={handleSendMessage}
+                    cn={handleSendCnum}
+                    cnum={cnum}
+                    tel={tel}
+                    onChangeCnum={onChangeCnum}
+                  />
+                </>
+              }
+            />
+            <div className="inputarea">
+            <InputBox 
+              placeholder="Nickname"
+              onChange={onChangeNickName}
+              onBlur={onClickCheckNickName}
+            ></InputBox>
+            <div className="inputbutton" style={{ top: "34.7rem", left: "49.8rem"}}>중복확인</div>
+            </div>
+            <div className="checktext">
+              틀렸다틀렸어
+            </div>
+            <InputBox placeholder="birth (ex. 990811)"
+            style={{ width: "28.333rem" }}></InputBox>
+            <div className="checktext">
+              틀렸다틀렸어
+            </div>
           </div>
           <div id="agreeBox">
             <CheckBoxLabel style={{ fontWeight: "500", fontSize: "1.7rem" }}>

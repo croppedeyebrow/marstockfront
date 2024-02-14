@@ -53,6 +53,35 @@ export const InputContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  #inputcontainerin {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    }
+  .inputarea {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    width: 36.6rem;
+    gap: 1rem;
+    .inputbutton {
+    width: 9rem;
+    height: 4.3rem;
+    background-color: var(--mainpurple);
+    color: white;
+    border-radius: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    text-align: center;
+    padding: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--mainlightpurple);
+      transform: scale(1.02);
+      transition: all 0.05s ease-in-out;
+    }
+  }
+  }
   .checktext{
     width: 36rem;
     text-align: start;

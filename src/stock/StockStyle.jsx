@@ -5,6 +5,9 @@ export const StockContainer = styled.div`
   width: 100%;
   height: 100%;
   background-image: url(${MarsMilkeway});
+  position: fixed;
+  top: 0;
+  z-index: -1;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
