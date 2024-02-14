@@ -9,9 +9,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--mainblack);
+    background: rgba(17,17,128,0.0001);
+    backdrop-filter: blur(2rem);
 
-  }
+}
 
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(to bottom, var(--mainpurple), var(--mainorange));

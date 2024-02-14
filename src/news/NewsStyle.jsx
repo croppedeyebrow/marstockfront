@@ -20,9 +20,9 @@ export const Example = styled.div`
 
 export const NewsPageContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   background-image: url(${MarsSpace});
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: -1;
   background-size: cover;

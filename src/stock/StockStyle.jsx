@@ -3,9 +3,9 @@ import MarsMilkeway from "../images/MarsMilkeway.png";
 
 export const StockContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   background-image: url(${MarsMilkeway});
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: -1;
   background-size: cover;

@@ -384,234 +384,46 @@ const StockIndexPage = ({ all }) => {
                 </IndexTitleZone> */}
 
                 <LeftIndexZone>
-                  <LeftIndexTopZone>
-                    {isMobile ? (
-                      <div onClick={handleDropdown}>
-                        <IndexDrop>Index Title</IndexDrop>
-                        {isOpen && (
-                          <>
-                            <IndexDropMenu
-                              value="환전고시"
-                              onClick={onClickIndex}
-                            >
-                              {" "}
-                              환전고시
-                            </IndexDropMenu>
-                            <IndexDropMenu
-                              value="국제시장환율"
-                              onClick={onClickIndex}
-                            >
-                              국제시장환율
-                            </IndexDropMenu>
-                            <IndexDropMenu value="유가" onClick={onClickIndex}>
-                              유가/에너지
-                            </IndexDropMenu>
-                            <IndexDropMenu
-                              value="금시세"
-                              onClick={onClickIndex}
-                            >
-                              금시세
-                            </IndexDropMenu>
-                            <IndexDropMenu
-                              value="원자재"
-                              onClick={onClickIndex}
-                            >
-                              원자재/농업
-                            </IndexDropMenu>
-                          </>
-                        )}
-                      </div>
-                    ) : (
-                      <>
-                        <LeftIndexTopTitle
-                          value="환전고시"
-                          onClick={onClickIndex}
-                        >
-                          환전고시
-                        </LeftIndexTopTitle>
-                        <LeftIndexTopTitle
-                          value="국제시장환율"
-                          onClick={onClickIndex}
-                        >
-                          국제시장환율
-                        </LeftIndexTopTitle>
-                        <LeftIndexTopTitle value="유가" onClick={onClickIndex}>
-                          유가/에너지
-                        </LeftIndexTopTitle>
-                        <LeftIndexTopTitle
-                          value="금시세"
-                          onClick={onClickIndex}
-                        >
-                          금시세
-                        </LeftIndexTopTitle>
-                        <LeftIndexTopTitle
-                          value="원자재"
-                          onClick={onClickIndex}
-                        >
-                          원자재/농업
-                        </LeftIndexTopTitle>
-                      </>
-                    )}
-                  </LeftIndexTopZone>
+                  <LeftIndexTopZone>TOP 거래 상위</LeftIndexTopZone>
 
-                  {index === "환전고시" && (
-                    <LeftIndexMainZone>
-                      <LeftIndexMainInnerTitle>
-                        <LeftIndexMainTitle>통화명</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>매매기준율</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>구매시</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>판매시</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>보낼때</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>받을때</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>미화환산율</LeftIndexMainTitle>
-                      </LeftIndexMainInnerTitle>
-                      {all?.crawlExchangeDtoList.map((data, index) => (
-                        <LeftIndexMainInnerText key={index}>
-                          <LeftIndexMainText>{data.name}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.tbRate}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.buy}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.sell}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.send}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.receive}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.exchange}</LeftIndexMainText>
-                        </LeftIndexMainInnerText>
-                      ))}
-                    </LeftIndexMainZone>
-                  )}
-                  {index === "국제시장환율" && (
-                    <LeftIndexMainZone>
-                      <LeftIndexMainInnerTitle>
-                        <LeftIndexMainTitle>통화명</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>통화심볼</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>현재가</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
-                      </LeftIndexMainInnerTitle>
-                      {all?.crawlMarketDtoList.map((data, index) => (
-                        <LeftIndexMainInnerText key={index}>
-                          <LeftIndexMainText>{data.name}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.symbol}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.current}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.rate}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.before}</LeftIndexMainText>
-                        </LeftIndexMainInnerText>
-                      ))}
-                    </LeftIndexMainZone>
-                  )}
-                  {index === "유가" && (
-                    <LeftIndexMainZone>
-                      <LeftIndexMainInnerTitle>
-                        <LeftIndexMainTitle>이름</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>가격</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>단위</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
-                      </LeftIndexMainInnerTitle>
-                      {all?.crawlOilDtoList.map((data, index) => (
-                        <LeftIndexMainInnerText key={index}>
-                          <LeftIndexMainText>{data.name}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.price}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.unit}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.rate}</LeftIndexMainText>
-                          <LeftIndexMainText>
-                            {data.yesterday}
-                          </LeftIndexMainText>
-                        </LeftIndexMainInnerText>
-                      ))}
-                      <br></br>
-                      <br></br>
+                  <LeftIndexMainZone>
+                    {/* <BottomTitleBox>
+                <BoTitle onClick={handleKategorieClick}>거래상위</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>하한가</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>상승</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>보합</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>하락</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>거래량상위</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>고가대비급락</BoTitle>
+                <BoTitle onClick={handleKategorieClick}>시가총액상위</BoTitle>
+              </BottomTitleBox> */}
 
-                      <LeftIndexMainInnerTitle>
-                        <LeftIndexMainTitle>이름</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>가격</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>단위</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>환전</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>month</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>기준일</LeftIndexMainTitle>
-                      </LeftIndexMainInnerTitle>
-                      {all?.crawlEnergyDtoList.map((data, index) => (
-                        <LeftIndexMainInnerText key={index}>
-                          <LeftIndexMainText>{data.name}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.price}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.units}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.rate}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.exchange}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.month}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.date}</LeftIndexMainText>
-                        </LeftIndexMainInnerText>
-                      ))}
-                    </LeftIndexMainZone>
-                  )}
-                  {index === "금시세" && (
-                    <LeftIndexMainZone>
-                      <LeftIndexMainInnerTitle>
-                        <LeftIndexMainTitle>이름</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>가격</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>단위</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>기준일</LeftIndexMainTitle>
-                      </LeftIndexMainInnerTitle>
-                      {all?.crawlGoldDtoList.map((data, index) => (
-                        <LeftIndexMainInnerText key={index}>
-                          <LeftIndexMainText>{data.name}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.price}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.unit}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.rate}</LeftIndexMainText>
-                          <LeftIndexMainText>
-                            {data.yesterday}
-                          </LeftIndexMainText>
-                          <LeftIndexMainText>{data.date}</LeftIndexMainText>
-                        </LeftIndexMainInnerText>
-                      ))}
-                    </LeftIndexMainZone>
-                  )}
-                  {index === "원자재" && (
-                    <LeftIndexMainZone>
-                      <LeftIndexMainInnerTitle>
-                        <LeftIndexMainTitle>이름</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>가격</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>단위</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>기준일</LeftIndexMainTitle>
-                      </LeftIndexMainInnerTitle>
-                      {all?.crawlMetalDtoList.map((data, index) => (
-                        <LeftIndexMainInnerText key={index}>
-                          <LeftIndexMainText>{data.name}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.price}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.units}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.rate}</LeftIndexMainText>
-                          <LeftIndexMainText>
-                            {data.yesterday}
-                          </LeftIndexMainText>
-                          <LeftIndexMainText>{data.date}</LeftIndexMainText>
-                        </LeftIndexMainInnerText>
-                      ))}
-                      <LeftIndexMainInnerTitle>
-                        <LeftIndexMainTitle>이름</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>가격</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>단위</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
-                        <LeftIndexMainTitle>기준일</LeftIndexMainTitle>
-                      </LeftIndexMainInnerTitle>
-                      <br></br>
-                      {all?.crawlMetalDtoList.map((data, index) => (
-                        <LeftIndexMainInnerText key={index}>
-                          <LeftIndexMainText>{data.name}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.price}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.units}</LeftIndexMainText>
-                          <LeftIndexMainText>{data.rate}</LeftIndexMainText>
-                          <LeftIndexMainText>
-                            {data.yesterday}
-                          </LeftIndexMainText>
-                          <LeftIndexMainText>{data.date}</LeftIndexMainText>
-                        </LeftIndexMainInnerText>
-                      ))}
-                    </LeftIndexMainZone>
-                  )}
+                    <KategorieTitle>
+                      <Kategorie01>순위</Kategorie01>
+                      <Kategorie02>종목명</Kategorie02>
+                      <Kategorie03>현재가</Kategorie03>
+                      <Kategorie04>상승/하강</Kategorie04>
+                      <Kategorie05>등락률</Kategorie05>
+                      {/* <Kategorie06>거래량</Kategorie06>
+                <Kategorie07>시가</Kategorie07>
+                <Kategorie08>고가</Kategorie08>
+                <Kategorie09>저가</Kategorie09> */}
+                    </KategorieTitle>
+
+                    {all?.crawlStockDtoList.map((item, index) => (
+                      <KategorieInfo key={index}>
+                        <KInfo01>{index + 1}</KInfo01>
+                        <KInfo02>{item.name}</KInfo02>
+                        <KInfo03>{item.price}</KInfo03>
+                        <KInfo04>{item.upDown}</KInfo04>
+                        <KInfo05>{item.rate}</KInfo05>
+                        {/* <KInfo06>{item.value4}</KInfo06>
+                    <KInfo07>{item.value5}</KInfo07>
+                    <KInfo08>{item.value6}</KInfo08>
+                    <KInfo09>{item.value7}</KInfo09> */}
+                      </KategorieInfo>
+                    ))}
+                  </LeftIndexMainZone>
                 </LeftIndexZone>
               </IndexTopLeft>
               <IndexTopRight>
@@ -638,44 +450,208 @@ const StockIndexPage = ({ all }) => {
                 </IndexTopContainer>
               </IndexTopRight>
             </IndexPageTop>
-            <MiddleContainer>TOP 거래 상위</MiddleContainer>
+            <MiddleContainer>
+              {isMobile ? (
+                <div onClick={handleDropdown}>
+                  <IndexDrop>Index Title</IndexDrop>
+                  {isOpen && (
+                    <>
+                      <IndexDropMenu value="환전고시" onClick={onClickIndex}>
+                        {" "}
+                        환전고시
+                      </IndexDropMenu>
+                      <IndexDropMenu
+                        value="국제시장환율"
+                        onClick={onClickIndex}
+                      >
+                        국제시장환율
+                      </IndexDropMenu>
+                      <IndexDropMenu value="유가" onClick={onClickIndex}>
+                        유가/에너지
+                      </IndexDropMenu>
+                      <IndexDropMenu value="금시세" onClick={onClickIndex}>
+                        금시세
+                      </IndexDropMenu>
+                      <IndexDropMenu value="원자재" onClick={onClickIndex}>
+                        원자재/농업
+                      </IndexDropMenu>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <>
+                  <LeftIndexTopTitle value="환전고시" onClick={onClickIndex}>
+                    환전고시
+                  </LeftIndexTopTitle>
+                  <LeftIndexTopTitle
+                    value="국제시장환율"
+                    onClick={onClickIndex}
+                  >
+                    국제시장환율
+                  </LeftIndexTopTitle>
+                  <LeftIndexTopTitle value="유가" onClick={onClickIndex}>
+                    유가/에너지
+                  </LeftIndexTopTitle>
+                  <LeftIndexTopTitle value="금시세" onClick={onClickIndex}>
+                    금시세
+                  </LeftIndexTopTitle>
+                  <LeftIndexTopTitle value="원자재" onClick={onClickIndex}>
+                    원자재/농업
+                  </LeftIndexTopTitle>
+                </>
+              )}
+            </MiddleContainer>
             <IndexPageBottom>
-              {/* <BottomTitleBox>
-                <BoTitle onClick={handleKategorieClick}>거래상위</BoTitle>
-                <BoTitle onClick={handleKategorieClick}>하한가</BoTitle>
-                <BoTitle onClick={handleKategorieClick}>상승</BoTitle>
-                <BoTitle onClick={handleKategorieClick}>보합</BoTitle>
-                <BoTitle onClick={handleKategorieClick}>하락</BoTitle>
-                <BoTitle onClick={handleKategorieClick}>거래량상위</BoTitle>
-                <BoTitle onClick={handleKategorieClick}>고가대비급락</BoTitle>
-                <BoTitle onClick={handleKategorieClick}>시가총액상위</BoTitle>
-              </BottomTitleBox> */}
+              {index === "환전고시" && (
+                <LeftIndexMainZone>
+                  <LeftIndexMainInnerTitle>
+                    <LeftIndexMainTitle>통화명</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>매매기준율</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>구매시</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>판매시</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>보낼때</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>받을때</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>미화환산율</LeftIndexMainTitle>
+                  </LeftIndexMainInnerTitle>
+                  {all?.crawlExchangeDtoList.map((data, index) => (
+                    <LeftIndexMainInnerText key={index}>
+                      <LeftIndexMainText>{data.name}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.tbRate}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.buy}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.sell}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.send}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.receive}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.exchange}</LeftIndexMainText>
+                    </LeftIndexMainInnerText>
+                  ))}
+                </LeftIndexMainZone>
+              )}
+              {index === "국제시장환율" && (
+                <LeftIndexMainZone>
+                  <LeftIndexMainInnerTitle>
+                    <LeftIndexMainTitle>통화명</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>통화심볼</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>현재가</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
+                  </LeftIndexMainInnerTitle>
+                  {all?.crawlMarketDtoList.map((data, index) => (
+                    <LeftIndexMainInnerText key={index}>
+                      <LeftIndexMainText>{data.name}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.symbol}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.current}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.rate}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.before}</LeftIndexMainText>
+                    </LeftIndexMainInnerText>
+                  ))}
+                </LeftIndexMainZone>
+              )}
+              {index === "유가" && (
+                <LeftIndexMainZone>
+                  <LeftIndexMainInnerTitle>
+                    <LeftIndexMainTitle>이름</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>가격</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>단위</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
+                  </LeftIndexMainInnerTitle>
+                  {all?.crawlOilDtoList.map((data, index) => (
+                    <LeftIndexMainInnerText key={index}>
+                      <LeftIndexMainText>{data.name}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.price}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.unit}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.rate}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.yesterday}</LeftIndexMainText>
+                    </LeftIndexMainInnerText>
+                  ))}
+                  <br></br>
+                  <br></br>
 
-              <KategorieTitle>
-                <Kategorie01>순위</Kategorie01>
-                <Kategorie02>종목명</Kategorie02>
-                <Kategorie03>현재가</Kategorie03>
-                <Kategorie04>상승/하강</Kategorie04>
-                <Kategorie05>등락률</Kategorie05>
-                {/* <Kategorie06>거래량</Kategorie06>
-                <Kategorie07>시가</Kategorie07>
-                <Kategorie08>고가</Kategorie08>
-                <Kategorie09>저가</Kategorie09> */}
-              </KategorieTitle>
-
-              {all?.crawlStockDtoList.map((item, index) => (
-                <KategorieInfo key={index}>
-                  <KInfo01>{index + 1}</KInfo01>
-                  <KInfo02>{item.name}</KInfo02>
-                  <KInfo03>{item.price}</KInfo03>
-                  <KInfo04>{item.upDown}</KInfo04>
-                  <KInfo05>{item.rate}</KInfo05>
-                  {/* <KInfo06>{item.value4}</KInfo06>
-                    <KInfo07>{item.value5}</KInfo07>
-                    <KInfo08>{item.value6}</KInfo08>
-                    <KInfo09>{item.value7}</KInfo09> */}
-                </KategorieInfo>
-              ))}
+                  <LeftIndexMainInnerTitle>
+                    <LeftIndexMainTitle>이름</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>가격</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>단위</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>환전</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>month</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>기준일</LeftIndexMainTitle>
+                  </LeftIndexMainInnerTitle>
+                  {all?.crawlEnergyDtoList.map((data, index) => (
+                    <LeftIndexMainInnerText key={index}>
+                      <LeftIndexMainText>{data.name}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.price}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.units}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.rate}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.exchange}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.month}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.date}</LeftIndexMainText>
+                    </LeftIndexMainInnerText>
+                  ))}
+                </LeftIndexMainZone>
+              )}
+              {index === "금시세" && (
+                <LeftIndexMainZone>
+                  <LeftIndexMainInnerTitle>
+                    <LeftIndexMainTitle>이름</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>가격</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>단위</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>기준일</LeftIndexMainTitle>
+                  </LeftIndexMainInnerTitle>
+                  {all?.crawlGoldDtoList.map((data, index) => (
+                    <LeftIndexMainInnerText key={index}>
+                      <LeftIndexMainText>{data.name}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.price}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.unit}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.rate}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.yesterday}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.date}</LeftIndexMainText>
+                    </LeftIndexMainInnerText>
+                  ))}
+                </LeftIndexMainZone>
+              )}
+              {index === "원자재" && (
+                <LeftIndexMainZone>
+                  <LeftIndexMainInnerTitle>
+                    <LeftIndexMainTitle>이름</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>가격</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>단위</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>기준일</LeftIndexMainTitle>
+                  </LeftIndexMainInnerTitle>
+                  {all?.crawlMetalDtoList.map((data, index) => (
+                    <LeftIndexMainInnerText key={index}>
+                      <LeftIndexMainText>{data.name}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.price}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.units}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.rate}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.yesterday}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.date}</LeftIndexMainText>
+                    </LeftIndexMainInnerText>
+                  ))}
+                  <LeftIndexMainInnerTitle>
+                    <LeftIndexMainTitle>이름</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>가격</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>단위</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>등락율</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>전일대비</LeftIndexMainTitle>
+                    <LeftIndexMainTitle>기준일</LeftIndexMainTitle>
+                  </LeftIndexMainInnerTitle>
+                  <br></br>
+                  {all?.crawlMetalDtoList.map((data, index) => (
+                    <LeftIndexMainInnerText key={index}>
+                      <LeftIndexMainText>{data.name}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.price}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.units}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.rate}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.yesterday}</LeftIndexMainText>
+                      <LeftIndexMainText>{data.date}</LeftIndexMainText>
+                    </LeftIndexMainInnerText>
+                  ))}
+                </LeftIndexMainZone>
+              )}
             </IndexPageBottom>
           </StockListContainer>
         }

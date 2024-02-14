@@ -255,6 +255,11 @@ export const LeftIndexTopZone = styled.div`
   display: flex;
   height: 10%;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: bold;
 `;
 export const LeftIndexTopTitle = styled.div`
   height: 3.6rem;
