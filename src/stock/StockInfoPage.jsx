@@ -59,6 +59,7 @@ import { useEffect } from "react";
 import WebSocketComponent from "../utils/common/WebSocket";
 import CommonAxios from "../utils/common/CommonAxios";
 import { Common } from "../utils/common/Common";
+import StockInfoChart from "./stockcomponent/StockInfoChart";
 
 const StockInfoPage = () => {
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
@@ -68,6 +69,20 @@ const StockInfoPage = () => {
   const [message, setMessage] = useState("");
   const [stock, setStock] = useState([]);
   const [dataCount, setDataCount] = useState(0); // 데이터 카운트 추가
+
+  // 그래프에 사용할 데이터
+  const [chartData, setChartData] = useState({
+    actual_price: {
+      data: [],
+      index: [],
+    },
+    future_price: {
+      data: [],
+      index: [],
+    },
+    column_type: "",
+    stock_code: "",
+  });
 
   // 구매 내역 조회
   const [buyDtoList, setBuyDtoList] = useState([]);
@@ -185,6 +200,27 @@ const StockInfoPage = () => {
 
   // 판매 함수
   const onClickSell = async () => {};
+
+  const stockChartReqDto = {
+    stockName: name,
+    months: 1,
+    columnType: "종가",
+    futureDays: 10,
+  };
+
+  const handleChartDataRequest = async () => {
+    try {
+      const res = await CommonAxios.postAxios(
+        "stock",
+        "chart",
+        stockChartReqDto
+      );
+      // console.log("chartData 정보 : ", res.data);
+      setChartData(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // 구매내역 useEffect
   useEffect(() => {
@@ -315,7 +351,9 @@ const StockInfoPage = () => {
               </StockDivLeft>
 
               <StockDivRight>
-                <StockGraphZone alt="주식그래프" src={stockgraph} />
+                <StockInfoChart chartData={chartData} />
+                <button onClick={handleChartDataRequest}>버튼</button>
+                {/* <StockGraphZone alt="주식그래프" src={stockgraph} /> */}
 
                 <PurchaseBox>
                   <StockSellingBox>
