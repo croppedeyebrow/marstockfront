@@ -20,8 +20,14 @@ export const Example = styled.div`
 
 export const NewsPageContainer = styled.div`
   width: 100%;
+  min-height: 100vh;
   height: auto;
-  background-image: url(${MarsSpace});
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(${MarsSpace});
   position: absolute;
   top: 0;
   z-index: -1;

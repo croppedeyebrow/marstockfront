@@ -21,6 +21,7 @@ import {
   Kospi200,
   LeftIndexZone,
   IndexDrop,
+  IndexDropContainer,
   IndexDropMenu,
   IndexTitleZone,
   IndexTitle,
@@ -456,25 +457,27 @@ const StockIndexPage = ({ all }) => {
                   <IndexDrop>Index Title</IndexDrop>
                   {isOpen && (
                     <>
-                      <IndexDropMenu value="환전고시" onClick={onClickIndex}>
-                        {" "}
-                        환전고시
-                      </IndexDropMenu>
-                      <IndexDropMenu
-                        value="국제시장환율"
-                        onClick={onClickIndex}
-                      >
-                        국제시장환율
-                      </IndexDropMenu>
-                      <IndexDropMenu value="유가" onClick={onClickIndex}>
-                        유가/에너지
-                      </IndexDropMenu>
-                      <IndexDropMenu value="금시세" onClick={onClickIndex}>
-                        금시세
-                      </IndexDropMenu>
-                      <IndexDropMenu value="원자재" onClick={onClickIndex}>
-                        원자재/농업
-                      </IndexDropMenu>
+                      <IndexDropContainer>
+                        <IndexDropMenu value="환전고시" onClick={onClickIndex}>
+                          {" "}
+                          환전고시
+                        </IndexDropMenu>
+                        <IndexDropMenu
+                          value="국제시장환율"
+                          onClick={onClickIndex}
+                        >
+                          국제시장환율
+                        </IndexDropMenu>
+                        <IndexDropMenu value="유가" onClick={onClickIndex}>
+                          유가/에너지
+                        </IndexDropMenu>
+                        <IndexDropMenu value="금시세" onClick={onClickIndex}>
+                          금시세
+                        </IndexDropMenu>
+                        <IndexDropMenu value="원자재" onClick={onClickIndex}>
+                          원자재/농업
+                        </IndexDropMenu>
+                      </IndexDropContainer>
                     </>
                   )}
                 </div>

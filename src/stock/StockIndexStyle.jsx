@@ -258,7 +258,7 @@ export const LeftIndexTopZone = styled.div`
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-weight: bold;
 `;
 export const LeftIndexTopTitle = styled.div`
@@ -290,7 +290,8 @@ export const IndexDrop = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 24rem;
+  width: 40rem;
+  border: 1px solid red;
   height: 3.6rem;
   color: #ffffff;
   // border: 1px solid white;
@@ -302,13 +303,23 @@ export const IndexDrop = styled.div`
   }
 `;
 
+export const IndexDropContainer = styled.div`
+  display: flex;
+  position: absolute;
+  margin-top: 3.6rem;
+  flex-direction: column;
+
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
+
 export const IndexDropMenu = styled.div`
   display: flex;
   position: relative;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 24rem;
+  width: 40rem;
   height: 4rem;
   background: rgba(0, 0, 0, 0.4);
   color: #ffffff;
@@ -567,12 +578,12 @@ export const MiddleContainer = styled.div`
   color: #ffffff;
   width: 113rem;
   height: 4rem;
-  border: 1px solid white;
+  border: 1px solid blue;
   font-size: 2rem;
   font-weight: bold;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  padding-left: 1rem;
+  // padding-left: 1rem;
 
   @media (max-width: 768px) {
     width: 40rem;
@@ -663,6 +674,21 @@ export const Kategorie01 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 14rem;
+    font-size: 1rem;
+  }
 `;
 
 export const Kategorie02 = styled.div`
@@ -673,6 +699,21 @@ export const Kategorie02 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 14rem;
+    font-size: 1rem;
+  }
 `;
 
 export const Kategorie03 = styled.div`
@@ -683,6 +724,21 @@ export const Kategorie03 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 14rem;
+    font-size: 1rem;
+  }
 `;
 
 export const Kategorie04 = styled.div`
@@ -693,6 +749,21 @@ export const Kategorie04 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 20rem;
+    font-size: 1rem;
+  }
 `;
 
 export const Kategorie05 = styled.div`
@@ -703,6 +774,21 @@ export const Kategorie05 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 14rem;
+    font-size: 1rem;
+  }
 `;
 
 export const Kategorie06 = styled.div`
