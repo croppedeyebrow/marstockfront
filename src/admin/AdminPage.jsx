@@ -55,10 +55,78 @@ const AdminPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [keyword, setKeyword] = useState("");
   const [checkSearch, setCheckSearch] = useState(false);
+  const [member, setMember] = useState("");
+  const [stockList, setStockList] = useState([
+    {
+      name: "",
+      code: "",
+      buyCount: "",
+      buyPrice: "",
+      date: "",
+    },
+  ]);
+  const [nameList, setNameList] = useState([]);
+  const [socketList, setSocketList] = useState([]);
 
   const handleCheckSearch = () => {
     setCheckSearch(false);
     setKeyword("");
+  };
+
+  // 구매 내역 조회
+  const getInfo = async (email) => {
+    try {
+      // const accessToken = Common.getAccessToken();
+      const memberDto = {
+        memberEmail: email,
+      };
+      const multiDto = {
+        // accessToken: accessToken,
+        memberDto: memberDto,
+      };
+      const res = await CommonAxios.postAxios("admin", "getUserBuy", multiDto);
+      if (res.status === 200) {
+        console.log(res.data);
+        setMember(res.data.memberDto);
+        // stockDtoList와 buyDtoList의 유효성 검사
+        if (
+          res.data.stockDtoList &&
+          res.data.buyDtoList &&
+          res.data.stockDtoList.length === res.data.buyDtoList.length
+        ) {
+          const stockListData = [];
+          for (let i = 0; i < res.data.stockDtoList.length; i++) {
+            const stockData = {
+              name: res.data.stockDtoList[i].종목명,
+              code: res.data.stockDtoList[i].종목코드,
+              buyCount: res.data.buyDtoList[i].buyCount,
+              buyPrice: res.data.buyDtoList[i].buyPrice,
+              date: res.data.buyDtoList[i].date,
+            };
+
+            stockListData.push(stockData);
+          }
+          const sortedStockList = stockListData.slice().sort((a, b) => {
+            // Date 객체를 비교하여 정렬
+            return new Date(b.date) - new Date(a.date);
+          });
+          setStockList(sortedStockList);
+          // 웹소켓을 위한 이름 리스트 생성
+          // set 객체를 활용한 중복값 제거
+          const names = [...new Set(sortedStockList.map((data) => data.name))];
+          console.log("names", names);
+          setNameList(names);
+        } else {
+          console.error(
+            "Invalid data: stockDtoList or buyDtoList is undefined or their lengths are different"
+          );
+        }
+      } else {
+        console.log("false");
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
@@ -71,7 +139,7 @@ const AdminPage = () => {
           orderBy: "memberEmail,desc",
         });
         console.log(response.data.totalPages); // 토탈 페이지
-        // console.log(response.data); // 토탈 페이지
+        console.log(response.data); // 토탈 페이지
         setSearchResults(response.data.content);
       } catch (error) {
         console.error("Error searching:", error);
@@ -113,7 +181,10 @@ const AdminPage = () => {
               </MemberListTitle>
 
               {searchResults.map((member, index) => (
-                <MemberListInfo key={index}>
+                <MemberListInfo
+                  key={index}
+                  onClick={() => getInfo(member.memberEmail)}
+                >
                   <ListInfo01>{member.memberEmail}</ListInfo01>
                   <ListInfo02>{member.nickName}</ListInfo02>
                   <ListInfo03>{member.phone}</ListInfo03>
@@ -121,7 +192,7 @@ const AdminPage = () => {
                   <ListInfo05>{formatDate(member.birth)}</ListInfo05>
                   <ListInfo06>
                     {member.authority === "ROLE_USER"
-                      ? "Normal"
+                      ? "일반"
                       : member.authority}
                   </ListInfo06>
                 </MemberListInfo>
@@ -135,13 +206,66 @@ const AdminPage = () => {
                 <StockTitle03>매입가</StockTitle03>
                 <StockTitle04>매입수량</StockTitle04>
                 <StockTitle05>총 매입가</StockTitle05>
-                <StockTitle06>현재가</StockTitle06>
+                {/* <StockTitle06>현재가</StockTitle06>
                 <StockTitle07>수익률</StockTitle07>
-                <StockTitle08>총 수익액</StockTitle08>
+                <StockTitle08>총 수익액</StockTitle08> */}
                 <StockTitle09>날짜</StockTitle09>
               </MemberStockTitle>
 
-              <MemberStockInfo>
+              {stockList.map((stock, index) => (
+                <MemberStockInfo key={index}>
+                  <StockListInfo01>{stock.name}</StockListInfo01>
+                  <StockListInfo02>{stock.code}</StockListInfo02>
+                  <StockListInfo03>
+                    {Number(stock.buyPrice).toLocaleString()}
+                  </StockListInfo03>
+                  <StockListInfo04>
+                    {Number(stock.buyCount).toLocaleString()}
+                  </StockListInfo04>
+                  <StockListInfo05>
+                    {Number(stock.buyPrice * stock.buyCount).toLocaleString()}
+                  </StockListInfo05>
+                  {/* <StockListInfo06>
+                    {Number(
+                      socketList
+                        .filter((socket) =>
+                          socket.latestStock.some(
+                            (data) => data?.stockName === stock.name
+                          )
+                        )
+                        .map(
+                          (filteredSocket) =>
+                            filteredSocket.latestStock.find(
+                              (data) => data?.stockName === stock.name
+                            )?.stockClose || 0
+                        )
+                    ).toLocaleString()}
+                  </StockListInfo06>
+                  <StockListInfo07>
+                    {Number(
+                      ((socketList
+                        .filter((socket) =>
+                          socket.latestStock.some(
+                            (data) => data?.stockName === stock.name
+                          )
+                        )
+                        .map(
+                          (filteredSocket) =>
+                            filteredSocket.latestStock.find(
+                              (data) => data?.stockName === stock.name
+                            )?.stockClose || 0
+                        ) -
+                        stock.buyPrice) /
+                        stock.buyPrice) *
+                        100
+                    ).toLocaleString()}
+                    %
+                  </StockListInfo07> */}
+                  <StockListInfo09>{stock.date}</StockListInfo09>
+                </MemberStockInfo>
+              ))}
+
+              {/* <MemberStockInfo>
                 <StockListInfo01>삼성전자</StockListInfo01>
                 <StockListInfo02>005930</StockListInfo02>
                 <StockListInfo03>73,000</StockListInfo03>
@@ -151,7 +275,7 @@ const AdminPage = () => {
                 <StockListInfo07>-10%</StockListInfo07>
                 <StockListInfo08>6,570,000</StockListInfo08>
                 <StockListInfo09>구매날짜</StockListInfo09>
-              </MemberStockInfo>
+              </MemberStockInfo> */}
             </MemberStockInfoBox>
           </AdminContainer>
         }

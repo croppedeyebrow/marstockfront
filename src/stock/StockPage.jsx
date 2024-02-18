@@ -14,6 +14,7 @@ import {
 import StockIndexPage from "./StockIndexPage";
 import StockListPage from "./StockListPage";
 import StockCommunityPage from "./StockCommunityPage";
+import { useParams } from "react-router-dom";
 
 const StockPage = () => {
   const [num, setNum] = useState();
@@ -34,6 +35,8 @@ const StockPage = () => {
     crawlStockDtoList: [],
     crawlSearchDtos: [],
   });
+
+  const { click } = useParams();
 
   // 데이터 가져오는 switch 케이스
   const getIndex = async (socket) => {
@@ -149,12 +152,20 @@ const StockPage = () => {
 
   // 데이터 컨트롤 useEffect
   useEffect(() => {
-    const socket = WebSocketComponent("stockList", "", stockList);
-    getIndex(socket);
-    return () => {
-      // 컴포넌트가 언마운트되면 WebSocket 연결을 닫습니다.
-      socket.close();
-    };
+    // console.log(click);
+    if (click === "0") {
+      setSwitchTitle("종목토론");
+      setShowStockListPage(false);
+      setShowStockIndexPage(false);
+      setShowStockDiscussionPage(true);
+    } else {
+      const socket = WebSocketComponent("stockList", stockList);
+      getIndex(socket);
+      return () => {
+        // 컴포넌트가 언마운트되면 WebSocket 연결을 닫습니다.
+        socket.close();
+      };
+    }
   }, [switchTitle, stockList]);
 
   return (

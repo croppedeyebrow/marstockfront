@@ -128,6 +128,11 @@ export const InputContainer = styled.div`
       background-color: var(--mainpurple);
     }
   }
+  #kakao {
+    &:hover {
+      box-shadow:  0 0 1px 3px #fae64d;
+    }
+  }
   #codebutton {
     width: 12rem;
     height: 4rem;

@@ -90,7 +90,7 @@ const StyledFooterButton = styled.button`
   cursor: pointer;
 `;
 
-const MyPointModal = ({ setOpenModal }) => {
+const MyPointModal = ({ setOpenModal, member }) => {
   const [showPayComponent, setShowPayComponent] = useState(false);
   return (
     <StyledModalBackground>
@@ -104,7 +104,7 @@ const MyPointModal = ({ setOpenModal }) => {
           투자금을 충전하시겠습니까?
         </StyledBody>
 
-        {showPayComponent && <PayComponent />}
+        {showPayComponent && <PayComponent member={member} />}
 
         {!showPayComponent && (
           <StyledFooter>

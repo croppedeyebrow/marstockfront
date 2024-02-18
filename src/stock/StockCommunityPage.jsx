@@ -7,6 +7,7 @@ import CommunityPagination from "./stockcomponent/CommunityPagination";
 import CommonAxios from "../utils/common/CommonAxios";
 import { useEffect } from "react";
 import formatDate from "../utils/component/FormatDate";
+import { Common } from "../utils/common/Common";
 
 import StockPage from "./StockPage";
 import {
@@ -25,6 +26,8 @@ import {
   BottomCheckZone,
   RadioButton,
   RadioButtonContainer,
+  LikesButton,
+  DisLikesButton,
 } from "./StockCommunityStyle";
 import StockCommunityUpload from "./stockcomponent/StockCommunityUpload";
 import StockCommunitySearch from "./stockcomponent/StockCommunitySearch";
@@ -40,6 +43,10 @@ const StockCommunityPage = () => {
   const [checkSearch, setCheckSearch] = useState(false);
   const [checkPost, setCheckPost] = useState(false);
 
+  // 각 댓글에 대한 상태를 관리하는 배열
+  // const [commentStates, setCommentStates] = useState({});
+  const [selectedCommentId, setSelectedCommentId] = useState(false);
+
   const totalPages = discussionObject.totalPages;
   console.log("totalPages : ", totalPages);
 
@@ -48,6 +55,15 @@ const StockCommunityPage = () => {
   };
 
   const currentItems = discussionObject.content;
+
+  // // 댓글 클릭 시 해당 댓글의 상태를 토글
+  // const handleCommentClick = (commentId) => {
+  //   setCommentStates((prevState) => ({
+  //     ...prevState,
+  //     [commentId]: !prevState[commentId],
+  //   }));
+  //   setSelectedCommentId(commentId);
+  // };
 
   useEffect(() => {
     const communityFetchData = async () => {
@@ -73,10 +89,64 @@ const StockCommunityPage = () => {
       }
       setCheckSearch(false);
       setCheckPost(false);
+      setSelectedCommentId(false);
     };
-
     communityFetchData(); // Call the inner function immediately
-  }, [currentPage, checkSearch, checkPost]); // Use currentPage instead of page
+
+    // selectedCommentId가 변경될 때마다 plusViewCount 호출
+    // if (selectedCommentId) {
+    //   plusViewCount();
+    // }
+    // }, [currentPage, checkSearch, checkPost, selectedCommentId]); // selectedCommentId 추가
+  }, [currentPage, checkSearch, checkPost, selectedCommentId]);
+
+  const clickLikes = async (commentId) => {
+    console.log(commentId);
+    const accessToken = Common.getAccessToken();
+    const multiDto = {
+      accessToken: accessToken,
+    };
+    try {
+      const likes = await CommonAxios.postAxios(
+        "community",
+        `like/${commentId}`,
+        multiDto
+      );
+      if (likes.status === 200) {
+        console.log(likes.data);
+      } else {
+        console.log("likes : False");
+      }
+    } catch (error) {
+      console.error("Error fetching discussion data:", error);
+      throw error;
+    }
+    setSelectedCommentId(true);
+  };
+
+  const clickDisLikes = async (commentId) => {
+    console.log(commentId);
+    const accessToken = Common.getAccessToken();
+    const multiDto = {
+      accessToken: accessToken,
+    };
+    try {
+      const disLikes = await CommonAxios.postAxios(
+        "community",
+        `dislike/${commentId}`,
+        multiDto
+      );
+      if (disLikes.status === 200) {
+        console.log(disLikes.data);
+      } else {
+        console.log("disLikes : False");
+      }
+    } catch (error) {
+      console.error("Error fetching discussion data:", error);
+      throw error;
+    }
+    setSelectedCommentId(true);
+  };
 
   return (
     <>
@@ -100,14 +170,49 @@ const StockCommunityPage = () => {
             <CommentBox>
               {currentItems &&
                 currentItems.map((item) => (
-                  <ComContentZone key={item.id}>
-                    <ComCon01>{item.content}</ComCon01>
-                    <ComCon02>{formatDate(item.date)}</ComCon02>
-                    <ComCon03>{item.authorId}</ComCon03>
-                    <ComCon04>{item.views}</ComCon04>
-                    <ComCon04>{item.likes.length}</ComCon04>
-                    <ComCon04>{item.dislikes.length}</ComCon04>
-                  </ComContentZone>
+                  <>
+                    <ComContentZone
+                      key={item.id}
+                      // onClick={() => handleCommentClick(item.id)}
+                    >
+                      <ComCon01>{item.content}</ComCon01>
+                      <ComCon02>{formatDate(item.date)}</ComCon02>
+                      <ComCon03>{item.authorId}</ComCon03>
+                      <ComCon04>
+                        {item.likes.length + item.dislikes.length}
+                      </ComCon04>
+                      <ComCon04>
+                        <LikesButton onClick={() => clickLikes(item.id)}>
+                          {item.likes.length}
+                        </LikesButton>
+                      </ComCon04>
+                      <ComCon04>
+                        <DisLikesButton onClick={() => clickDisLikes(item.id)}>
+                          {item.dislikes.length}
+                        </DisLikesButton>
+                      </ComCon04>
+                    </ComContentZone>
+                    {/* {commentStates[item.id] && (
+                      <>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            gap: "10px",
+                          }}
+                        >
+                          <div>
+                            <input type="text" />
+                            <button>등록</button>
+                            <button>추천</button>
+                            <button>비추천</button>
+                          </div>
+                        </div>
+                        <p style={{ color: "white" }}>댓글 내용</p>
+                      </>
+                    )} */}
+                  </>
                 ))}
 
               <CommunityPagination

@@ -85,6 +85,7 @@ export const Realtimezone = styled.div`
   gap: 2.4rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
     width: 34rem;
@@ -101,6 +102,7 @@ export const MostViewZone = styled.div`
   gap: 0.5rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+  overflow-y: scroll;
 
   @media (max-width: 768px) {
     width: 34rem;
@@ -231,7 +233,7 @@ export const MostViewBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 51.7rem;
+  width: 100%;
   height: 2.8rem;
 
   font-family: "Noto Sans KR";
@@ -254,7 +256,8 @@ export const MostNewsName = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 7.2rem;
+  /* width: 7.2rem; */
+  width: 100%;
   height: 2.8rem;
   font-family: "Noto Sans KR";
   font-style: normal;

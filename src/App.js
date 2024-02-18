@@ -15,6 +15,7 @@ import AdminPage from "./admin/AdminPage";
 import NewsPage from "./news/NewsPage";
 import WebSocketComponent from "./utils/common/WebSocket";
 import Test from "./utils/Test";
+import Success from "./utils/component/Success";
 import { AuthProvider } from "./context/AuthContext";
 import WsTest from "./WsTest";
 import SolarSystem from "./utils/style/OrbitPage";
@@ -36,17 +37,15 @@ function RoutesWithLoading() {
         <SolarSystem />
       ) : (
         <Routes>
-          <Route path="/stockpage" element={<StockPage />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/stockpage/:click" element={<StockPage />} />
 
           <Route path="/" element={<MainPage />} />
           <Route path="/ws" element={<WebSocketComponent />} />
           <Route path="/ws-stockinfo" element={<WsTest />} />
 
           <Route path="/stockInfo/:name" element={<StockInfoPage />} />
-          <Route path="/stockList" element={<StockListPage />} />
-          <Route path="/stockIndex" element={<StockIndexPage />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/success" element={<Success />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/news" element={<NewsPage />} />
 

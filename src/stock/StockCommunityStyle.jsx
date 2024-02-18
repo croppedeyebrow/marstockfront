@@ -245,3 +245,58 @@ export const RadioButtonContainer = styled.div`
     font-size: 1rem;
   }
 `;
+
+export const LikesButton = styled.button`
+  display: flex;
+  position: relative;
+  width: 4rem;
+  height: 3.6rem;
+  color: white;
+  background: var(--mainpurple);
+  font-size: 1.6rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.2); // 가장자리를 깎는 효과 추가
+  border-radius: 0.5rem;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2), 0px 10px 10px rgba(0, 0, 0, 0.15); // 그림자 효과 조정
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.95); // 클릭 시 눌리는 효과 추가
+  }
+
+  @media (max-width: 768px) {
+    width: 12rem;
+  }
+`;
+
+export const DisLikesButton = styled.button`
+  display: flex;
+  position: relative;
+  width: 4rem;
+  height: 3.6rem;
+  color: white;
+  background: var(--mainorange);
+  font-size: 1.6rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.2); // 가장자리를 깎는 효과 추가
+  border-radius: 0.5rem;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2), 0px 10px 10px rgba(0, 0, 0, 0.15); // 그림자 효과 조정
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.95); // 클릭 시 눌리는 효과 추가
+  }
+
+  @media (max-width: 768px) {
+    width: 12rem;
+  }
+`;

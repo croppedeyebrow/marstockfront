@@ -11,12 +11,12 @@ const ChartContainer = styled.div`
   justify-content: center;
 
   @media (max-width: 768px) {
-    width: 40rem;
+    width: 100%;
   }
 `;
 
 const StockInfoChart = ({ chartData }) => {
-  console.log(chartData);
+  // console.log(chartData);
 
   useEffect(() => {
     // Update the series and options when chartData changes
@@ -53,7 +53,7 @@ const StockInfoChart = ({ chartData }) => {
         type: "line",
       },
       stroke: {
-        width: 2,
+        width: 5,
         curve: "smooth",
         dashArray: 0,
       },
@@ -75,20 +75,22 @@ const StockInfoChart = ({ chartData }) => {
         align: "left",
         style: {
           fontSize: "16px",
-          color: "#666",
+          color: "#fff",
         },
       },
       fill: {
-        type: "gradient",
-        gradient: {
-          shade: "dark",
-          gradientToColors: ["#FDD835"],
-          shadeIntensity: 1,
-          type: "horizontal",
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 100, 100, 100],
-        },
+        type: "solid", // Set to "solid" to remove gradient
+        color: ["blue"], // Choose a color for the area under the curve
+        // type: "gradient",
+        // gradient: {
+        //   shade: "dark",
+        //   gradientToColors: ["#FDD835"],
+        //   shadeIntensity: 1,
+        //   type: "horizontal",
+        //   opacityFrom: 1,
+        //   opacityTo: 1,
+        //   stops: [0, 100, 100, 100],
+        // },
       },
       yaxis: {
         labels: {
@@ -178,6 +180,14 @@ const StockInfoChart = ({ chartData }) => {
           formatter: function (value) {
             return value / 10000 + "만원";
           },
+        },
+      },
+      legend: {
+        show: true,
+        position: "top",
+        horizontalAlign: "center",
+        labels: {
+          colors: "white",
         },
       },
     },

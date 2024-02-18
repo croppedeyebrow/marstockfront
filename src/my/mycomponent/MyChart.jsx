@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import ReactApexChart from "react-apexcharts";
 
@@ -15,16 +15,27 @@ const ChartContainer = styled.div`
   }
 `;
 
-const MyChart = () => {
-  const [chartState, setChartState] = useState({
+const MyChart = ({ stockList, socketList }) => {
+  const chartState = {
     series: [
       {
         name: "Sales",
-        data: [
-          -2000000, -3000000, -2000000, -1200000, 0, 1000000, 200000, -1000000,
-          -500000, 0, 500000, 1000000, 2000000, 3000000, 4000000, 5000000,
-          5660000, 4000000, 2000000,
-        ],
+        data: stockList?.map(
+          (buy) =>
+            buy.buyCount * buy.buyPrice -
+            socketList
+              .filter((socket) =>
+                socket.latestStock.some((data) => data?.stockName === buy.name)
+              )
+              .map(
+                (filteredSocket) =>
+                  filteredSocket.latestStock.find(
+                    (data) => data?.stockName === buy.name
+                  )?.stockClose || 0
+              ) *
+              buy.buyCount,
+          0
+        ),
       },
     ],
     options: {
@@ -32,7 +43,6 @@ const MyChart = () => {
         height: 350,
         type: "line",
       },
-
       stroke: {
         width: 5,
         curve: "smooth",
@@ -40,33 +50,16 @@ const MyChart = () => {
       },
       xaxis: {
         type: "datetime",
-        categories: [
-          "1/18/2024",
-          "1/19/2024",
-          "1/20/2024",
-          "1/21/2024",
-          "1/22/2024",
-          "1/23/2024",
-          "1/23/2024",
-          "1/24/2024",
-          "1/25/2024",
-          "1/26/2024",
-          "1/27/2024",
-          "1/28/2024",
-          "1/29/2024",
-          "1/30/2024",
-          "1/31/2024",
-          "2/1/2024",
-          "2/2/2024",
-          "2/3/2024",
-          "2/4/2024",
-          "2/5/2024",
-          "2/6/2024",
-        ],
+        categories: stockList?.map((data) => new Date(data.date).getTime()),
         tickAmount: 10,
         labels: {
-          formatter: function (value, timestamp, opts) {
-            return opts.dateFormatter(new Date(timestamp), "dd MMM");
+          formatter: function (timestamp) {
+            const formattedDate = new Intl.DateTimeFormat("en-US", {
+              day: "numeric",
+              month: "short",
+            }).format(new Date(timestamp));
+
+            return formattedDate;
           },
           style: {
             colors: "white",
@@ -94,8 +87,8 @@ const MyChart = () => {
         },
       },
       yaxis: {
-        min: -10000000,
-        max: 10000000,
+        min: -500000,
+        max: 500000,
         labels: {
           style: {
             colors: "white",
@@ -106,8 +99,7 @@ const MyChart = () => {
         },
       },
     },
-  });
-
+  };
   return (
     <ChartContainer>
       <div id="chart">

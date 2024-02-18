@@ -28,7 +28,7 @@ export const Container = styled.div`
    justify-content: center;
    align-items: center;
    #circle {
-      width: 50%;
+      width: 60%;
       animation: ${props => props.open ? 'scaleup 5.5s ease-in-out forwards' : 'none'};
 
     @keyframes scaleup {
@@ -204,18 +204,23 @@ export const InfoContainer = styled.div`
             justify-content: space-between;
             margin-top: 1.5rem;
             #name {
-               font-size: 1.8rem;
+               font-size: 1.7rem;
                font-weight: 500;
             }
             #media {
-               font-size: 1.8rem;
+               font-size: 1.7rem;
                font-weight: 500;
                color: var(--mainlightpurple);
             }
             #rank {
-
+               font-size: 1.7rem;
+               font-weight: 500;
+               color: var(--mainlightpurple);
             }
             #price {
+               font-size: 1.7rem;
+               font-weight: 500;
+               color: var(--mainlightorange);
 
             }
          }
@@ -234,6 +239,38 @@ export const InfoContainer = styled.div`
       &#threeinfo{
          width: 110rem;
          animation: ${props => props.open ? css`${growin} 0.6s ease` : 'none'};
+         
+         #threeinfobox {
+            margin-top: 3rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: space-between;
+            .threein{
+               flex: 1;
+               height: auto;
+               flex-direction: column;
+               #infotitle {
+                  font-size: 2.1rem;
+                  font-weight: 600;
+                  margin-bottom: 2rem;
+               }
+            #infoin {
+               display: flex;
+               gap: 2rem;
+               font-size: 1.5rem;
+               font-weight: 200;
+               .in {
+               }
+               #inname{
+                  font-weight: 600;
+               }
+               #inchange{
+                  font-weight: 400;
+               }
+            }
+               
+            }
+         }
       }
    }
 `;
@@ -254,6 +291,9 @@ export const CardContainer = styled.div`
    display: flex;
    gap: 4rem;
    scale: ${props => props.open ? '1' : '0'};
+   @media (max-width: 768px) {
+      flex-wrap: wrap;
+   }
   .card {
    width: 27rem;
    height: 40rem;

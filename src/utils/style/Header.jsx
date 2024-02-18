@@ -110,7 +110,7 @@ const Header = () => {
 
   useEffect(() => {
     const accessToken = Common.getAccessToken();
-    console.log("accessToken", accessToken);
+    // console.log("accessToken", accessToken);
     updateLoginStatus(accessToken);
   }, [isLogin, logout]);
 
@@ -140,7 +140,7 @@ const Header = () => {
             </Link>
             <Menubutton src={MenuIcon} onClick={toggleMenu} />
             <MenuContainer isOpen={isMenuOpen} className="link">
-              <Link to="/stockpage">
+              <Link to="/stockpage/1">
                 <div id="stock">주식</div>
               </Link>
               <Link to="/news">
@@ -161,7 +161,7 @@ const Header = () => {
             </Link>
             <Menubutton src={MenuIcon} onClick={toggleMenu} />
             <MenuContainer isOpen={isMenuOpen} className="link">
-              <Link to="/stockpage">
+              <Link to="/stockpage/1">
                 <div id="stock">주식</div>
               </Link>
               <Link to="/news">

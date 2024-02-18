@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import CommonAxios from "../../utils/common/CommonAxios";
+import { useState } from "react";
 
 const SearchZone = styled.div`
   position: relative;
@@ -88,12 +90,137 @@ const SearchButton = styled.button`
   }
 `;
 
+const SearchResults = styled.div`
+  position: absolute;
+  top: 80%;
+  left: 7.7rem;
+  width: 86rem;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  box-sizing: border-box;
+  font-size: 2rem;
+  padding: 2rem;
+`;
+
+const SearchResultItem = styled.div`
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #f2f2f2;
+    &:before {
+      content: "${(props) => stripHtmlTags(props.description)}";
+      position: absolute;
+      /* 동적으로 계산된 top 값을 설정 */
+      top: ${(props) => props.hoverTop || "10%"};
+      left: 10rem;
+      width: 80%;
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-top: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      box-sizing: border-box;
+      font-size: 1.6rem;
+    }
+  }
+`;
+
+// 검색
+const stripHtmlTags = (htmlString) => {
+  const strippedString = htmlString.replace(/<[^>]*>/g, ""); // 정규표현식으로 HTML 태그 제거
+  const decodedString = new DOMParser().parseFromString(
+    strippedString,
+    "text/html"
+  ).body.textContent; // HTML 특수 문자 디코딩
+  return decodedString;
+};
+
 const NewsSearch = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [list, setList] = useState([]);
+
+  // 검색 입력
+  const handleSearch = async (event) => {
+    setSearchTerm(event.target.value);
+    try {
+      const res = await CommonAxios.getAxios(
+        "news",
+        "search",
+        "token",
+        searchTerm
+      );
+      if (res.status === 200) {
+        const sanitizedData = res.data.map((item) => ({
+          ...item,
+          title: stripHtmlTags(item.title),
+        }));
+        // console.log(sanitizedData);
+        setList(sanitizedData);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  // 검색
+  const Search = async () => {
+    // console.log(searchTerm);
+
+    try {
+      const res = await CommonAxios.getAxios(
+        "news",
+        "search",
+        "token",
+        searchTerm
+      );
+      if (res.status === 200) {
+        const sanitizedData = res.data.map((item) => ({
+          ...item,
+          title: stripHtmlTags(item.title),
+        }));
+        // console.log(sanitizedData);
+        setList(sanitizedData);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const Link = (item) => {
+    window.location.href = item.link;
+  };
+
   return (
     <>
       <SearchZone>
-        <SearchInput placeholder="검색하고 싶은 뉴스를 입력하세요"></SearchInput>
-        <SearchButton>검색</SearchButton>
+        <SearchInput
+          onChange={handleSearch}
+          placeholder="검색하고 싶은 뉴스를 입력하세요"
+        ></SearchInput>
+        {searchTerm && list.length > 0 && (
+          <SearchResults>
+            {list.map((item, index) => (
+              <SearchResultItem
+                onClick={() => Link(item)}
+                description={item.description}
+                hoverTop={`${(index + 1) * 10}%`}
+                key={index}
+              >
+                {item.title}
+              </SearchResultItem>
+            ))}
+          </SearchResults>
+        )}
+        <SearchButton onClick={Search}>검색</SearchButton>
       </SearchZone>
     </>
   );

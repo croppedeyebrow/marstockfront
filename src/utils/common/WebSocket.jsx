@@ -1,6 +1,6 @@
-const WebSocketComponent = (roomId, name, type) => {
+const WebSocketComponent = (roomId, type) => {
   const socket = new WebSocket(
-    `ws://localhost:8111/ws/marstock?room=${roomId}&name=${name}&type=${type}`
+    `ws://localhost:8111/ws/marstock?room=${roomId}&type=${type}`
   );
   console.log(socket.url);
 

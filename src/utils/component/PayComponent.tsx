@@ -3,7 +3,6 @@ import styled from "styled-components";
 import {
   PaymentWidgetInstance,
   loadPaymentWidget,
-  ANONYMOUS,
 } from "@tosspayments/payment-widget-sdk";
 
 const clientKey = "test_ck_26DlbXAaV01OJX6EbLN5rqY50Q9R";
@@ -51,8 +50,8 @@ const RadioButton = styled.button`
   }
 `;
 
-export const PayComponent = ({ email, username, phone }) => {
-  const [price, setPrice] = useState(100);
+export const PayComponent = ({ member }) => {
+  const [price, setPrice] = useState(0);
 
   const requestPayment = async () => {
     const paymentWidget = paymentWidgetRef.current;
@@ -63,10 +62,10 @@ export const PayComponent = ({ email, username, phone }) => {
       await paymentWidget?.requestPayment({
         orderId: "p93WFPeu_ZS9--L7wNdca",
         orderName: "포인트충전",
-        customerName: username,
-        customerEmail: email,
-        customerMobilePhone: phone,
-        successUrl: `${window.location.origin}/success?username=${username}&email=${email}&phone=${phone}`,
+        customerName: member?.nickName,
+        customerEmail: member?.memberEmail,
+        customerMobilePhone: member?.phone,
+        successUrl: `${window.location.origin}/success?username=${member?.nickName}&email=${member?.memberEmail}&phone=${member?.phone}&price=${price}`,
         failUrl: `${window.location.origin}/fail`,
       });
     } catch (error) {
@@ -109,7 +108,6 @@ export const PayComponent = ({ email, username, phone }) => {
     if (paymentMethodsWidget == null) {
       return;
     }
-    console.log(email);
     console.log(price);
     // ------ 금액 업데이트 ------
     paymentMethodsWidget.updateAmount(price);

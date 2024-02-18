@@ -68,7 +68,7 @@ Interceptor.interceptors.response.use(
       originalRequest._retry = true;
 
       const newAccessToken = await Common.handleUnauthorized();
-      console.log("인터 셉터의 새로운 토큰", newAccessToken);
+      // console.log("인터 셉터의 새로운 토큰", newAccessToken);
       // newAccessToken이 false를 반환하는지 확인 후 "/"로 이동
       if (newAccessToken) {
         // localStorage.setItem("accessToken", newAccessToken);

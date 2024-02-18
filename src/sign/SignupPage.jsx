@@ -4,7 +4,7 @@ import {
   Background,
   InputContainer,
   Logo,
-  InputBox, 
+  InputBox,
   CheckBox,
   CheckBoxLabel,
   Link,
@@ -37,12 +37,14 @@ const SignupPage = () => {
   const [cnum, setCnum] = useState();
   const [inputPassword, setInputPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+  const [birth, setBirth] = useState();
 
   // 회원 가입 상태 체크
   const [isEmail, setIsEmail] = useState(false);
+  const [isPassword, setIsPassword] = useState(false);
+  const [isInputPassword, setIsInputPassword] = useState(false);
   const [isNickName, setIsNickName] = useState(false);
   const [isTel, setIsTel] = useState(false);
-  const [isInputPassword, setIsInputPassword] = useState(false);
 
   // 회원 가입 전개 연산자
   const isSignupValid = () => {
@@ -72,7 +74,7 @@ const SignupPage = () => {
           memberPassword: inputPassword,
           phone: tel,
           nickName: nickName,
-          // birth:
+          birth: birth,
         });
         if (res.status === 200) {
           alert("회원가입 성공!");
@@ -105,17 +107,26 @@ const SignupPage = () => {
 
   // 이메일 인증
   const checkEmail = (e) => {
-    const emailRegex = /^[a-zA-Z0-9]+@.+\.com$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const email = e.target.value;
     if (emailRegex.test(email)) {
-      setOpenEmailModal(true);
+      // setOpenEmailModal(true);
       setEmail(email);
-      // 인증함수 실행
-      authEmail(email);
-      // 모달 오픈
-      isEmailModal();
-    } else alert("이메일을 확인하세요");
+      alert("유효한 이메일 형식입니다.");
+    }
   };
+
+  // 이메일 모달 오픈
+  const onClickEmailCheck = () => {
+    setOpenEmailModal(true);
+
+    setEmail(email);
+    // 인증함수 실행
+    authEmail(email);
+    // 모달 오픈
+    isEmailModal();
+  };
+
   // 인증 함수
   const authEmail = async (email) => {
     try {
@@ -127,12 +138,12 @@ const SignupPage = () => {
       );
       if (res.data === true) {
         // 입력 모달 등장
-        alert("이메일 인증번호를 전송합니다.");
+        alert("이메일 전송");
       } else {
         alert("이미 존재하는 이메일 혹은 존재하지 않는 이메일입니다.");
       }
     } catch (error) {
-      alert("이메일 전속 실패?");
+      alert("이메일 전송 실패");
       console.log("이메일 입력:", error);
     }
   };
@@ -164,8 +175,9 @@ const SignupPage = () => {
     const passwordCurrent = e.target.value;
     if (passwordRegex.test(passwordCurrent)) {
       setInputPassword(passwordCurrent);
+      setIsPassword(true);
     } else {
-      // alert("비밀번호는 문자, 숫자, 특수문자가 포함된 8~25자 입니다.");
+      setIsPassword(false);
     }
   };
   // 비밀번호 확인
@@ -176,13 +188,12 @@ const SignupPage = () => {
   const checkPassword = () => {
     if (inputPassword !== "" && confirmPassword !== "") {
       if (inputPassword === confirmPassword) {
-        alert("입력 정보가 동일합니다.");
         setIsInputPassword(true);
       } else {
-        alert("입력하신 비밀번호를 재확인하십시오.");
+        setIsInputPassword(false);
       }
     } else {
-      alert("비밀번호를 입력하시오");
+      setIsInputPassword(false);
     }
   };
 
@@ -203,16 +214,15 @@ const SignupPage = () => {
         // 중복이 없어야 true 설정. false를 받아야 중복이 없는것.
         // console.log(checkNickName.data);
         if (checkNickName.data === true) {
-          alert("이미 존재하는 닉네임입니다.");
+          setIsNickName(true);
         } else {
-          alert("유효한 닉네임입니다.");
           setIsNickName(true);
         }
       } else {
         alert("닉네임을 입력하세요");
       }
     } catch (error) {
-      alert("닉네임 입력 정보를 확인하십시오.", error);
+      console.log("닉네임 입력 정보를 확인하십시오.", error);
     }
   };
 
@@ -250,7 +260,7 @@ const SignupPage = () => {
       }
     } catch (error) {
       // 오류 발생 시 처리
-      alert("연결이 불안정합니다.");
+      alert("전화 번호 및 네트워크 연결을 확인하세요.");
       console.error("SMS 전송 실패:", error);
     }
   };
@@ -277,18 +287,25 @@ const SignupPage = () => {
           <Logo src={headlogo} alt="logo" />
         </Link>
         <InputContainer>
-        <div id="title">Sign up</div>
-        <div id="inputcontainerin">
+          <div id="title">Sign up</div>
+          <div id="inputcontainerin">
             <div className="inputarea">
               <InputBox
                 placeholder="E-Mail"
-                onBlur={checkEmail}
-                ref={emailInputRef} 
+                ref={emailInputRef}
+                onChange={checkEmail}
+              ></InputBox>
+              <div
+                className="inputbutton"
+                onClick={onClickEmailCheck}
+                style={{ top: "34.7rem", left: "49.8rem" }}
               >
-              </InputBox>
-              <div className="inputbutton" style={{ top: "34.7rem", left: "49.8rem"}}>중복확인</div>
+                중복확인
+              </div>
             </div>
-            <div className="checktext">틀렸다틀렸어</div>
+            <div className="checktext">
+              {isEmail ? "이메일 확인" : "이메일을 확인하세요."}
+            </div>
             <NoneBtnModalComponent
               closeModalHandler={closeEmailModal}
               isOpen={openEmailModal}
@@ -313,7 +330,9 @@ const SignupPage = () => {
               style={{ width: "28.333rem" }}
             ></InputBox>
             <div className="checktext">
-              틀렸다틀렸어
+              {isPassword
+                ? "유효한 비밀번호 입니다."
+                : "비밀번호는 문자, 숫자, 특수문자가 포함된 8~25자 입니다."}
             </div>
             <InputBox
               placeholder="Confirm Password"
@@ -323,19 +342,25 @@ const SignupPage = () => {
               style={{ width: "28.333rem" }}
             ></InputBox>
             <div className="checktext">
-              틀렸다틀렸어
+              {isInputPassword
+                ? "비밀번호가 일치합니다."
+                : "비밀번호를 확인하십시오."}
             </div>
             <div className="inputarea">
-            <InputBox
-              placeholder="Phone"
-              onChange={onChangeTel}
-              // onBlur={onBlurSms}
-            ></InputBox>
-            <div className="inputbutton" style={{ top: "34.7rem", left: "49.8rem"}}>중복확인</div>
+              <InputBox
+                placeholder="Phone"
+                onChange={onChangeTel}
+                // onBlur={onBlurSms}
+              ></InputBox>
+              <div
+                className="inputbutton"
+                onClick={handleSendMessage}
+                style={{ top: "34.7rem", left: "49.8rem" }}
+              >
+                중복확인
+              </div>
             </div>
-            <div className="checktext">
-              틀렸다틀렸어
-            </div>
+            <div className="checktext">{}</div>
             <NoneBtnModalComponent
               isOpen={sms}
               customButton={false}
@@ -355,21 +380,26 @@ const SignupPage = () => {
               }
             />
             <div className="inputarea">
-            <InputBox 
-              placeholder="Nickname"
-              onChange={onChangeNickName}
-              onBlur={onClickCheckNickName}
+              <InputBox
+                placeholder="Nickname"
+                onChange={onChangeNickName}
+              ></InputBox>
+              <div
+                className="inputbutton"
+                onClick={onClickCheckNickName}
+                style={{ top: "34.7rem", left: "49.8rem" }}
+              >
+                중복확인
+              </div>
+            </div>
+            <div className="checktext">
+              {isNickName ? "유효한 닉네임입니다." : ""}
+            </div>
+            <InputBox
+              placeholder="birth (ex. 990811)"
+              style={{ width: "28.333rem" }}
+              onChange={(e) => setBirth(e.target.value)}
             ></InputBox>
-            <div className="inputbutton" style={{ top: "34.7rem", left: "49.8rem"}}>중복확인</div>
-            </div>
-            <div className="checktext">
-              틀렸다틀렸어
-            </div>
-            <InputBox placeholder="birth (ex. 990811)"
-            style={{ width: "28.333rem" }}></InputBox>
-            <div className="checktext">
-              틀렸다틀렸어
-            </div>
           </div>
           <div id="agreeBox">
             <CheckBoxLabel style={{ fontWeight: "500", fontSize: "1.7rem" }}>
