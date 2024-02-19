@@ -3,7 +3,7 @@ import headlogo from "../images/LogoSymbolHorizonWhite.svg";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import CommonAxios from "../utils/common/CommonAxios";
-import { Common } from "../utils/common/Common";
+import { Common, API_KEY, REDIRECT_URL } from "../utils/common/Common";
 import { useAuth } from "../context/AuthContext";
 import kakaologin from "../images/kakao_login.svg";
 
@@ -58,6 +58,12 @@ const SigninPage = () => {
     }
   };
 
+  // 카카오 로그인
+  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URL}&response_type=code`;
+  const kakaoLogin = () => {
+    window.location.href = link;
+  };
+
   return (
     <>
       <Background>
@@ -89,7 +95,19 @@ const SigninPage = () => {
           <div id="signbutton" onClick={onClickLogin}>
             Sign in
           </div>
-          <img id="kakao" src={kakaologin} alt="kakao" style={{ width:"27.4rem", height: "5.2rem", objectFit:"cover", borderRadius:"1.5rem", cursor: 'pointer'}} />
+          <img
+            id="kakao"
+            src={kakaologin}
+            alt="kakao"
+            style={{
+              width: "27.4rem",
+              height: "5.2rem",
+              objectFit: "cover",
+              borderRadius: "1.5rem",
+              cursor: "pointer",
+            }}
+            onClick={kakaoLogin}
+          />
           <Link to="/signup">
             <div id="linktext" style={{ textAlign: "center" }}>
               아직 계정이 없으신가요?

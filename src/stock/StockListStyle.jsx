@@ -132,6 +132,37 @@ export const Category03 = styled.div`
   }
 `;
 
+export const Category04 = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 13.8rem;
+  height: 4.6rem;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.3);
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--mainorange);
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &::before {
+      left: 0;
+      width: 100%;
+    }
+  }
+`;
+
 export const StockInfoBackboard = styled.div`
   position: relative;
   display: flex;
@@ -141,6 +172,33 @@ export const StockInfoBackboard = styled.div`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   overflow-y: auto;
+
+  /* Styles for the scrollbar */
+  &::-webkit-scrollbar {
+    width: 1rem; /* Adjust scrollbar thickness */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--mainpurple),
+      var(--mainorange)
+    );
+    height: 1rem;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--mainlightpurple),
+      var(--mainlightorange)
+    );
+  }
 
   @media (max-width: 768px) {
     width: 40rem;
@@ -239,7 +297,7 @@ export const StockTitle02 = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 5rem;
+    width: 6rem;
     font-size: 1.2rem;
   }
 `;
@@ -391,6 +449,11 @@ export const StockInfo01 = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1rem;
+  }
 `;
 
 export const StockInfo02 = styled.div`
@@ -423,6 +486,11 @@ export const StockInfo02 = styled.div`
       width: 100%;
     }
   }
+
+  @media (max-width: 768px) {
+    width: 6rem;
+    font-size: 0.7rem;
+  }
 `;
 
 export const StockInfo03 = styled.div`
@@ -435,6 +503,11 @@ export const StockInfo03 = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1rem;
+  }
 `;
 
 export const StockInfo04 = styled.div`
@@ -447,6 +520,11 @@ export const StockInfo04 = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1rem;
+  }
 `;
 
 export const StockInfo05 = styled.div`
@@ -459,6 +537,10 @@ export const StockInfo05 = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
   color: #ffffff;
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1rem;
+  }
 `;
 
 export const StockInfo06 = styled.div`
@@ -470,7 +552,14 @@ export const StockInfo06 = styled.div`
   height: 2.4rem;
   font-size: 1.6rem;
   font-weight: bold;
+
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1rem;
+    left: 0.5rem;
+  }
 `;
 
 export const StockInfo07 = styled.div`
@@ -483,6 +572,12 @@ export const StockInfo07 = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1rem;
+    left: 0.5rem;
+  }
 `;
 
 export const StockInfo08 = styled.div`
@@ -495,4 +590,10 @@ export const StockInfo08 = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    font-size: 1rem;
+    left: 0.5rem;
+  }
 `;

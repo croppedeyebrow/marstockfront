@@ -431,9 +431,10 @@ const StockIndexPage = ({ all }) => {
                 <IndexTopContainer>
                   <IndexTopTitle>검색 상위</IndexTopTitle>
                   <IndexTopRow>
-                    <IndexTopNum>-</IndexTopNum>
+                    <IndexTopNum>Rank</IndexTopNum>
                     <IndexTopName>
-                      <AnimatedText>종목명</AnimatedText>
+                      종목명
+                      {/* <AnimatedText>종목명</AnimatedText> */}
                     </IndexTopName>
                     <IndexTopPrice>종목 가격</IndexTopPrice>
                     <IndexTopRate>검색율</IndexTopRate>
@@ -454,7 +455,7 @@ const StockIndexPage = ({ all }) => {
             <MiddleContainer>
               {isMobile ? (
                 <div onClick={handleDropdown}>
-                  <IndexDrop>Index Title</IndexDrop>
+                  <IndexDrop>Index Title Select ⇓</IndexDrop>
                   {isOpen && (
                     <>
                       <IndexDropContainer>

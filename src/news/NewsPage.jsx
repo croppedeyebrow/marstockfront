@@ -16,18 +16,13 @@ import {
   TopTitile,
   RealTimeBox,
   TopBox,
-  BottomBox,
   MostViewBox,
   MostNewsName,
-  NewsUploadTime,
-  RealNewsName,
-  RealTime,
   NewsBottomTitle,
   NewsBottomContainer,
   TvNewsBox,
   NewsImgBox,
   NewsInfoBox,
-  TvNewsTitle,
   TvnewsInfo,
 } from "./NewsStyle";
 import NewsSearch from "./newscomponent/NewsSearch";

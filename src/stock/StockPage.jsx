@@ -3,7 +3,7 @@ import Footer from "../utils/style/Footer";
 import React, { useState, useEffect } from "react";
 import CommonAxios from "../utils/common/CommonAxios";
 import WebSocketComponent from "../utils/common/WebSocket";
-
+import { useNavigate } from "react-router-dom";
 import {
   StockContainer,
   StockHeadTitle,
@@ -37,6 +37,7 @@ const StockPage = () => {
   });
 
   const { click } = useParams();
+  const navigate = useNavigate();
 
   // 데이터 가져오는 switch 케이스
   const getIndex = async (socket) => {
@@ -158,6 +159,7 @@ const StockPage = () => {
       setShowStockListPage(false);
       setShowStockIndexPage(false);
       setShowStockDiscussionPage(true);
+      navigate("/stockpage/1", { replace: true });
     } else {
       const socket = WebSocketComponent("stockList", stockList);
       getIndex(socket);
@@ -191,9 +193,6 @@ const StockPage = () => {
         {showStockDiscussionPage && <StockCommunityPage />}
         {showStockIndexPage && <StockIndexPage all={all} />}
       </StockContainer>
-
-      {/* <InlineContainer color=""></InlineContainer> */}
-
       <Footer />
     </>
   );

@@ -37,6 +37,7 @@ import {
   StockInfoTitle,
   StockInfoTitleText,
   MyStockNumber,
+  NumberBox,
   StockInfoText01,
   StockInfoText02,
   StockInfoText03,
@@ -372,60 +373,62 @@ const MyPage = () => {
                     <StockInfoTitleText>구매 일자</StockInfoTitleText>
                   </StockInfoTitle>
 
-                  {stockList.map((stock, index) => (
-                    <MyStockNumber key={index}>
-                      <StockInfoText01>{stock.name}</StockInfoText01>
-                      <StockInfoText02>{stock.code}</StockInfoText02>
-                      <StockInfoText03>
-                        {Number(stock.buyPrice).toLocaleString()}
-                      </StockInfoText03>
-                      <StockInfoText04>
-                        {Number(stock.buyCount).toLocaleString()}
-                      </StockInfoText04>
-                      <StockInfoText05>
-                        {Number(
-                          stock.buyPrice * stock.buyCount
-                        ).toLocaleString()}
-                      </StockInfoText05>
-                      <StockInfoText06>
-                        {Number(
-                          socketList
-                            .filter((socket) =>
-                              socket.latestStock.some(
-                                (data) => data?.stockName === stock.name
-                              )
-                            )
-                            .map(
-                              (filteredSocket) =>
-                                filteredSocket.latestStock.find(
+                  <NumberBox>
+                    {stockList.map((stock, index) => (
+                      <MyStockNumber key={index}>
+                        <StockInfoText01>{stock.name}</StockInfoText01>
+                        <StockInfoText02>{stock.code}</StockInfoText02>
+                        <StockInfoText03>
+                          {Number(stock.buyPrice).toLocaleString()}
+                        </StockInfoText03>
+                        <StockInfoText04>
+                          {Number(stock.buyCount).toLocaleString()}
+                        </StockInfoText04>
+                        <StockInfoText05>
+                          {Number(
+                            stock.buyPrice * stock.buyCount
+                          ).toLocaleString()}
+                        </StockInfoText05>
+                        <StockInfoText06>
+                          {Number(
+                            socketList
+                              .filter((socket) =>
+                                socket.latestStock.some(
                                   (data) => data?.stockName === stock.name
-                                )?.stockClose || 0
-                            )
-                        ).toLocaleString()}
-                      </StockInfoText06>
-                      <StockInfoText07>
-                        {Number(
-                          ((socketList
-                            .filter((socket) =>
-                              socket.latestStock.some(
-                                (data) => data?.stockName === stock.name
+                                )
                               )
-                            )
-                            .map(
-                              (filteredSocket) =>
-                                filteredSocket.latestStock.find(
+                              .map(
+                                (filteredSocket) =>
+                                  filteredSocket.latestStock.find(
+                                    (data) => data?.stockName === stock.name
+                                  )?.stockClose || 0
+                              )
+                          ).toLocaleString()}
+                        </StockInfoText06>
+                        <StockInfoText07>
+                          {Number(
+                            ((socketList
+                              .filter((socket) =>
+                                socket.latestStock.some(
                                   (data) => data?.stockName === stock.name
-                                )?.stockClose || 0
-                            ) -
-                            stock.buyPrice) /
-                            stock.buyPrice) *
-                            100
-                        ).toLocaleString()}
-                        %
-                      </StockInfoText07>
-                      <StockInfoText08>{stock.date}</StockInfoText08>
-                    </MyStockNumber>
-                  ))}
+                                )
+                              )
+                              .map(
+                                (filteredSocket) =>
+                                  filteredSocket.latestStock.find(
+                                    (data) => data?.stockName === stock.name
+                                  )?.stockClose || 0
+                              ) -
+                              stock.buyPrice) /
+                              stock.buyPrice) *
+                              100
+                          ).toLocaleString()}
+                          %
+                        </StockInfoText07>
+                        <StockInfoText08>{stock.date}</StockInfoText08>
+                      </MyStockNumber>
+                    ))}
+                  </NumberBox>
                 </StockInfoBox>
               </BottomInnerBox>
             </MyPageBottom>

@@ -104,14 +104,13 @@ const Menubutton = styled.img`
 const Header = () => {
   // 헤더 로그인 상태 결정
   // 인터셉터 수정 필요: 로그인 상태 관리 필요
-  const { updateLoginStatus, isLogin, logout } = useAuth();
+  const { updateLoginStatus, isLogin, logout, userRole } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // console.log("isLogin", isLogin);
 
   useEffect(() => {
-    const accessToken = Common.getAccessToken();
-    // console.log("accessToken", accessToken);
-    updateLoginStatus(accessToken);
+    console.log("userRole", userRole);
+    updateLoginStatus(userRole);
   }, [isLogin, logout]);
 
   const toggleMenu = () => {

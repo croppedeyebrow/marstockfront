@@ -5,10 +5,12 @@ moment.locale("ko");
 
 export const MARSTOCK_DOMAIN = "http://localhost:8111";
 export const SOCKET_URL = "ws://localhost:8111/ws/marstock";
-// export const SOCKET_CHAT_URL = "ws://localhost:8111/ws/chat";
 export const API_KEY = "a42a4db55c114cff5770a883fc8607f9";
-export const REDIRECT_URL = "http://localhost:3000/kakao";
+// export const REDIRECT_URL = "http://localhost:3000/kakao";
+// 통합 버전
+export const REDIRECT_URL = "http://localhost:8111/kakao";
 export const SECRET_KEY = "Xs7FwH1FUNOkspaOszcuw2wZXTQGrEIs";
+export const WEB_SOCKET = "ws://localhost:8111/ws/marstock";
 
 // 공통 함수 영역
 export const Common = {
@@ -68,19 +70,14 @@ Interceptor.interceptors.response.use(
       originalRequest._retry = true;
 
       const newAccessToken = await Common.handleUnauthorized();
-      // console.log("인터 셉터의 새로운 토큰", newAccessToken);
-      // newAccessToken이 false를 반환하는지 확인 후 "/"로 이동
       if (newAccessToken) {
         // localStorage.setItem("accessToken", newAccessToken);
         Interceptor.defaults.headers.common["Authorization"] =
           "Bearer " + newAccessToken;
         return Interceptor(originalRequest);
       } else {
-        // 리프레시 토큰이 만료되었을 경우
-        // 로컬 스토리지 제거
         console.log("리프레쉬 토큰 만료");
         window.localStorage.clear();
-        //   window.location.href = "/";
       }
     }
     return Promise.reject(error);

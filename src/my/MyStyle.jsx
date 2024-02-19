@@ -308,7 +308,7 @@ export const GraphBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 27.4rem;
+  height: 30rem;
   width: 60rem;
 
   background: rgba(255, 255, 255, 0.08);
@@ -339,7 +339,7 @@ export const MyPageBottom = styled.div`
 export const BottomInnerBox = styled.div`
   position: relative;
   display: flex;
-  width: 96rem;
+  width: 98rem;
   height: 56rem;
   // justify-content: center;
   flex-direction: column;
@@ -431,6 +431,42 @@ export const StockInfoTitleText = styled.div`
   @media (max-width: 768px) {
     font-size: 1rem;
     height: 1.4rem;
+  }
+`;
+
+export const NumberBox = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+  overflow: scroll;
+
+  /* Styles for the scrollbar */
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--mainpurple),
+      var(--mainorange)
+    );
+    height: 1rem;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--mainlightpurple),
+      var(--mainlightorange)
+    );
   }
 `;
 

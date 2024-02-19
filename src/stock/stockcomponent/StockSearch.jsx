@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import CommonAxios from "../../utils/common/CommonAxios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchZone = styled.div`
   position: relative;
@@ -46,8 +49,8 @@ const SearchInput = styled.input`
 
     &::placeholder {
       font-size: 1.4rem;
+    }
   }
-}
 `;
 
 const SearchButton = styled.button`
@@ -87,12 +90,131 @@ const SearchButton = styled.button`
   }
 `;
 
+const SearchResults = styled.div`
+  position: absolute;
+  top: 86%;
+  left: 6rem;
+  width: 86rem;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  padding: 3.8rem;
+
+  /* Styles for the scrollbar */
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--mainpurple),
+      var(--mainorange)
+    );
+    height: 1rem;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--mainlightpurple),
+      var(--mainlightorange)
+    );
+  }
+
+  @media (max-width: 768px) {
+    width: 28rem;
+    left: 3.2rem;
+  }
+`;
+
+const SearchResultItem = styled.div`
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-top: 1px solid #ccc;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+`;
+
 const StockSearch = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [list, setList] = useState([]);
+  const navigate = useNavigate();
+  // 검색 입력
+  const handleSearch = async (event) => {
+    setSearchTerm(event.target.value);
+    try {
+      const res = await CommonAxios.getAxios(
+        "stock",
+        "search",
+        "query",
+        searchTerm
+      );
+      if (res.status === 200) {
+        console.log(searchTerm);
+        setList(res.data);
+        console.log(res.data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  // 검색
+  const Search = async () => {
+    try {
+      const res = await CommonAxios.getAxios(
+        "stock",
+        "search",
+        "query",
+        searchTerm
+      );
+      if (res.status === 200) {
+        setList(res.data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       <SearchZone>
-        <SearchInput placeholder="찾고 싶은 주식을 검색하세요"></SearchInput>
-        <SearchButton>검색</SearchButton>
+        <SearchInput
+          onChange={(event) => handleSearch(event)}
+          placeholder="찾고 싶은 주식을 검색하세요"
+          value={searchTerm}
+        ></SearchInput>
+        <SearchButton onClick={Search}>검색</SearchButton>
+        {searchTerm && list.length > 0 && (
+          <SearchResults>
+            {list.map((item, index) => (
+              <SearchResultItem
+                key={index}
+                onClick={() => {
+                  navigate(`/stockInfo/${item}`);
+                }}
+              >
+                {item}
+              </SearchResultItem>
+            ))}
+          </SearchResults>
+        )}
       </SearchZone>
     </>
   );

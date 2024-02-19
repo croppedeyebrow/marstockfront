@@ -13,6 +13,7 @@ import {
   Category01,
   Category02,
   Category03,
+  Category04,
   StockInfoBackboard,
   StockDiv,
   Div01,
@@ -41,13 +42,25 @@ import StockSearch from "./stockcomponent/StockSearch";
 const StockListPage = ({ stock, setStockList }) => {
   // InlineContainer의 color = "orange" 를 입력하면 오렌지색 배경이 나오고, 공백("")인 경우는 보라색 배경이 나온다.
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [highlightedInfoIndex, setHighlightedInfoIndex] = useState(5); // Default to StockInfo05
+
   const handleCategoryClick = (event) => {
+    const newSelectedCategory = event.target.textContent;
+    const newHighlightedInfoIndex = {
+      고가: 3,
+      EPS: 6,
+      PER: 7,
+      DIV: 8,
+    }[newSelectedCategory];
+
     if (selectedCategory) {
       selectedCategory.style.color = "rgba(255, 255, 255, 0.7)";
     }
     event.target.style.color = "#ffffff";
+
     setSelectedCategory(event.target);
-    setStockList(event.target.textContent);
+    setHighlightedInfoIndex(newHighlightedInfoIndex);
+    setStockList(newSelectedCategory);
   };
 
   const StyledLink = styled(Link)`
@@ -64,7 +77,7 @@ const StockListPage = ({ stock, setStockList }) => {
               <Category01 onClick={handleCategoryClick}>고가</Category01>
               <Category02 onClick={handleCategoryClick}>EPS</Category02>
               <Category03 onClick={handleCategoryClick}>PER</Category03>
-              <Category03 onClick={handleCategoryClick}>DIV</Category03>
+              <Category04 onClick={handleCategoryClick}>DIV</Category04>
             </StockCategory>
             <StockInfoBackboard>
               <StockTitleBox>
@@ -85,12 +98,48 @@ const StockListPage = ({ stock, setStockList }) => {
                     <StockInfo02>{data.종목명}</StockInfo02>
                   </StyledLink>
                   <StockInfo03>{data.종가 ? data.종가 : 0}</StockInfo03>
-                  <StockInfo03>{data.고가 ? data.고가 : 0}</StockInfo03>
+                  <StockInfo03
+                    style={{
+                      color:
+                        highlightedInfoIndex === 3
+                          ? "var(--mainorange)"
+                          : "#ffffff",
+                    }}
+                  >
+                    {data.고가 ? data.고가 : 0}
+                  </StockInfo03>
                   <StockInfo04>{data.등락률 ? data.등락률 : 0}</StockInfo04>
                   <StockInfo05>{data.BPS ? data.BPS : 0}</StockInfo05>
-                  <StockInfo06>{data.PER ? data.PER : 0}</StockInfo06>
-                  <StockInfo07>{data.DIV ? data.DIV : 0}</StockInfo07>
-                  <StockInfo08>{data.EPS ? data.EPS : 0}</StockInfo08>
+                  <StockInfo06
+                    style={{
+                      color:
+                        highlightedInfoIndex === 7
+                          ? "var(--mainorange)"
+                          : "#ffffff",
+                    }}
+                  >
+                    {data.PER ? data.PER : 0}
+                  </StockInfo06>
+                  <StockInfo07
+                    style={{
+                      color:
+                        highlightedInfoIndex === 8
+                          ? "var(--mainorange)"
+                          : "#ffffff",
+                    }}
+                  >
+                    {data.DIV ? data.DIV : 0}
+                  </StockInfo07>
+                  <StockInfo08
+                    style={{
+                      color:
+                        highlightedInfoIndex === 6
+                          ? "var(--mainorange)"
+                          : "#ffffff",
+                    }}
+                  >
+                    {data.EPS ? data.EPS : 0}
+                  </StockInfo08>
                 </StockInfoList>
               ))}
             </StockInfoBackboard>

@@ -8,19 +8,18 @@ import FindIdPage from "./sign/FindIdPage";
 import FindPwPage from "./sign/FindPwPage";
 import StockPage from "./stock/StockPage";
 import StockInfoPage from "./stock/StockInfoPage";
-import StockListPage from "./stock/StockListPage";
-import StockIndexPage from "./stock/StockIndexPage";
 import MyPage from "./my/MyPage";
 import AdminPage from "./admin/AdminPage";
 import NewsPage from "./news/NewsPage";
 import WebSocketComponent from "./utils/common/WebSocket";
-import Test from "./utils/Test";
 import Success from "./utils/component/Success";
 import { AuthProvider } from "./context/AuthContext";
 import WsTest from "./WsTest";
 import SolarSystem from "./utils/style/OrbitPage";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import KakaoLogin from "./api/KaKao";
+import ScrollRemote from "./utils/component/ScrollRemote";
 
 function RoutesWithLoading() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,6 +32,7 @@ function RoutesWithLoading() {
 
   return (
     <>
+        <ScrollRemote/>
       {isLoading ? (
         <SolarSystem />
       ) : (
@@ -52,6 +52,8 @@ function RoutesWithLoading() {
           <Route path="/form" element={<FormPage />} />
           <Route path="/signin" element={<SigninPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/kakao" element={<KakaoLogin />} />
+
           <Route path="/findid" element={<FindIdPage />} />
           <Route path="/findpw" element={<FindPwPage />} />
         </Routes>

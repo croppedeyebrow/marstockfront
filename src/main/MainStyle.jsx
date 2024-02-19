@@ -10,6 +10,14 @@ import conimg07 from "../images/ConceptImges07.webp";
 import guide01 from "../images/GuideImage01.jpg";
 import guide02 from "../images/GuideImage02.jpg";
 import guide03 from "../images/GuideImage03.webp";
+import guide01img from "../images/guide01img.png";
+import guide02img from "../images/guide02img.png";
+
+/* 
+      @media (max-width: 768px) { 
+         
+      }   
+      */
 
 export const Space = styled.div`
    width: 100%;
@@ -20,17 +28,17 @@ export const Space = styled.div`
 `;
 
 export const Container = styled.div`
-   width: 120rem;
+   width: max(76.8rem ,min(94vw ,120rem));
    height: auto;
    display: flex;
    flex-direction: column;
-   gap: 5rem;
+   gap: max(2rem, min(2vw ,5rem));
    justify-content: center;
    align-items: center;
    #circle {
-      width: 60%;
+      width: max(60vw, min(200rem, 60%));
       animation: ${props => props.open ? 'scaleup 5.5s ease-in-out forwards' : 'none'};
-
+      
     @keyframes scaleup {
       0% {
         transform: scale(0);
@@ -46,6 +54,9 @@ export const Container = styled.div`
       position: fixed;
       z-index: -1;
       top: 0%;
+      @media (max-width: 768px) {
+         top: 10%;
+      }
    }
    #aurora {
       width: 100%;
@@ -110,9 +121,11 @@ export const WelcomeBanner = styled.div`
    scale: .9;
    position: fixed;
    top: 20%;
-   left: ${props => props.open ? '10%' : '-350%'};
+   left: ${props => props.open ? '5%' : '-350%'};
    transition: left 1.5s ease;
-   width: 100rem;
+   width: 90vw;
+   max-width: 100rem;
+   min-width: 70rem;
    height: auto;
    padding: 7rem;
    background-color: rgba(255, 255, 255, 0.08);
@@ -126,16 +139,41 @@ export const WelcomeBanner = styled.div`
    display: flex;
    justify-content: center;
    flex-direction: column;
+   @media (max-width: 768px) { 
+      top: 10%;
+      max-width: 70rem;
+      min-width: 30rem;
+      border-radius: 5vw;
+      padding: 10vw;
+
+   }
    #text {
       margin-top: 1rem;
-      font-size: 8rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: white;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       flex-direction: column;
-      text-shadow: 0px 0px 8px black;  
+      text-shadow: 0px 0px 8px black; 
+      #bigtext {
+         font-size: 5rem;
+         text-shadow: -4px -4px 6px  var(--mainpurple), 3px 3px 6px  var(--mainorange);
+      @media (max-width: 768px) { 
+         font-size: max(3rem , min(7vw, 5rem));
+      }
+      }
+      #smalltext {
+         font-size: 1.6rem;
+         font-weight: 400;
+         margin-top: 3rem;
+         @media (max-width: 768px) { 
+         font-size: max(1.5rem , min(5vw, 2rem));
+      }
+      }
+      
+
    }
    #startbutton {
       margin-top: 5rem;
@@ -188,6 +226,12 @@ export const InfoContainer = styled.div`
    padding: 5rem;
    justify-content: center;
    /* align-items: center; */
+   @media (max-width: 768px) {
+   width: 94vw;
+   gap: 5vw;
+   padding: 5vw;
+   border-radius: 7vw;
+   }
    .infobox {
       width: 52.5rem;
       height: auto;
@@ -197,6 +241,10 @@ export const InfoContainer = styled.div`
       box-shadow : inset 0px 10px 45px rgba(0, 0, 0, .2);
       color:white;
       padding: 2.5rem;
+      @media (max-width: 1200px) {
+         width: 90vw;
+         padding: 4vw;
+      }
       #infoline{
          animation: ${props => props.open ? css`${fadein} 1s ease-in-out` : 'none'};
          #infolist {
@@ -206,22 +254,33 @@ export const InfoContainer = styled.div`
             #name {
                font-size: 1.7rem;
                font-weight: 500;
+               @media (max-width: 768px) {
+                  font-size: 2.5vw;
+               }
             }
             #media {
                font-size: 1.7rem;
                font-weight: 500;
                color: var(--mainlightpurple);
+               @media (max-width: 768px) {
+                  font-size: 2.5vw;
+               }
             }
             #rank {
                font-size: 1.7rem;
                font-weight: 500;
                color: var(--mainlightpurple);
+               @media (max-width: 768px) {
+                  font-size: 2.5vw;
+               }
             }
             #price {
                font-size: 1.7rem;
                font-weight: 500;
                color: var(--mainlightorange);
-
+               @media (max-width: 768px) {
+                  font-size: 2.5vw;
+               }
             }
          }
    }
@@ -229,6 +288,9 @@ export const InfoContainer = styled.div`
       #title{
          font-size: 2.4rem;
          font-weight: 800;
+         @media (max-width: 768px ) {
+            font-size: 5vw;
+         }
       }
       &#oneinfo{ 
          animation: ${props => props.open ? css`${growin} 0.6s ease` : 'none'};
@@ -239,40 +301,57 @@ export const InfoContainer = styled.div`
       &#threeinfo{
          width: 110rem;
          animation: ${props => props.open ? css`${growin} 0.6s ease` : 'none'};
+         @media (max-width: 1200px) {
+            width: 90vw;
+         }
          
          #threeinfobox {
             margin-top: 3rem;
             display: flex;
             gap: 2rem;
             justify-content: space-between;
+            @media (max-width: 1200px) {
+            flex-wrap: wrap;
+            }
+         }
             .threein{
                flex: 1;
                height: auto;
                flex-direction: column;
+               @media (max-width: 1200px) {
+                  flex: 0 1 auto;
+                  width: 75vw;
+               }
                #infotitle {
                   font-size: 2.1rem;
                   font-weight: 600;
                   margin-bottom: 2rem;
+                  @media (max-width: 768px ) {
+                     font-size: 4vw;
+                  }
                }
             #infoin {
                display: flex;
                gap: 2rem;
                font-size: 1.5rem;
                font-weight: 200;
+               @media (max-width: 1200px ) {
+                     font-size: min(2.2rem, 3vw);
+                     justify-content: space-between;
+                  }
                .in {
                }
                #inname{
                   font-weight: 600;
                }
                #inchange{
-                  font-weight: 400;
+                  font-weight: 600;
                }
             }
                
             }
          }
       }
-   }
 `;
 
 
@@ -289,18 +368,19 @@ export const CardContainer = styled.div`
    width: 100%;
    height: auto;
    display: flex;
-   gap: 4rem;
+   justify-content: space-between;
    scale: ${props => props.open ? '1' : '0'};
    @media (max-width: 768px) {
       flex-wrap: wrap;
+      width: 94vw;
    }
   .card {
-   width: 27rem;
-   height: 40rem;
+   width: max(18rem, min(23vw, 27rem));
+   height: max(20rem, min(30vw, 40rem));
    background-color: red;
    border-radius: 3rem;
    color: white;
-   font-size: 3rem;
+   font-size: max(2.2rem, min(2vw, 3rem));
    font-weight: 800;
    box-shadow: inset 0px 0px 35px rgba(255, 255, 255, 0.3);
    text-shadow: 0px 0px 9px black,
@@ -309,6 +389,11 @@ export const CardContainer = styled.div`
    padding: 3rem;
    animation: ${props => props.open ? css`${growin} 0.6s ease` : 'none'};
    cursor: pointer;
+   @media (max-width: 768px) { 
+         width: 45vw;
+         margin-top: 5vw;
+         height: 50vw;
+      } 
    &:hover{
       transform: scale(1.08);
       transition: all 0.1s ease;
@@ -341,14 +426,16 @@ export const GuideContainer = styled.div`
    width: 120rem;
    height: auto;
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    flex-wrap: wrap;
    animation: ${props => props.open ? css`${growin} 0.6s ease` : 'none'};
-   gap: 5rem;
+   @media (max-width: 1200px) {
+      width: 94vw;
+   }
    .guide{
       box-shadow: inset 0px 0px 55px #ffffff45;
-      width: 57.5rem;
-      height: 52rem;
+      width: 48%;
+      aspect-ratio: 1 / 1; /* 너비와 높이 비율을 1:1로 설정 */
       border-radius: 3rem;
       box-sizing: border-box;
       font-size: 3rem;
@@ -358,22 +445,55 @@ export const GuideContainer = styled.div`
          0px 0px 15px black,
          0px 0px 9px black;
       padding: 4rem;
-      cursor: pointer; 
+      cursor: pointer;
+      @media (max-width: 1200px) {
+            padding: 5vw;
+         } 
       &:hover{
-      transform: scale(1.08);
+      transform: scale(1.05);
       transition: all 0.1s ease; }
       &#guide01 {
          background-image: url(${guide02});
          background-size: cover;
          background-position: 15%;
-         font-size: 5rem;     
+         font-size: 5rem;
+         @media (max-width: 1200px) {
+            font-size: 4vw;
+         }
       }
       &#guide02 {
          background-image: url(${guide03});
          background-size: cover;
-         font-size: 4rem;
+         font-size: 5rem;
+         @media (max-width: 1200px) {
+            font-size: 4vw;
+         }
       }
    }
+   .guideinfo {
+         margin-top: min(4vw, 4rem);
+         width: 100%;
+         border-radius: min(3vw, 3rem);
+         box-shadow: inset 0px 0px 20vw #ffffff35;
+      }
+      #guide01info {
+            /* background-color: red; */
+            aspect-ratio : 2403 / 3098;
+            background-image: url(${guide01img});
+            background-size: cover;
+            background-position: center;
+            display: ${props => (props.selectedGuide === 'guide01' ? 'block' : 'none')};
+            animation: ${props => props.selectedGuide ? css`${growin} 0.6s ease` : 'none'};
+         }
+      #guide02info {
+            background-color: blue;
+            aspect-ratio : 1202 / 6536;
+            background-image: url(${guide02img});
+            background-size: cover;
+            background-position: center;
+            display: ${props => (props.selectedGuide === 'guide02' ? 'block' : 'none')};
+            animation: ${props => props.selectedGuide ? css`${growin} 0.6s ease` : 'none'};
+         }
 `;
 
 

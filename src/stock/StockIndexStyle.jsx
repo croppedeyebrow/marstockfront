@@ -44,7 +44,6 @@ export const IndexTopLeft = styled.div`
   gap: 1.4rem;
   width: 84rem;
   height: 54rem;
-  border: 1px solid white;
 
   @media (max-width: 768px) {
     width: 24rem;
@@ -271,7 +270,7 @@ export const LeftIndexTopTitle = styled.div`
   line-height: 28px;
   margin-left: 4rem;
   color: #ffffff;
-  // border: 3px solid red;
+
   z-index: 3;
 
   &:hover {
@@ -291,10 +290,10 @@ export const IndexDrop = styled.div`
   align-items: center;
   justify-content: center;
   width: 40rem;
-  border: 1px solid red;
+
   height: 3.6rem;
   color: #ffffff;
-  // border: 1px solid white;
+
   font-size: 2rem;
 
   &:hover {
@@ -339,6 +338,33 @@ export const LeftIndexMainZone = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+
+  /* Styles for the scrollbar */
+  &::-webkit-scrollbar {
+    width: 1rem; /* Adjust scrollbar thickness */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--mainpurple),
+      var(--mainorange)
+    );
+    height: 1rem;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--mainlightpurple),
+      var(--mainlightorange)
+    );
+  }
 `;
 
 export const LeftIndexMainTitle = styled.div`
@@ -385,6 +411,11 @@ export const LeftIndexMainText = styled.div`
   line-height: 13px;
   color: #ffffff;
   margin-top: 15px;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 8rem;
+  }
 `;
 
 export const LeftTitle = styled.div`
@@ -479,7 +510,7 @@ export const IndexTopRight = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid white;
+  margin-left: 1.5rem;
   width: 27rem;
   height: 54rem;
 `;
@@ -490,6 +521,33 @@ export const IndexTopContainer = styled.div`
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
   overflow-y: auto;
+
+  /* Styles for the scrollbar */
+  &::-webkit-scrollbar {
+    width: 1rem; /* Adjust scrollbar thickness */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--mainpurple),
+      var(--mainorange)
+    );
+    height: 1rem;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--mainlightpurple),
+      var(--mainlightorange)
+    );
+  }
 `;
 
 export const IndexTopTitle = styled.div`
@@ -524,17 +582,29 @@ export const IndexTopNum = styled.div`
   color: #ab81ff;
   font-size: 1rem;
   font-weight: 700;
-  margin-left: 0.5rem;
+  margin-left: 1.5rem;
+
+  display: flex;
+  position: relative;
+  justify-content: center;
 `;
 
 export const IndexTopName = styled.div`
   color: white;
   /* font-size: 1rem;
   font-weight: 700; */
-  width: 3rem;
+  width: 6rem;
+  display: flex;
+  position: relative;
+  justify-content: center;
   height: 1.3rem;
   overflow: hidden;
   white-space: nowrap; /* 글자가 넘칠 경우 줄 바꿈 방지 */
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 3rem;
+  }
 `;
 
 export const AnimatedText = styled.span`
@@ -546,20 +616,29 @@ export const AnimatedText = styled.span`
   /* 애니메이션 적용 */
   animation: ${keyframes`
     from {
-      transform: translateX(0);
+      transform: translateX(50%);
     }
 
     to {
       transform: translateX(-100%);
     }
-  `} 1s ease infinite;
+  `} 6s ease infinite;
 `;
 
 export const IndexTopPrice = styled.div`
   color: white;
   font-size: 1rem;
   font-weight: 700;
-  margin-left: 0.5rem;
+  margin-left: 0.3rem;
+
+  display: flex;
+  position: relative;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 2.6rem;
+  }
 `;
 export const IndexTopRate = styled.div`
   color: white;
@@ -567,6 +646,11 @@ export const IndexTopRate = styled.div`
   font-weight: 700;
   margin-left: 0.5rem;
   margin-right: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 3rem;
+  }
 `;
 
 export const MiddleContainer = styled.div`
@@ -578,7 +662,7 @@ export const MiddleContainer = styled.div`
   color: #ffffff;
   width: 113rem;
   height: 4rem;
-  border: 1px solid blue;
+
   font-size: 2rem;
   font-weight: bold;
   margin-top: 2rem;
@@ -597,7 +681,7 @@ export const IndexPageBottom = styled.div`
 
   width: 113rem;
   height: 38rem;
-  border: 1px solid white;
+
   overflow-y: auto;
 
   @media (max-width: 768px) {
@@ -855,6 +939,12 @@ export const KInfo01 = styled.div`
   color: #ab81ff;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 2rem;
+    left: 1rem;
+  }
 `;
 
 export const KInfo0101 = styled.div`
@@ -865,6 +955,13 @@ export const KInfo0101 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 2rem;
+    left: 1rem;
+    border: 1px solid red;
+  }
 `;
 
 export const KInfo02 = styled.div`
@@ -875,6 +972,13 @@ export const KInfo02 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    width: 12rem;
+    left: 1rem;
+    height: 4rem;
+  }
 `;
 
 export const KInfo03 = styled.div`
@@ -885,6 +989,11 @@ export const KInfo03 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 8rem;
+  }
 `;
 
 export const KInfo04 = styled.div`
@@ -895,6 +1004,11 @@ export const KInfo04 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 8rem;
+  }
 `;
 
 export const KInfo05 = styled.div`
@@ -905,6 +1019,11 @@ export const KInfo05 = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 8rem;
+  }
 `;
 
 export const KInfo06 = styled.div`

@@ -10,8 +10,8 @@ export const AuthProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
 
   // 상태 체크
-  const updateLoginStatus = (accessToken) => {
-    if (accessToken) {
+  const updateLoginStatus = (userRole) => {
+    if (userRole) {
       console.log("로그인 상태입니다.");
       setIsLogin(true);
     } else {

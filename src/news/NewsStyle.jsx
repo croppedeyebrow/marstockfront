@@ -21,7 +21,7 @@ export const Example = styled.div`
 export const NewsPageContainer = styled.div`
   width: 100%;
   min-height: 100vh;
-  height: auto;
+  height: 230rem;
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0),
@@ -87,6 +87,33 @@ export const Realtimezone = styled.div`
   border-radius: 15px;
   overflow-x: hidden;
 
+  /* Styles for the scrollbar */
+  &::-webkit-scrollbar {
+    width: 1rem; /* Adjust scrollbar thickness */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--mainpurple),
+      var(--mainorange)
+    );
+    height: 1rem;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--mainlightpurple),
+      var(--mainlightorange)
+    );
+  }
+
   @media (max-width: 768px) {
     width: 34rem;
     height: 46rem;
@@ -103,6 +130,34 @@ export const MostViewZone = styled.div`
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
   overflow-y: scroll;
+  overflow-x: hidden;
+
+  /* Styles for the scrollbar */
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--mainpurple),
+      var(--mainorange)
+    );
+    height: 1rem;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--mainlightpurple),
+      var(--mainlightorange)
+    );
+  }
 
   @media (max-width: 768px) {
     width: 34rem;
@@ -148,13 +203,13 @@ export const RealTimeBox = styled.div`
 export const TopBox = styled.div`
   position: relative;
   display: flex;
-  width: 50.7rem;
-  height: 2.9rem;
-  gap: 0.5rem;
+  width: 50rem;
+  height: 8rem;
+  gap: 0.4rem;
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   line-height: 2.3rem;
 
   color: #ab81ff;
@@ -234,7 +289,8 @@ export const MostViewBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 2.8rem;
+  height: 10rem;
+  top: 3rem;
 
   font-family: "Noto Sans KR";
   font-style: normal;
@@ -245,7 +301,7 @@ export const MostViewBox = styled.div`
   color: #ffffff;
 
   @media (max-width: 768px) {
-    width: 32rem;
+    width: 100%;
 
     font-size: 0.8rem;
   }
@@ -258,7 +314,8 @@ export const MostNewsName = styled.div`
   align-items: center;
   /* width: 7.2rem; */
   width: 100%;
-  height: 2.8rem;
+  height: 20rem;
+
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 700;
@@ -267,7 +324,7 @@ export const MostNewsName = styled.div`
   color: var(--mainlightorange);
 
   @media (max-width: 768px) {
-    width: 6rem;
+    width: 100%;
     font-size: 0.8rem;
   }
 `;
@@ -314,12 +371,12 @@ export const NewsBottomTitle = styled.div`
 export const NewsBottomContainer = styled.div`
   display: grid;
   position: relative;
-  border: 1px solid black;
+
   width: 100%;
   height: 100%;
   gap: 2rem;
   grid-template-columns: repeat(2, 54rem);
-  grid-template-rows: repeat(3, 12.5rem);
+  grid-template-rows: repeat(5, 12.5rem);
 
   @media (max-width: 768px) {
     width: 34rem;
@@ -350,7 +407,9 @@ export const NewsImgBox = styled.img`
   position: relative;
   width: 14.8rem;
   height: 8.3rem;
-  border: 1px solid black;
+  border: none;
+  border-radius: 1.5rem;
+  background: rgba(255, 184, 136, 0.12);
 
   @media (max-width: 768px) {
     width: 8rem;
@@ -366,7 +425,6 @@ export const NewsInfoBox = styled.div`
   gap: 1.5rem;
   width: 34rem;
   height: 8.3rem;
-  border: 1px solid white;
 
   @media (max-width: 768px) {
     width: 20rem;

@@ -1,6 +1,9 @@
+import { WEB_SOCKET } from "./Common";
+
 const WebSocketComponent = (roomId, type) => {
   const socket = new WebSocket(
-    `ws://localhost:8111/ws/marstock?room=${roomId}&type=${type}`
+    `${WEB_SOCKET}?room=${roomId}&type=${type}`
+    // `ws://ws/marstock?room=${roomId}&type=${type}`
   );
   console.log(socket.url);
 
